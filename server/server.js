@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { ApolloServer } = require('apollo-server-express');
 const express = require('express');
+const session = require('express-session')
 const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schema');
 const path = require('path');
@@ -8,11 +9,30 @@ const db = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+const MongoDBStore = require('connect-mongodb-session')(session);
+const store = new MongoDBStore({
+    uri: 'mongodb://localhost/turtle'
+})
+
+store.on('error', function(error) {
+    console.log(error);
+});
+
+app.use(session({
+    secret: 'somerandomstring',
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // one week
+    },
+    store: store,
+    resave: true,
+    saveUninitialized: true
+}));
+
 const server = new ApolloServer({
     uploads: false,
     typeDefs,
     resolvers,
-    context: authMiddleware,
+    // context: authMiddleware,
 });
 
 server.applyMiddleware({ app });
