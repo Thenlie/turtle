@@ -1,13 +1,14 @@
 require('dotenv').config();
-const { ApolloServer } = require('apollo-server-express');
 const express = require('express');
 const session = require('express-session')
-// const { authMiddleware } = require('./utils/auth');
-const { typeDefs, resolvers } = require('./schema');
-const path = require('path');
-// const cors = require('cors');
-const db = require('./config/connection');
 const app = express();
+const { ApolloServer } = require('apollo-server-express');
+const { authMiddleware } = require('./utils/auth');
+const { GraphQLUpload, graphqlUploadExpress } = require('graphql-upload');
+const path = require('path');
+
+const { typeDefs, resolvers } = require('./schema');
+const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
 
 const MongoDBStore = require('connect-mongodb-session')(session);
@@ -17,14 +18,14 @@ const store = new MongoDBStore({
     collection: 'sessions'
 })
 
-store.on('error', function(error) {
+store.on('error', function (error) {
     console.log(error);
 });
 
 app.use(require('express-session')({
     secret: 'This is a secret',
     cookie: {
-      maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
     },
     store: store,
     // Boilerplate options, see:
@@ -38,10 +39,12 @@ const server = new ApolloServer({
     uploads: false,
     typeDefs,
     resolvers,
-    // context: authMiddleware,
+    context: authMiddleware,
 });
 
-// server.applyMiddleware({ app });
+app.use(graphqlUploadExpress());
+server.applyMiddleware({ app });
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -49,9 +52,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
     res.send('Hello ' + JSON.stringify(req.session));
 });
 app.get('*', (req, res) => {
