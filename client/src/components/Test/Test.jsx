@@ -12,12 +12,16 @@ const Test = () => {
     // queries
     const { loading, data, refetch } = useQuery(QUERY_USERS);
     const users = data?.users || [];
-
+    const newUsers = users.map((user, i) => user.username)
     // states
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     // const [userArr, setUserArr] = useState(null)
+
+    useEffect(() => {
+        refetch();
+    }, [])
 
     // useEffect(() => {
     //     if (!loading) {
@@ -85,47 +89,49 @@ const Test = () => {
         return (
             <p>Loading...</p>
         )
+    } else {
+        console.log(users)
+        console.log(newUsers)
+        newUsers.map((user) => {console.log(user)})
+
+        return (
+            <>
+                <section className='test-section'>
+                    {/* signup form */}
+                    <div className='test-form-container'>
+                        <form onSubmit={handleSignup}>
+                            <input onChange={handleChange} name='username' placeholder='username' value={username}></input>
+                            <input onChange={handleChange} name='email' placeholder='email' value={email}></input>
+                            <input onChange={handleChange} name='password' placeholder='password' value={password} type='password'></input>
+                            <button type='submit'>Signup</button>
+                        </form>
+                    {/* state variables */}
+                        <div className='test-info'>
+                            <p>Username: <span>{username}</span></p>
+                            <p>Email: <span>{email}</span></p>
+                            <p>Password: <span>{password}</span></p>
+                        </div>
+                    </div>
+                    {/* user auth buttons */}
+                    <div className='test-buttons'>
+                        <button onClick={handleLogin}>Login</button>
+                        <button onClick={handleLogout}>Logout</button>
+                        <button onClick={handleUsers}>List Users</button>
+                        <button onClick={handleMe}>List Me</button>
+                    </div>
+                </section>
+                <section>
+                    <ul>
+                        {users.map((user) => (
+                            <li key={user.username}>Hello {user.username}</li>
+                        ))}
+                    </ul>
+                </section>
+            </>
+        )
     }
 
-    console.log(users)
 
-    return (
-        <>
-            <section className='test-section'>
-                {/* signup form */}
-                <div className='test-form-container'>
-                    <form onSubmit={handleSignup}>
-                        <input onChange={handleChange} name='username' placeholder='username' value={username}></input>
-                        <input onChange={handleChange} name='email' placeholder='email' value={email}></input>
-                        <input onChange={handleChange} name='password' placeholder='password' value={password} type='password'></input>
-                        <button type='submit'>Signup</button>
-                    </form>
-                {/* state variables */}
-                    <div className='test-info'>
-                        <p>Username: <span>{username}</span></p>
-                        <p>Email: <span>{email}</span></p>
-                        <p>Password: <span>{password}</span></p>
-                    </div>
-                </div>
-                {/* user auth buttons */}
-                <div className='test-buttons'>
-                    <button onClick={handleLogin}>Login</button>
-                    <button onClick={handleLogout}>Logout</button>
-                    <button onClick={handleUsers}>List Users</button>
-                    <button onClick={handleMe}>List Me</button>
-                </div>
-            </section>
-            <section>
-                <ul>
-                    {users !== null &&
-                        (users.map(({username}) => {
-                            <li key={username}>Hello {username}</li>
-                        }))
-                    }
-                </ul>
-            </section>
-        </>
-    )
 };
 
 export default Test;

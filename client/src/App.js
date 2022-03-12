@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, createHttpLink } from '@apollo/client';
-import Test from './components/Test/Test';
+import Home from './pages/Home';
+import Forms from './pages/Forms';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -15,7 +17,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-        <Test />
+        <Router>
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route exact path='/forms' element={<Forms />} />
+          </Routes>
+        </Router>
       </div>
     </ApolloProvider>
   );
