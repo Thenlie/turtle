@@ -27,7 +27,8 @@ const resolvers = {
             if (!user) {
                 throw new AuthenticationError('No user found');
             }
-            context.session.destroy();
+            context.session.userId = null;
+            console.log(context.session);
             return user
         }
     }

@@ -1,30 +1,14 @@
 import React, { useState } from 'react';
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  ApolloLink,
-} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, createHttpLink } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-import { createUploadLink } from 'apollo-upload-client';
 import Test from './components/Test/Test';
 
-const uploadLink = createUploadLink({
+const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
-
 const client = new ApolloClient({
-  link: ApolloLink.from([authLink, uploadLink]),
+  link: ApolloLink.from([httpLink]),
   cache: new InMemoryCache(),
 });
 
