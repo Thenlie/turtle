@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
 import Test from './components/Test/Test';
 
 const httpLink = createHttpLink({
