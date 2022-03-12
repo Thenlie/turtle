@@ -41,6 +41,7 @@ async function startApolloServer(typeDefs, resolvers) {
         typeDefs,
         resolvers,
         plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+        context: ({ req, res }) => ({ req, res, session: req.session})
     });
 
     await server.start();

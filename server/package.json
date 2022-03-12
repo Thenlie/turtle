@@ -22,7 +22,6 @@
     "express-session": "^1.17.2",
     "graphql": "^15.8.0",
     "graphql-upload": "^13.0.0",
-    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.4"
   },
   "devDependencies": {
