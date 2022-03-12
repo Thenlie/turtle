@@ -7,6 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createUploadLink } from 'apollo-upload-client';
+import Test from './components/Test/Test';
 
 const uploadLink = createUploadLink({
   uri: '/graphql',
@@ -31,7 +32,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-        <p>Hello, world!</p>
+        <Test />
       </div>
     </ApolloProvider>
   );

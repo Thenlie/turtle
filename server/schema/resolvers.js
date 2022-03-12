@@ -17,6 +17,17 @@ const resolvers = {
             if (!user) {
                 throw new AuthenticationError('No user found');
             }
+            context.session.userId = user._id
+            console.log(context.session);
+            return user
+        },
+        logout: async (parent, args, context) => {
+            console.log(context.session)
+            const user = await User.findOne({ _id: context.session.userId});
+            if (!user) {
+                throw new AuthenticationError('No user found');
+            }
+            context.session.destroy();
             return user
         }
     }
