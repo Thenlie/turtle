@@ -5,10 +5,13 @@ const resolvers = {
     Query: {
         users: async () => {
             return await User.find()
+        },
+        me: async () => {
+            return await User.findOne({ _id: context.session.userId})
         }
     },
     Mutation: {
-        addUser: async (parent, args) => {
+        signup: async (parent, args) => {
             const user = await User.create(args)
             return user
         },
@@ -17,12 +20,15 @@ const resolvers = {
             if (!user) {
                 throw new AuthenticationError('No user found');
             }
+            const validPassword = await user.isCorrectPassword(password)
+            if(!validPassword) {
+                throw new AuthenticationError('Incorrect credentials');
+            }
             context.session.userId = user._id
             console.log(context.session);
             return user
         },
         logout: async (parent, args, context) => {
-            console.log(context.session)
             const user = await User.findOne({ _id: context.session.userId});
             if (!user) {
                 throw new AuthenticationError('No user found');
