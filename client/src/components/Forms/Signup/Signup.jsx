@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { SIGNUP } from '../../../utils/mutations';
 
 const Signup = () => {
@@ -39,12 +39,19 @@ const Signup = () => {
 
     return (
         <section>
+            {/* signup form */}
             <form onSubmit={handleSignup}>
                 <input onChange={handleChange} name='username' placeholder='username' value={username}></input>
                 <input onChange={handleChange} name='email' placeholder='email' value={email}></input>
                 <input onChange={handleChange} name='password' placeholder='password' value={password} type='password'></input>
                 <button type='submit'>Signup</button>
             </form>
+            {/* state variables */}
+            <div className='test-info'>
+                <p>Username: <span>{username}</span></p>
+                <p>Email: <span>{email}</span></p>
+                <p>Password: <span>{password}</span></p>
+            </div>
         </section>
     )
 };

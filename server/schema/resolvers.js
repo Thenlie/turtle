@@ -8,7 +8,7 @@ const resolvers = {
         },
         me: async () => {
             return await User.findOne({ _id: context.session.userId})
-        }
+        },
     },
     Mutation: {
         signup: async (parent, args) => {
