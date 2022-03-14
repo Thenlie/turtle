@@ -21,7 +21,6 @@ const Signup = () => {
     };
 
     const handleChange = (evt) => {
-        evt.preventDefault();
         switch (evt.target.name) {
             case 'username': 
                 setUsername(evt.target.value);
@@ -38,7 +37,8 @@ const Signup = () => {
     };
 
     return (
-        <section>
+        <section className="signup">
+            <h2>Signup</h2>
             {/* signup form */}
             <form onSubmit={handleSignup}>
                 <input onChange={handleChange} name='username' placeholder='username' value={username}></input>

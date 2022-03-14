@@ -11,7 +11,8 @@ const Logout = () => {
     };
 
     return (
-        <section>
+        <section className="logout">
+            <h2>Logout</h2>
             <button onClick={handleLogout}>Logout</button>
         </section>
     )

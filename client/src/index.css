@@ -11,3 +11,52 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* login & signup form  */
+
+h1 {
+  text-align: center;
+}
+
+.login, .signup {
+  width: 50%;
+  padding: 20px;
+  margin: 10px auto;
+  border: 1px black solid;
+  border-radius: 5px;
+  box-shadow: 10px 5px 15px;
+  background-color: whitesmoke;
+}
+
+.login form, .signup form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login form input, .signup form input {
+  margin: 5px;
+  padding: 3px;
+  border-radius: 3px;
+}
+
+.login form button, .signup form button {
+  width: 25%;
+  margin: auto;
+  padding: 5px;
+  border-radius: 15px;
+  background-color: lightgrey;
+}
+
+.login form button:hover, .signup form button:hover {
+  background-color: gray;
+}
+
+.test-info p, .test-info p {
+  font-weight: bold;
+}
+
+.test-info span, .test-info span {
+  font-weight: normal;
+}
+
+/* logout  */

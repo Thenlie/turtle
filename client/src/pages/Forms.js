@@ -13,12 +13,16 @@ const Forms = () => {
             <Signup />
             <Login />
             <Logout />
-            <section>
+            <section className="user-list">
                 <h2>User List</h2>
                 <ul>
-                    {users.map((user) => (
-                        <li key={user.username}>{user.username}</li>
-                        ))}
+                    {users.length > 0 ? (
+                        users.map((user) => (
+                            <li key={user.username}>{user.username}</li>
+                            ))
+                    ) : (
+                        <p>No Users</p>
+                    )}
                 </ul>
             </section>
             <Link to='/'>Home</Link>
