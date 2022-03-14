@@ -3,19 +3,27 @@ const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
     Query: {
-        users: async () => {
+        users: async (parent, args, context) => {
+            console.log(context.session);
             return await User.find()
         },
-        me: async () => {
+        me: async (parent, args, context) => {
+            console.log(context.session);
             return await User.findOne({ _id: context.session.userId})
         },
+        loggedIn: async (parent, args, context) => {
+            console.log(context.session);
+            return context.session.userId
+        }
     },
     Mutation: {
-        signup: async (parent, args) => {
+        signup: async (parent, args, context) => {
+            console.log(context.session);
             const user = await User.create(args)
             return user
         },
         login: async (parent, { email, password }, context) => {
+            console.log(context.session);
             const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError('No user found');

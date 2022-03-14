@@ -2,9 +2,15 @@
   "name": "turtle",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3001",
+      "secure": false
+    }
+  },
+
   "dependencies": {
-    "@apollo/client": "3.5",
+    "@apollo/client": "^3.5",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",

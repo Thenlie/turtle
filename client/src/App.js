@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, createHttpLink } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, createHttpLink, useQuery } from '@apollo/client';
 import Home from './pages/Home';
 import Forms from './pages/Forms';
 
@@ -14,6 +14,23 @@ const client = new ApolloClient({
 });
 
 function App() {
+  // const { loading, data } = useQuery(QUERY_USERS);
+
+  useEffect(() => {
+    fetchData();
+  })
+
+  const fetchData = async () => {
+    const login = await fetch('/api/login', {
+      method: 'POST',
+      body: {  
+        "email": "test@email.com",
+        "password": "password"
+      }
+    });
+    console.log(login);
+  }
+
   return (
     <ApolloProvider client={client}>
       <div>

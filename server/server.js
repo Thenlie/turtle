@@ -5,6 +5,7 @@ const express = require('express');
 const session = require('express-session')
 const http = require('http');
 const path = require('path');
+const cors = require('cors');
 const { typeDefs, resolvers } = require('./schema');
 const db = require('./config/connection');
 const PORT = process.env.PORT || 3001;
@@ -47,16 +48,30 @@ async function startApolloServer(typeDefs, resolvers) {
     await server.start();
     server.applyMiddleware({ app });
 
+    // set url to allow origin (client URL)
+    if (process.env.NODE_ENV === 'production') {
+        var corsOptions = {
+            origin: 'https://typeplusplus.herokuapp.com/',
+        };
+    } else {
+        var corsOptions = {
+            origin: 'http://localhost:3000',
+        };
+    }
+    app.use(cors(corsOptions));
+
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     if (process.env.NODE_ENV === 'production') {
         app.use(express.static(path.join(__dirname, '../client/build')));
     }
     app.use(express.static(path.join(__dirname, 'public')));
+    app.use(require('./controllers'));
 
-    app.get('/', function (req, res) {
-        res.send('Hello ' + JSON.stringify(req.session));
-    });
+    // app.get('/', function (req, res) {
+    //     res.send('Hello ' + JSON.stringify(req.session));
+    // });
+
     app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });
