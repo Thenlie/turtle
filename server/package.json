@@ -22,7 +22,9 @@
     "express-session": "^1.17.2",
     "graphql": "^15.8.0",
     "graphql-upload": "^13.0.0",
-    "mongoose": "^6.2.4"
+    "mongoose": "^6.2.4",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

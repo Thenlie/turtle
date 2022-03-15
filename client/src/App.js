@@ -9,28 +9,11 @@ const httpLink = createHttpLink({
 });
 
 const client = new ApolloClient({
-  link: ApolloLink.from([httpLink]),
+  link: httpLink,
   cache: new InMemoryCache(),
 });
 
 function App() {
-  // const { loading, data } = useQuery(QUERY_USERS);
-
-  useEffect(() => {
-    fetchData();
-  })
-
-  const fetchData = async () => {
-    const login = await fetch('/api/login', {
-      method: 'POST',
-      body: {  
-        "email": "test@email.com",
-        "password": "password"
-      }
-    });
-    console.log(login);
-  }
-
   return (
     <ApolloProvider client={client}>
       <div>
