@@ -8,16 +8,30 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const data = {
+        "username": "testuser3",
+        "email": "test3@email.com",
+        "password": "password",
+    }
+
     const handleSignup = async (evt) => {
         evt.preventDefault();
-        await signup({ variables: {
-            "username": username,
-            "email": email,
-            "password": password
-        }});
-        setUsername('');
-        setEmail('');
-        setPassword('');
+        // await signup({ variables: {
+        //     "username": username,
+        //     "email": email,
+        //     "password": password
+        // }});
+        // setUsername('');
+        // setEmail('');
+        // setPassword('');
+        const response = await fetch('/auth/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        return response;
     };
 
     const handleChange = (evt) => {

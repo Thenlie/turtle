@@ -6,8 +6,11 @@ const Logout = () => {
     const [logout] = useMutation(LOGOUT);
 
     const handleLogout = async () => {
-        await logout();
-        return;
+        // await logout();
+        const response = await fetch('/auth/logout', {
+            method: 'POST',
+        })
+        return response;
     };
 
     return (

@@ -10,21 +10,23 @@ const Forms = () => {
     return (
         <main>
             <h1>Forms</h1>
-            <Signup />
-            <Login />
-            <Logout />
-            <section className="user-list">
-                <h2>User List</h2>
-                <ul>
-                    {users.length > 0 ? (
-                        users.map((user) => (
-                            <li key={user.username}>{user.username}</li>
-                            ))
-                    ) : (
-                        <p>No Users</p>
-                    )}
-                </ul>
-            </section>
+            <div className='forms'>
+                <Signup />
+                <Login />
+                <Logout />
+                <section className="user-list">
+                    <h2>User List</h2>
+                    <ul>
+                        {users.length > 0 ? (
+                            users.map((user) => (
+                                <li key={user.username}>{user.username}</li>
+                                ))
+                        ) : (
+                            <p>No Users</p>
+                        )}
+                    </ul>
+                </section>
+            </div>
             <Link to='/'>Home</Link>
         </main>
     )

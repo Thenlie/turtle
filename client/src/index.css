@@ -18,7 +18,7 @@ h1 {
   text-align: center;
 }
 
-.login, .signup {
+.login, .signup, .logout, .user-list {
   width: 50%;
   padding: 20px;
   margin: 10px auto;
@@ -26,6 +26,7 @@ h1 {
   border-radius: 5px;
   box-shadow: 10px 5px 15px;
   background-color: whitesmoke;
+  text-align: center;
 }
 
 .login form, .signup form {
@@ -39,7 +40,7 @@ h1 {
   border-radius: 3px;
 }
 
-.login form button, .signup form button {
+.login form button, .signup form button, .logout button {
   width: 25%;
   margin: auto;
   padding: 5px;
@@ -47,16 +48,20 @@ h1 {
   background-color: lightgrey;
 }
 
-.login form button:hover, .signup form button:hover {
+.login form button:hover, .signup form button:hover, .logout button:hover {
   background-color: gray;
 }
 
 .test-info p, .test-info p {
   font-weight: bold;
+  text-align: left;
 }
 
 .test-info span, .test-info span {
   font-weight: normal;
 }
 
-/* logout  */
+.user-list ul {
+  list-style-type: none;
+  padding: 0;
+}

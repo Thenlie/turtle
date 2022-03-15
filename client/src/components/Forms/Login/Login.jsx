@@ -4,13 +4,25 @@ import { LOGIN } from '../../../utils/mutations';
 
 const Login = () => {
     const [login] = useMutation(LOGIN);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('test2@email.com');
+    const [password, setPassword] = useState('password');
+
+    const data = {
+        "email": "test@email.com",
+        "password": "password"
+    }
 
     const handleLogin = async (evt) => {
         evt.preventDefault();
-        await login({ variables: {"email": email, "password": password}});
-        return;
+        // await login({ variables: {"email": email, "password": password}});
+        const response = await fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        return response;
     };
 
     const handleChange = (evt) => {
