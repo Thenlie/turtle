@@ -25,7 +25,7 @@ const Home = ({user}) => {
                                 )}
                 </ul>
             </section>
-            <section>
+            <section className='logged-in'>
                 <h2>Logged In User ID</h2>
                 {user ? (
                     <p>{user}</p>

@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { LOGIN } from '../../../utils/mutations';
 
-const Login = () => {
-    const [login] = useMutation(LOGIN);
+const Login = ({setUser}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -14,7 +11,6 @@ const Login = () => {
 
     const handleLogin = async (evt) => {
         evt.preventDefault();
-        // await login({ variables: {"email": email, "password": password}});
         const response = await fetch('/auth/login', {
             method: 'POST',
             headers: {
@@ -22,6 +18,8 @@ const Login = () => {
             },
             body: JSON.stringify(data)
         })
+        const newData = await response.json();
+        setUser(newData._id)
         return response;
     };
 

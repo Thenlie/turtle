@@ -2,14 +2,13 @@ import React from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGOUT } from '../../../utils/mutations';
 
-const Logout = () => {
-    const [logout] = useMutation(LOGOUT);
+const Logout = ({setUser}) => {
 
     const handleLogout = async () => {
-        // await logout();
         const response = await fetch('/auth/logout', {
             method: 'POST',
         })
+        setUser(null)
         return response;
     };
 

@@ -38,7 +38,7 @@ function App() {
         <Router>
           <Routes>
             <Route exact path='/' element={<Home user={user} />} />
-            <Route exact path='/forms' element={<Forms user={user} />} />
+            <Route exact path='/forms' element={<Forms user={user} setUser={setUser} />} />
           </Routes>
         </Router>
       </div>

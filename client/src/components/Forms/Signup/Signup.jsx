@@ -1,29 +1,18 @@
 import React, { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { SIGNUP } from '../../../utils/mutations';
 
-const Signup = () => {
-    const [signup] = useMutation(SIGNUP);
+const Signup = ({refetch}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const data = {
-        "username": "testuser",
-        "email": "test@email.com",
+        "username": "testuser2",
+        "email": "test2@email.com",
         "password": "password",
     }
 
     const handleSignup = async (evt) => {
         evt.preventDefault();
-        // await signup({ variables: {
-        //     "username": username,
-        //     "email": email,
-        //     "password": password
-        // }});
-        // setUsername('');
-        // setEmail('');
-        // setPassword('');
         const response = await fetch('/auth/signup', {
             method: 'POST',
             headers: {
@@ -31,6 +20,7 @@ const Signup = () => {
             },
             body: JSON.stringify(data)
         });
+        refetch();
         return response;
     };
 
