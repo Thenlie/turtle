@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USERS } from '../utils/queries';
 
-const Forms = () => {
+const Forms = ({user}) => {
     const { loading, data } = useQuery(QUERY_USERS);
     const users = data?.users || [];
 
@@ -14,19 +14,11 @@ const Forms = () => {
                 <Signup />
                 <Login />
                 <Logout />
-                <section className="user-list">
-                    <h2>User List</h2>
-                    <ul>
-                        {users.length > 0 ? (
-                            users.map((user) => (
-                                <li key={user.username}>{user.username}</li>
-                                ))
-                        ) : (
-                            <p>No Users</p>
-                        )}
-                    </ul>
-                </section>
             </div>
+            <section className='logged-in'>
+                <h2>Logged In User ID</h2>
+                <p>{user}</p>
+            </section>
             <Link to='/'>Home</Link>
         </main>
     )

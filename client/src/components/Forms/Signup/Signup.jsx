@@ -9,8 +9,8 @@ const Signup = () => {
     const [password, setPassword] = useState('');
 
     const data = {
-        "username": "testuser3",
-        "email": "test3@email.com",
+        "username": "testuser",
+        "email": "test@email.com",
         "password": "password",
     }
 

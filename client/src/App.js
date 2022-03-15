@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, createHttpLink, useQuery } from '@apollo/client';
 import Home from './pages/Home';
@@ -14,13 +14,31 @@ const client = new ApolloClient({
 });
 
 function App() {
+  const [user, setUser] = useState('');
+
+  const getUser = async () => {
+    const response = await fetch('/auth/user');
+    const data = await response.json();
+    console.log(data);
+    if (data.message) {
+      setUser(null);
+    } else {
+      setUser(data);
+    }
+  }
+
+  useEffect(() => {
+    getUser();
+  }, [setUser])
+  
+
   return (
     <ApolloProvider client={client}>
       <div>
         <Router>
           <Routes>
-            <Route exact path='/' element={<Home />} />
-            <Route exact path='/forms' element={<Forms />} />
+            <Route exact path='/' element={<Home user={user} />} />
+            <Route exact path='/forms' element={<Forms user={user} />} />
           </Routes>
         </Router>
       </div>

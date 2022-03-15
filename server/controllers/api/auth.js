@@ -3,6 +3,15 @@ const router = express.Router();
 const passport = require("passport");
 const { User } = require('../../models');
 
+router.get('/user', (req, res) => {
+    console.log(req.session)
+    if (!req.session.passport || !req.session.passport.user) {
+        console.log('not logged in')
+        return res.status(400).json({ message: 'not logged in'});
+    }
+    res.json(req.session.passport.user)
+})
+
 router.post("/login", (req, res, next) => {
     passport.authenticate("local", function(err, user, info) {
         if (err) {

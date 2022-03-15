@@ -4,8 +4,8 @@ import { LOGIN } from '../../../utils/mutations';
 
 const Login = () => {
     const [login] = useMutation(LOGIN);
-    const [email, setEmail] = useState('test2@email.com');
-    const [password, setPassword] = useState('password');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const data = {
         "email": "test@email.com",

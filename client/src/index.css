@@ -18,7 +18,7 @@ h1 {
   text-align: center;
 }
 
-.login, .signup, .logout, .user-list {
+.login, .signup, .logout, .user-list, .logged-in {
   width: 50%;
   padding: 20px;
   margin: 10px auto;
