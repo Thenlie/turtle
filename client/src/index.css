@@ -18,10 +18,16 @@ h1 {
   text-align: center;
 }
 
+.forms, .home {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .login, .signup, .logout, .user-list, .logged-in {
-  width: 50%;
+  width: 20rem;
   padding: 20px;
-  margin: 10px auto;
+  margin: 10px;
   border: 1px black solid;
   border-radius: 5px;
   box-shadow: 10px 5px 15px;

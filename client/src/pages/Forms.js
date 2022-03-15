@@ -14,15 +14,15 @@ const Forms = ({user, setUser}) => {
                 <Signup refetch={refetch} />
                 <Login setUser={setUser} />
                 <Logout setUser={setUser} />
+                <section className='logged-in'>
+                    <h2>Logged In User ID</h2>
+                    {user ? (
+                        <p>{user}</p>
+                        ) : (
+                            <p>Not logged in</p>
+                            )}
+                </section>
             </div>
-            <section className='logged-in'>
-                <h2>Logged In User ID</h2>
-                {user ? (
-                    <p>{user}</p>
-                ) : (
-                    <p>Not logged in</p>
-                )}
-            </section>
             <Link to='/'>Home</Link>
         </main>
     )
