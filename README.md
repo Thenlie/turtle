@@ -41,7 +41,7 @@ Shortly after the console log a browser tab should open at [http://localhost:300
 
 ## Contributing
 
-If you would like to contribute to this project feel free to fork this repo and submit a pull request. You can see more information about pull requests [https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests](here). Keep in mind this project is meant to be a bare-bones boiler plate so not many features will be added. As new ideas are found I will try and keep an up to date issue for anyone looking to contribute. 
+If you would like to contribute to this project feel free to fork this repo and submit a pull request. You can see more information about pull requests [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests). Keep in mind this project is meant to be a bare-bones boiler plate so not many features will be added. As new ideas are found I will try and keep an up to date issue for anyone looking to contribute. 
 
 ## License
 <details>
