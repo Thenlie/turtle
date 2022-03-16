@@ -4,11 +4,6 @@ const Login = ({setUser}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const data = {
-        "email": "test@email.com",
-        "password": "password"
-    }
-
     const handleLogin = async (evt) => {
         evt.preventDefault();
         const response = await fetch('/auth/login', {
@@ -16,10 +11,13 @@ const Login = ({setUser}) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                "email": email,
+                "password": password,
+            })
         })
-        const newData = await response.json();
-        setUser(newData._id)
+        const data = await response.json();
+        setUser(data._id)
         return response;
     };
 
@@ -41,8 +39,8 @@ const Login = ({setUser}) => {
             <h2>Login</h2>
             {/* login form */}
             <form onSubmit={handleLogin}>
-                <input onChange={handleChange} name='email' placeholder='email' value={email}></input>
-                <input onChange={handleChange} name='password' placeholder='password' value={password}></input>
+                <input onChange={handleChange} name='email' placeholder='email' type='email' value={email}></input>
+                <input onChange={handleChange} name='password' placeholder='password' type='password' value={password}></input>
                 <button type='submit'>Login</button>
             </form>
             {/* state variables */}

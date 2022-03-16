@@ -19,7 +19,6 @@ function App() {
   const getUser = async () => {
     const response = await fetch('/auth/user');
     const data = await response.json();
-    console.log(data);
     if (data.message) {
       setUser(null);
     } else {

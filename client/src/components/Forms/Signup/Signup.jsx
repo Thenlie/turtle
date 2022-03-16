@@ -5,12 +5,6 @@ const Signup = ({refetch}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const data = {
-        "username": "testuser2",
-        "email": "test2@email.com",
-        "password": "password",
-    }
-
     const handleSignup = async (evt) => {
         evt.preventDefault();
         const response = await fetch('/auth/signup', {
@@ -18,7 +12,11 @@ const Signup = ({refetch}) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify({
+                "username": username,
+                "email": email,
+                "password": password,
+            })
         });
         refetch();
         return response;
@@ -45,9 +43,9 @@ const Signup = ({refetch}) => {
             <h2>Signup</h2>
             {/* signup form */}
             <form onSubmit={handleSignup}>
-                <input onChange={handleChange} name='username' placeholder='username' value={username}></input>
-                <input onChange={handleChange} name='email' placeholder='email' value={email}></input>
-                <input onChange={handleChange} name='password' placeholder='password' value={password} type='password'></input>
+                <input onChange={handleChange} name='username' placeholder='username' type='text' value={username}></input>
+                <input onChange={handleChange} name='email' placeholder='email' type='email' value={email}></input>
+                <input onChange={handleChange} name='password' placeholder='password' type='password' value={password}></input>
                 <button type='submit'>Signup</button>
             </form>
             {/* state variables */}
