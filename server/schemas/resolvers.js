@@ -10,32 +10,35 @@ const resolvers = {
             return await User.findOne({ _id: context.session.passport.user})
         },
         loggedIn: async (parent, args, context) => {
-            return context.session.passport.user
+            if (context.session.passport.user) {
+                return context.session.passport.user;
+            } else {
+                return null;
+            }
         }
     },
     Mutation: {
         signup: async (parent, args, context) => {
-            console.log(context.session);
-            const user = await User.create(args)
-            return user
+            const user = await User.create(args);
+            return user;
         },
         login: async (parent, { email, password }, context) => {
             const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError('No user found');
             }
-            const validPassword = await user.isCorrectPassword(password)
+            const validPassword = await user.isCorrectPassword(password);
             if(!validPassword) {
                 throw new AuthenticationError('Incorrect credentials');
             }
-            return user
+            return user;
         },
         logout: async (parent, args, context) => {
             const user = await User.findOne({ _id: context.session.passport.user});
             if (!user) {
                 throw new AuthenticationError('No user found');
             }
-            return user
+            return user;
         }
     }
 }

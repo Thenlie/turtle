@@ -12,14 +12,14 @@ router.get('/user', (req, res) => {
 })
 
 router.post("/login", (req, res, next) => {
-    passport.authenticate("local", function(err, user, info) {
+    passport.authenticate("local", (err, user, info) => {
         if (err) {
             return res.status(400).json({ errors: err });
         }
         if (!user) {
             return res.status(400).json({ errors: "No user found" });
         }
-        req.logIn(user, function(err) {
+        req.logIn(user, (err) => {
             if (err) {
                 return res.status(400).json({ errors: err });
             }
@@ -39,9 +39,8 @@ router.post("/signup", async (req, res, next) => {
             'email': req.body.email,
             '_id': response.id
         }
-        req.login(user, function(err) {
+        req.login(user, (err) => {
             if (err) { return next(err); }
-            console.log(req.session)
             res.json({ user: response.username, message: 'Signup Successful!' });
         });
     }
