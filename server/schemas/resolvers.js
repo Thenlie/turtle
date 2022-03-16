@@ -4,16 +4,13 @@ const { AuthenticationError } = require('apollo-server-express');
 const resolvers = {
     Query: {
         users: async (parent, args, context) => {
-            console.log(context.session);
             return await User.find()
         },
         me: async (parent, args, context) => {
-            console.log(context.session);
-            return await User.findOne({ _id: context.session.userId})
+            return await User.findOne({ _id: context.session.passport.user})
         },
         loggedIn: async (parent, args, context) => {
-            console.log(context.session);
-            return context.session.userId
+            return context.session.passport.user
         }
     },
     Mutation: {
@@ -23,7 +20,6 @@ const resolvers = {
             return user
         },
         login: async (parent, { email, password }, context) => {
-            console.log(context.session);
             const user = await User.findOne({ email });
             if (!user) {
                 throw new AuthenticationError('No user found');
@@ -32,17 +28,13 @@ const resolvers = {
             if(!validPassword) {
                 throw new AuthenticationError('Incorrect credentials');
             }
-            context.session.userId = user._id
-            console.log(context.session);
             return user
         },
         logout: async (parent, args, context) => {
-            const user = await User.findOne({ _id: context.session.userId});
+            const user = await User.findOne({ _id: context.session.passport.user});
             if (!user) {
                 throw new AuthenticationError('No user found');
             }
-            context.session.userId = null;
-            console.log(context.session);
             return user
         }
     }

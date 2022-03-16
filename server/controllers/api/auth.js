@@ -4,7 +4,6 @@ const passport = require("passport");
 const { User } = require('../../models');
 
 router.get('/user', (req, res) => {
-    console.log(req.session)
     if (!req.session.passport || !req.session.passport.user) {
         console.log('not logged in')
         return res.status(400).json({ message: 'not logged in'});
@@ -24,7 +23,6 @@ router.post("/login", (req, res, next) => {
             if (err) {
                 return res.status(400).json({ errors: err });
             }
-            console.log(req.session)
             return res.status(200).json({ _id: user._id });
         });
     })(req, res, next);
@@ -59,7 +57,6 @@ router.post('/logout', (req, res) => {
             res.status(404).end();
         }
         req.logout();
-        console.log(req.session);
         res.status(200).end();
         
     }
