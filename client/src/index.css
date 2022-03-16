@@ -33,6 +33,19 @@ main {
   flex-direction: column;
 }
 
+/* navigation  */
+
+nav ul {
+  display: flex;
+  justify-content: right;
+}
+
+nav ul li {
+  list-style-type: none;
+  margin: 10px;
+  font-size: larger;
+}
+
 /* login & signup form  */
 
 h1 {
