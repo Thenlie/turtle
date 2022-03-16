@@ -1,14 +1,11 @@
 import React from 'react';
-import { useMutation } from '@apollo/client';
-import { LOGOUT } from '../../../utils/mutations';
 
 const Logout = ({setUser}) => {
-
     const handleLogout = async () => {
         const response = await fetch('/auth/logout', {
             method: 'POST',
         })
-        setUser(null)
+        setUser(null);
         return response;
     };
 

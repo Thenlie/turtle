@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Signup = ({refetch}) => {
+const Signup = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -18,7 +18,6 @@ const Signup = ({refetch}) => {
                 "password": password,
             })
         });
-        refetch();
         return response;
     };
 

@@ -5,7 +5,7 @@ import { LOGIN } from '../../../utils/mutations';
 const Login = ({setUser}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [login] = useMutation(LOGIN)
+    const [login] = useMutation(LOGIN);
 
     const handleLogin = async (evt) => {
         evt.preventDefault();

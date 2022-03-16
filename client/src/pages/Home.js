@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USERS } from '../utils/queries';
 
@@ -6,9 +5,7 @@ const Home = ({user}) => {
     const { loading, data } = useQuery(QUERY_USERS);
     const users = data?.users || [];
     const myQuery = useQuery(QUERY_ME);
-    const myData = myQuery.data?.me
-
-    console.log(myData)
+    const myData = myQuery.data?.me;
 
     if (loading) {
         return <p>Loading...</p>
@@ -24,10 +21,10 @@ const Home = ({user}) => {
                         {users.length > 0 ? (
                             users.map((user) => (
                                 <li key={user.username}>{user.username}</li>
-                                ))
-                                ) : (
-                                    <p>No Users</p>
-                                    )}
+                            ))) : (
+                                <p>No Users</p>
+                            )
+                        }
                     </ul>
                 </section>
                 <section className='logged-in'>
@@ -42,7 +39,6 @@ const Home = ({user}) => {
                     )}
                 </section>
             </div>
-            <Link to='/forms'>Forms</Link>
         </main>        
     )
 };
