@@ -31,6 +31,12 @@ const resolvers = {
             if(!validPassword) {
                 throw new AuthenticationError('Incorrect credentials');
             }
+            context.login(user, (err) => {
+                if (err) {
+                    return err;
+                }
+                return user;
+            });
             return user;
         },
         logout: async (parent, args, context) => {

@@ -1,24 +1,33 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../../utils/mutations';
 
 const Login = ({setUser}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [login] = useMutation(LOGIN)
 
     const handleLogin = async (evt) => {
         evt.preventDefault();
-        const response = await fetch('/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
+        // const response = await fetch('/auth/login', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         "email": email,
+        //         "password": password,
+        //     })
+        // })
+        // const data = await response.json();
+        const { data } = await login({
+            variables: {
                 "email": email,
                 "password": password,
-            })
+            }
         })
-        const data = await response.json();
-        setUser(data._id)
-        return response;
+        setUser(data.login._id)
+        return data;
     };
 
     const handleChange = (evt) => {
