@@ -33,9 +33,9 @@ This is a MERN app boilerplate repository. You can clone this repo to get a jump
 
 To use this app first clone the repository to your local machine. To do this, navigate to the directory where you want the project to go and use the command `git clone git@github.com:Thenlie/mern-boiler.git`. 
 
-Next you will need to install the projects npm dependencies. From the root directory of the project run the command `npm install` or `npm i`. 
+Next you will need to install the projects npm dependencies. Since all of the required packages are already listed as dependencies in the package.json file this is an easy task. From the root directory of the project simply run the command `npm install` or `npm i`. 
 
-Once dependencies have been installed you are ready to run the app! This can be done with the command `npm run develop` from the root directory of the project. You will see a console log stating 'API server running on port 3001!'. This is the address for the backend express server. 
+Once dependencies have been installed you are ready to run the app! This can be done with the command `npm run develop` from the root directory of the project. You will see a console log stating '*API server running on port 3001!*'. This is the address for the backend express server. 
 
 Shortly after the console log a browser tab should open at [http://localhost:3000](http://localhost:3000). This is the address for you development React app! From here it is up to you to make the application your own! 
 
