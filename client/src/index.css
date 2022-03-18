@@ -21,47 +21,6 @@ code {
     monospace;
 }
 
-/* header and footer  */
-
-.header, .footer {
-  height: 100px;
-  background-color: blanchedalmond;
-}
-
-main {
-  flex-grow: 1;
-}
-
-#root {
-  display: flex;
-  flex-direction: column;
-}
-
-/* navigation  */
-
-nav ul {
-  display: flex;
-  justify-content: right;
-}
-
-nav ul li {
-  list-style-type: none;
-  margin: 10px;
-  font-size: larger;
-}
-
-/* login & signup form  */
-
-h1 {
-  text-align: center;
-}
-
-.forms, .home {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .login, .signup, .logout, .user-list, .logged-in {
   width: 20rem;
   padding: 20px;
@@ -71,11 +30,6 @@ h1 {
   box-shadow: 10px 5px 15px;
   background-color: whitesmoke;
   text-align: center;
-}
-
-.login form, .signup form {
-  display: flex;
-  flex-direction: column;
 }
 
 .login form input, .signup form input {

@@ -35,6 +35,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <div className='flex flex-col h-full'>
         <Router>
           <Header />
           <Routes>
@@ -43,6 +44,7 @@ function App() {
           </Routes>
           <Footer />
         </Router>
+        </div>
     </ApolloProvider>
   );
 }

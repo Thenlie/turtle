@@ -12,9 +12,9 @@ const Home = ({user}) => {
     }
 
     return (
-        <main>
-            <h1>Home</h1>
-            <div className='home'>
+        <main className='grow'>
+            <h1 className='text-center text-xl font-bold'>Home</h1>
+            <div className='flex flex-wrap justify-center'>
                 <section className="user-list">
                     <h2>User List</h2>
                     <ul>

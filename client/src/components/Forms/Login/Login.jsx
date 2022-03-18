@@ -47,7 +47,7 @@ const Login = ({setUser}) => {
         <section className="login">
             <h2>Login</h2>
             {/* login form */}
-            <form onSubmit={handleLogin}>
+            <form onSubmit={handleLogin} className='flex flex-col'>
                 <input onChange={handleChange} name='email' placeholder='email' type='email' value={email}></input>
                 <input onChange={handleChange} name='password' placeholder='password' type='password' value={password}></input>
                 <button type='submit'>Login</button>

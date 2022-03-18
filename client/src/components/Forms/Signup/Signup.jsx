@@ -41,7 +41,7 @@ const Signup = () => {
         <section className="signup">
             <h2>Signup</h2>
             {/* signup form */}
-            <form onSubmit={handleSignup}>
+            <form onSubmit={handleSignup} className='flex flex-col'>
                 <input onChange={handleChange} name='username' placeholder='username' type='text' value={username}></input>
                 <input onChange={handleChange} name='email' placeholder='email' type='email' value={email}></input>
                 <input onChange={handleChange} name='password' placeholder='password' type='password' value={password}></input>

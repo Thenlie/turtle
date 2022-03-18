@@ -2,9 +2,9 @@ import { Signup, Login, Logout } from '../components/Forms';
 
 const Forms = ({user, setUser}) => {
     return (
-        <main>
-            <h1>Forms</h1>
-            <div className='forms'>
+        <main className='grow'>
+            <h1 className='text-center text-xl font-bold'>Forms</h1>
+            <div className='flex flex-wrap justify-center'>
                 <Signup />
                 <Login setUser={setUser} />
                 <Logout setUser={setUser} />
