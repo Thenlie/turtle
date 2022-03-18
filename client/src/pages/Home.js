@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USERS } from '../utils/queries';
+import Display from '../components/Display';
 
 const Home = ({user}) => {
     const { loading, data } = useQuery(QUERY_USERS);
@@ -34,6 +35,7 @@ const Home = ({user}) => {
                         <p>Not logged in</p>
                     )}
                 </section>
+                <Display />
             </div>
             <Link to='/forms'>Forms</Link>
         </main>        

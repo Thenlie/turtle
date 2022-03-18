@@ -24,7 +24,7 @@ h1 {
   justify-content: center;
 }
 
-.login, .signup, .logout, .user-list, .logged-in {
+.login, .signup, .logout, .user-list, .logged-in, .display {
   width: 20rem;
   padding: 20px;
   margin: 10px;
