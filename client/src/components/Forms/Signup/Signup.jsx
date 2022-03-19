@@ -39,7 +39,7 @@ const Signup = () => {
 
     return (
         <section className="p-4 m-4 w-1/3 text-center bg-slate-100 border border-black rounded-md">
-            <h2>Signup</h2>
+            <h2 className='font-bold text-lg mb-2'>Signup</h2>
             {/* signup form */}
             <form onSubmit={handleSignup} className='flex flex-col'>
                 <input className='m-2 p-2 rounded-sm' onChange={handleChange} name='username' placeholder='username' type='text' value={username}></input>

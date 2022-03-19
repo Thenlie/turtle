@@ -45,7 +45,7 @@ const Login = ({setUser}) => {
     
     return (
         <section className="p-4 m-4 w-1/3 text-center bg-slate-100 border border-black rounded-md">
-            <h2>Login</h2>
+            <h2 className='font-bold text-lg mb-2'>Login</h2>
             {/* login form */}
             <form onSubmit={handleLogin} className='flex flex-col'>
                 <input className='m-2 p-2 rounded-sm' onChange={handleChange} name='email' placeholder='email' type='email' value={email}></input>
