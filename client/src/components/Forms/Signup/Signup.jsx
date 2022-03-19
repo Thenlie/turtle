@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 
+<<<<<<< HEAD
 const Signup = () => {
+=======
+const Signup = ({refetch}) => {
+>>>>>>> 75bde0385d78617463d8cd9dcfc65da62e8c53f6
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

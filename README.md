@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # MERN Boilerplate
 
 This is a MERN app boilerplate repository. You can clone this repo to get a jump start on your next MERN stack project. Built upon [create-react-app](https://create-react-app.dev/), it comes pre-loaded with express, mongoose, passport.js and fully functional local user authentication utilizing express-session. Look below for installation and usage instructions. 
@@ -78,3 +79,7 @@ If you have any questions about the project you can reach out to me via email or
 >Email: leithen113@gmail.com 
 
 >GitHub Username: [Thenlie](https://github.com/Thenlie)
+=======
+# turtle
+"Wordle" clone
+>>>>>>> 75bde0385d78617463d8cd9dcfc65da62e8c53f6

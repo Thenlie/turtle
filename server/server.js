@@ -7,7 +7,10 @@ const path = require('path');
 const db = require('./config/connection');
 const authRouter = require('./controllers')
 const passport = require('./passport/setup');
+<<<<<<< HEAD
 const { authMiddleware } = require('./utils/auth')
+=======
+>>>>>>> 75bde0385d78617463d8cd9dcfc65da62e8c53f6
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -15,8 +18,12 @@ const app = express();
 const startServer = async () => {
   const server = new ApolloServer({
     typeDefs,
+<<<<<<< HEAD
     resolvers,
     context: authMiddleware,
+=======
+    resolvers
+>>>>>>> 75bde0385d78617463d8cd9dcfc65da62e8c53f6
   });
   await server.start();
   server.applyMiddleware({ app });
