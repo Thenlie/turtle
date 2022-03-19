@@ -38,7 +38,7 @@ const Signup = () => {
     };
 
     return (
-        <section className="p-4 m-4 w-1/3 text-center bg-slate-100 border border-black rounded-md">
+        <section className="p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md">
             <h2 className='font-bold text-lg mb-2'>Signup</h2>
             {/* signup form */}
             <form onSubmit={handleSignup} className='flex flex-col'>

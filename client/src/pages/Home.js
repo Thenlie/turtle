@@ -15,7 +15,7 @@ const Home = ({user}) => {
         <main className='grow'>
             <h1 className='text-center text-xl font-bold'>Home</h1>
             <div className='flex flex-wrap justify-center'>
-                <section className='p-4 m-4 w-1/3 text-center bg-slate-100 border border-black rounded-md'>
+                <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>
                     <h2 className='font-bold text-lg mb-2'>User List</h2>
                     <ul className='list-none p-0'>
                         {users.length > 0 ? (
@@ -27,7 +27,7 @@ const Home = ({user}) => {
                         }
                     </ul>
                 </section>
-                <section className='p-4 m-4 w-1/3 text-center bg-slate-100 border border-black rounded-md'>
+                <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>
                     <h2 className='font-bold text-lg mb-2'>Logged In User ID</h2>
                     {user ? (
                         <p>{user}</p>

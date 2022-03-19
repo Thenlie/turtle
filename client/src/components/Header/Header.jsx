@@ -2,7 +2,7 @@ import Navigation from "./Navigation";
 
 const Header = () => {
     return (
-        <header className='h-20 bg-slate-200'>
+        <header className='h-16 bg-slate-200'>
             <Navigation />
         </header>
     )
