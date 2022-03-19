@@ -10,9 +10,9 @@ const Logout = ({setUser}) => {
     };
 
     return (
-        <section className="logout">
+        <section className="p-4 m-4 w-1/3 text-center bg-slate-100 border border-black rounded-md">
             <h2>Logout</h2>
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className='w-1/4 m-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Logout</button>
         </section>
     )
 };

@@ -15,9 +15,9 @@ const Home = ({user}) => {
         <main className='grow'>
             <h1 className='text-center text-xl font-bold'>Home</h1>
             <div className='flex flex-wrap justify-center'>
-                <section className="user-list">
+                <section className='p-4 m-4 w-1/3 text-center bg-slate-100 border border-black rounded-md'>
                     <h2>User List</h2>
-                    <ul>
+                    <ul className='list-none p-0'>
                         {users.length > 0 ? (
                             users.map((user) => (
                                 <li key={user.username}>{user.username}</li>
@@ -27,7 +27,7 @@ const Home = ({user}) => {
                         }
                     </ul>
                 </section>
-                <section className='logged-in'>
+                <section className='p-4 m-4 w-1/3 text-center bg-slate-100 border border-black rounded-md'>
                     <h2>Logged In User ID</h2>
                     {user ? (
                         <p>{user}</p>
