@@ -1,6 +1,6 @@
-# MERN Boilerplate
+# Turtle 🐢
 
-This is a MERN app boilerplate repository. You can clone this repo to get a jump start on your next MERN stack project. Built upon [create-react-app](https://create-react-app.dev/), it comes pre-loaded with express, mongoose, passport.js and fully functional local user authentication utilizing express-session. Look below for installation and usage instructions. 
+A [Wordle](https://www.nytimes.com/games/wordle/index.html) clone built by 3 friends for fun! 
 
 ---
 
@@ -31,7 +31,7 @@ This is a MERN app boilerplate repository. You can clone this repo to get a jump
 
 ## Usage
 
-To use this app first clone the repository to your local machine. To do this, navigate to the directory where you want the project to go and use the command `git clone git@github.com:Thenlie/mern-boiler.git`. 
+To use this app first clone the repository to your local machine. To do this, navigate to the directory where you want the project to go and use the command `git clone git@github.com:Thenlie/turtle.git`. 
 
 Next you will need to install the projects npm dependencies. Since all of the required packages are already listed as dependencies in the package.json file this is an easy task. From the root directory of the project simply run the command `npm install` or `npm i`. 
 
