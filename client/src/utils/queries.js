@@ -20,12 +20,4 @@ export const QUERY_ME = gql`
             createdAt
         }
     }
-<<<<<<< HEAD
 `
-=======
-`
-
-// export const QUERY_LOGIN = gql`
-    
-// `
->>>>>>> 75bde0385d78617463d8cd9dcfc65da62e8c53f6
