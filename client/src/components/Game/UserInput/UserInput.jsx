@@ -4,12 +4,12 @@ import dictionary from '../../../utils/dictionary';
 const UserInput = ({guessArr, setGuessArr}) => {
     const [input, setInput] = useState('');
     const [inputLength, setInputLength] = useState(0);
-    const [validGuess, setValidGuess] = useState(true)
+    const [validGuess, setValidGuess] = useState(true);
 
     const handleChange = (evt) => {
         if (evt.target.value.length > 5) {
             return;
-        } 
+        }; 
         setInput(evt.target.value.toUpperCase());
         setInputLength(evt.target.value.length);
     };
@@ -18,14 +18,14 @@ const UserInput = ({guessArr, setGuessArr}) => {
         evt.preventDefault();
         if (dictionary.includes(input.toLowerCase())) {
             setGuessArr([...guessArr, input]);
+            setInput('');
         } else {
             setValidGuess(false);
             setTimeout(() => {
                 setValidGuess(true);
             }, 3000);
-            return;
-        }
-    }
+        };
+    };
 
     return (
         <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>

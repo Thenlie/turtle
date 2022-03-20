@@ -5,7 +5,7 @@ const Alphabet = () => {
     return (
         <div className='flex flex-wrap justify-center' id='letter-container'>
             {abc.map(letter => (
-                <span key={uuid()} id={letter} className='p-1 m-1 w-[30px] border bg-slate-200 rounded-sm'>{letter}</span>
+                <span key={uuid()} id={letter} className='p-1 m-1 w-[30px] border bg-slate-200 rounded-sm text-center'>{letter}</span>
             ))}
         </div>
     )

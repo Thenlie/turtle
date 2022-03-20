@@ -16,28 +16,28 @@ const Display = ({ target, guessArr }) => {
         guesses.map(child => { letters.push(...child.children) });
         
         let tmpArr = [];
-        let c = 0
+        let c = 0;
         for (let i = 0; i < letters.length; i++) {
             if (c % 5 === 0) {
-                tmpArr = [...targetArr] // reset when checking a new guess
-            }
+                tmpArr = [...targetArr]; // reset when checking new word
+            };
             // green styling
             if (tmpArr.some(target => target.name === letters[i].attributes.name.value)) {
                 letters[i].classList.add('bg-green-200');
                 tmpArr.splice(tmpArr.findIndex(obj => {return obj.name === letters[i].attributes.name.value}), 1);
                 document.getElementById(letters[i].textContent).classList.remove('bg-yellow-200');
                 document.getElementById(letters[i].textContent).classList.add('bg-green-200');
-            }
+            };
             // yellow styling
             if (tmpArr.some(target => target.value === letters[i].textContent)) {
                 if (!letters[i].classList.contains('bg-green-200')) {
                     letters[i].classList.add('bg-yellow-200');
                     tmpArr.splice(tmpArr.findIndex(obj => {return obj.value === letters[i].textContent}), 1);
-                } 
+                } ;
                 if (!document.getElementById(letters[i].textContent).classList.contains('bg-green-200')) {
                     document.getElementById(letters[i].textContent).classList.add('bg-yellow-200');
-                }
-            }
+                };
+            };
             c++;
         };
     }, [guessArr]);

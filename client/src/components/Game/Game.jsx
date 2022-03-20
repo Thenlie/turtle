@@ -11,7 +11,7 @@ const Game = () => {
     useEffect(() => {
         const randInt = Math.floor(Math.random() * 2314);
         setTarget(dictionary[randInt].toUpperCase());
-    }, [])
+    }, []);
 
     return (
         <>
