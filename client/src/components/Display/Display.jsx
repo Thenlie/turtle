@@ -10,8 +10,8 @@ const Display = () => {
     }, [])
 
     return (
-        <section className='display'> 
-            <h2>Display</h2>
+        <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'> 
+            <h2 className='font-bold text-lg mb-2'>Display</h2>
             <p>{target}</p>
         </section>
     )
