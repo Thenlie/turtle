@@ -2,7 +2,7 @@ import { useState } from 'react';
 import dictionary from '../../../utils/dictionary';
 import { v4 as uuid } from 'uuid';
 
-const UserInput = () => {
+const UserInput = ({guessArr, setGuessArr}) => {
     const abc = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
     const [input, setInput] = useState('');
     const [inputLength, setInputLength] = useState(0);
@@ -19,8 +19,10 @@ const UserInput = () => {
         evt.preventDefault();
         if (dictionary.includes(input.toLowerCase())) {
             console.log(true);
+            setGuessArr([...guessArr, input]);
         } else {
             console.log(false);
+            return;
         }
     }
 
