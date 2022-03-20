@@ -42,23 +42,10 @@ function App() {
             <Route exact path='/' element={<Home user={user} />} />
             <Route exact path='/forms' element={<Forms user={user} setUser={setUser} />} />
           </Routes>
-          <Menu />
           <Footer />
         </Router>
         </div>
     </ApolloProvider>
-  );
-}
-
-const Menu = () => {
-  return (
-     <div>
-         <ul>
-             <a>Hello!</a>
-             <a>Hello!</a>
-             <a>Hello!</a>
-         </ul>
-     </div> 
   );
 }
 
