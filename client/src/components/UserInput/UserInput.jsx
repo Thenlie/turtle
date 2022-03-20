@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import dictionary from '../../utils/dictionary';
+import { v4 as uuid } from 'uuid';
 
 const UserInput = () => {
     const abc = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
@@ -16,7 +17,11 @@ const UserInput = () => {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        console.log(input);
+        if (dictionary.includes(input.toLowerCase())) {
+            console.log(true);
+        } else {
+            console.log(false);
+        }
     }
 
     return (
@@ -24,11 +29,11 @@ const UserInput = () => {
             <h2 className='font-bold text-lg mb-2'>Input</h2>
             <form onSubmit={handleSubmit}>
                 <input onChange={handleChange} className='block m-auto p-2 text-lg text-center border-2 border-slate-300 rounded-md focus-visible:border-slate-400 outline-none' value={input}></input>
-                <button type='submit' className='w-1/4 mx-3 my-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
+                <button type='submit' className='w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
             </form>
-            <div className='flex flex-wrap justify-center'>
+            <div className='flex flex-wrap justify-center' id='letter-container'>
                 {abc.map(letter => (
-                    <span key={letter} className='p-1 m-1 w-[30px] border bg-slate-200 rounded-sm'>{letter}</span>
+                    <span key={uuid()} className='p-1 m-1 w-[30px] border bg-slate-200 rounded-sm'>{letter}</span>
                 ))}
             </div>
             <p>{inputLength}</p>
