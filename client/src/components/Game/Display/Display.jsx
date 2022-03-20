@@ -1,36 +1,35 @@
 import { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 
-const Display = ({guessArr, target}) => {
+const Display = ({ guessArr }) => {
+    const target = 'LUPUS';
     const targetArr = target.split('');
-    console.log(targetArr);
+    const onTargetArr = targetArr.map((target, i) => target + i);
 
     useEffect(() => {
-        for (let i = 0; i < 5; i++) {
-            let elem = document.getElementsByName(targetArr[i] + i)
-            if (elem.length > 0) {
-                elem.forEach((currentValue) => {
-                    currentValue.classList.add('bg-green-200')
-                })
-            }
-        };  
+        // get all guess elements
+        const guesses = Array.from(document.getElementById('guess-container').children);
+        if (guesses.length < 1) {
+            return;
+        };
 
-        const tags = document.getElementById('guess-container').children
-        console.log(tags)
-        for (let i = 0; i < tags.length; i++) {
-            for (let j = 0; j < 5; j++) {
-                if (targetArr.includes(tags[i].children[j].textContent)) {
-                    console.log('hit')
-                    if (tags[i].children[j].classList.contains('bg-green-200')) {
-                        continue;
-                    } else {
-                        tags[i].children[j].classList.add('bg-yellow-200')
-                    }
+        // create array of letters from guesses
+        let letters = [];
+        guesses.map(child => { letters.push(...child.children) });
+
+        for (let i = 0; i < letters.length; i++) {
+            // green styling
+            if (onTargetArr.includes(letters[i].attributes.name.value)) {
+                letters[i].classList.add('bg-green-200');
+            };
+            // yellow styling
+            if (targetArr.includes(letters[i].textContent)) {
+                if (!letters[i].classList.contains('bg-green-200')) {
+                    letters[i].classList.add('bg-yellow-200');
                 }
             }
         };
-
-    }, [guessArr])
+    }, [guessArr]);
 
     return (
         <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'> 

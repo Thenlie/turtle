@@ -19,10 +19,10 @@ const UserInput = ({guessArr, setGuessArr}) => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (dictionary.includes(input.toLowerCase())) {
-            console.log(true);
+            // console.log(true);
             setGuessArr([...guessArr, input]);
         } else {
-            console.log(false);
+            // console.log(false);
             setValidGuess(false);
             setTimeout(() => {
                 setValidGuess(true);
