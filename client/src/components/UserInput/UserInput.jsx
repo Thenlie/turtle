@@ -29,6 +29,13 @@ const UserInput = () => {
             <h2 className='font-bold text-lg mb-2'>Input</h2>
             <form onSubmit={handleSubmit}>
                 <input onChange={handleChange} className='block m-auto p-2 text-lg text-center border-2 border-slate-300 rounded-md focus-visible:border-slate-400 outline-none' value={input}></input>
+                <div className='flex justify-between'>
+                    <div id='count-1' className={`w-1/5 m-1 border border-slate-400 h-2 bg-slate-200 ${inputLength > 0 && 'bg-green-300'}`}></div>
+                    <div id='count-2' className={`w-1/5 m-1 border border-slate-400 h-2 bg-slate-200 ${inputLength > 1 && 'bg-green-300'}`}></div>
+                    <div id='count-3' className={`w-1/5 m-1 border border-slate-400 h-2 bg-slate-200 ${inputLength > 2 && 'bg-green-300'}`}></div>
+                    <div id='count-4' className={`w-1/5 m-1 border border-slate-400 h-2 bg-slate-200 ${inputLength > 3 && 'bg-green-300'}`}></div>
+                    <div id='count-5' className={`w-1/5 m-1 border border-slate-400 h-2 bg-slate-200 ${inputLength > 4 && 'bg-green-300'}`}></div>
+                </div>
                 <button type='submit' className='w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
             </form>
             <div className='flex flex-wrap justify-center' id='letter-container'>
