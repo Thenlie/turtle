@@ -1,7 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USERS } from '../utils/queries';
-import Display from '../components/Display/Display';
-import UserInput from '../components/UserInput/UserInput';
+import Game from '../components/Game';
 
 const Home = ({user}) => {
     const { loading, data } = useQuery(QUERY_USERS);
@@ -40,8 +39,7 @@ const Home = ({user}) => {
                         <p>{myData.username}</p>
                     )}
                 </section>
-                <Display />
-                <UserInput />
+                <Game />
             </div>
         </main>        
     )

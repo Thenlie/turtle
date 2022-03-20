@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import dictionary from '../../utils/dictionary';
+import dictionary from '../../../utils/dictionary';
 import { v4 as uuid } from 'uuid';
 
 const UserInput = () => {

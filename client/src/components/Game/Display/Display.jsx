@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import dictionary from '../../utils/dictionary';
+import dictionary from '../../../utils/dictionary';
 
 const Display = () => {
     const [target, setTarget] = useState('')
