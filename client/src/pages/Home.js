@@ -1,5 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USERS } from '../utils/queries';
+import Display from '../components/Display/Display';
+import UserInput from '../components/UserInput/UserInput';
 
 const Home = ({user}) => {
     const { loading, data } = useQuery(QUERY_USERS);
@@ -30,14 +32,16 @@ const Home = ({user}) => {
                 <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>
                     <h2 className='font-bold text-lg mb-2'>Logged In User ID</h2>
                     {user ? (
-                        <p>{user}</p>
+                        <p className='pt-5'>{user}</p>
                     ) : (
-                        <p>Not logged in</p>
+                        <p className='pt-5'>Not logged in</p>
                     )}
                     {myData && (
                         <p>{myData.username}</p>
                     )}
                 </section>
+                <Display />
+                <UserInput />
             </div>
         </main>        
     )
