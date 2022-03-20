@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import dictionary from '../../../utils/dictionary';
-import { v4 as uuid } from 'uuid';
 
 const UserInput = ({guessArr, setGuessArr}) => {
-    const abc = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
     const [input, setInput] = useState('');
     const [inputLength, setInputLength] = useState(0);
     const [validGuess, setValidGuess] = useState(true)
@@ -19,10 +17,8 @@ const UserInput = ({guessArr, setGuessArr}) => {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         if (dictionary.includes(input.toLowerCase())) {
-            // console.log(true);
             setGuessArr([...guessArr, input]);
         } else {
-            // console.log(false);
             setValidGuess(false);
             setTimeout(() => {
                 setValidGuess(true);
@@ -48,11 +44,6 @@ const UserInput = ({guessArr, setGuessArr}) => {
                 </div>
                 <button type='submit' className='w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
             </form>
-            <div className='flex flex-wrap justify-center' id='letter-container'>
-                {abc.map(letter => (
-                    <span key={uuid()} id={letter} className='p-1 m-1 w-[30px] border bg-slate-200 rounded-sm'>{letter}</span>
-                ))}
-            </div>
         </section>
     )
 };
