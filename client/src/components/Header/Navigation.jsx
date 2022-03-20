@@ -34,11 +34,11 @@ import { CSSTransition } from 'react-transition-group';
 function App() {
     return (
       <Navbar>
-        <li className='list-none m-5 text-xl hover:text-slate-500'><Link to={'/'}>Home</Link></li>
-        <li className='list-none m-5 text-xl hover:text-slate-500'><Link to={'/forms'}>Forms</Link></li>
+        <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Home</Link></li>
+        <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/forms'}>Forms</Link></li>
   
-        <NavItem>
-          <DropdownMenu icon={<MdMenu/>}></DropdownMenu>
+        <NavItem icon={<MdMenu/>} className='menu-item'>
+          <DropdownMenu></DropdownMenu>
         </NavItem>
       </Navbar>
     );
@@ -91,7 +91,7 @@ function App() {
     }
   
     return (
-      <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
+      <div className="dropdown" ref={dropdownRef}>
   
         <CSSTransition
           in={activeMenu === 'main'}
@@ -120,13 +120,15 @@ function App() {
           unmountOnExit
           onEnter={calcHeight}>
           <div className="menu">
-            <DropdownItem goToMenu="main">
-              <h2>General Settings</h2>
-            </DropdownItem>
+            
             <DropdownItem>Setting 1</DropdownItem>
             <DropdownItem>Setting 2</DropdownItem>
             <DropdownItem>Setting 3</DropdownItem>
             <DropdownItem>Setting 4</DropdownItem>
+
+            <DropdownItem goToMenu="main">
+              <h2>Back</h2>
+            </DropdownItem>
           </div>
         </CSSTransition>
   
@@ -137,12 +139,14 @@ function App() {
           unmountOnExit
           onEnter={calcHeight}>
           <div className="menu">
-            <DropdownItem goToMenu="main">
-              <h2>Your Scores</h2>
-            </DropdownItem>
+            
             <DropdownItem>High Scores</DropdownItem>
             <DropdownItem>Top Ranks</DropdownItem>
             <DropdownItem>Practice</DropdownItem>
+            
+            <DropdownItem goToMenu="main">
+              <h2>Back</h2>
+            </DropdownItem>
           </div>
         </CSSTransition>
       </div>
