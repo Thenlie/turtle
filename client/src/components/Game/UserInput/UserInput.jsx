@@ -19,6 +19,7 @@ const UserInput = ({guessArr, setGuessArr}) => {
         if (dictionary.includes(input.toLowerCase())) {
             setGuessArr([...guessArr, input]);
             setInput('');
+            setInputLength(0);
         } else {
             setValidGuess(false);
             setTimeout(() => {
