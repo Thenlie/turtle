@@ -16,8 +16,10 @@ const Game = () => {
     return (
         <>
             <Display guessArr={guessArr} target={target} />
-            <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
-            <Alphabet />
+            <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>
+                <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
+                <Alphabet />
+            </section>
         </>
     )
 };

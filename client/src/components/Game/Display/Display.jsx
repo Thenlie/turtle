@@ -48,9 +48,9 @@ const Display = ({ target, guessArr }) => {
             <p className='text-lg pt-5 font-bold'>{target}</p>
             <div id='guess-container' className='pt-5'>
                 {guessArr.map(guess => (
-                    <div key={uuid()}>
+                    <div key={uuid()} className='flex flex-wrap justify-center' >
                         {guess.split('').map((letter, i) => (
-                            <span key={uuid()} name={letter + i}>{letter}</span>
+                            <span key={uuid()} name={letter + i} className='p-1 m-1 w-[30px] bg-slate-200 rounded-sm text-center'>{letter}</span>
                         ))}
                     </div>
                 ))}
