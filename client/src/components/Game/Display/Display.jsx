@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 
-const Display = ({ guessArr }) => {
-    const target = 'LUPUS';
-    const targetArr = target.split('');
-    const onTargetArr = targetArr.map((target, i) => target + i);
-
+const Display = ({ target, guessArr }) => {
+    const targetArr = target.split('').map((target, i) => { return {name: target + i, value: target}});
+    
     useEffect(() => {
-        // get all guess elements
+        // get all guess elements, return if no guesses
         const guesses = Array.from(document.getElementById('guess-container').children);
         if (guesses.length < 1) {
             return;
@@ -16,18 +14,27 @@ const Display = ({ guessArr }) => {
         // create array of letters from guesses
         let letters = [];
         guesses.map(child => { letters.push(...child.children) });
-
+        
+        let tmpArr = [];
+        let c = 0
+        
         for (let i = 0; i < letters.length; i++) {
+            if (c % 5 === 0) {
+                tmpArr = [...targetArr]
+            }
             // green styling
-            if (onTargetArr.includes(letters[i].attributes.name.value)) {
+            if (tmpArr.some(target => target.name === letters[i].attributes.name.value)) {
                 letters[i].classList.add('bg-green-200');
-            };
+                tmpArr.splice(tmpArr.findIndex(obj => {return obj.name === letters[i].attributes.name.value}), 1)
+            }
             // yellow styling
-            if (targetArr.includes(letters[i].textContent)) {
+            if (tmpArr.some(target => target.value === letters[i].textContent)) {
                 if (!letters[i].classList.contains('bg-green-200')) {
                     letters[i].classList.add('bg-yellow-200');
+                    tmpArr.splice(tmpArr.findIndex(obj => {return obj.value === letters[i].textContent}), 1)
                 }
             }
+            c++;
         };
     }, [guessArr]);
 
