@@ -37,7 +37,12 @@ const Display = ({ target, guessArr }) => {
                 if (!document.getElementById(letters[i].textContent).classList.contains('bg-green-200')) {
                     document.getElementById(letters[i].textContent).classList.add('bg-yellow-200');
                 };
-            };
+                // grey styling
+            } else {
+                if (!document.getElementById(letters[i].textContent).classList.contains('bg-green-200')) {
+                    document.getElementById(letters[i].textContent).classList.add('bg-slate-400');
+                };
+            }
             c++;
         };
     }, [guessArr]);
