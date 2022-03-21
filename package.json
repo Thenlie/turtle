@@ -23,5 +23,8 @@
   "homepage": "https://github.com/Thenlie/turtle#readme",
   "devDependencies": {
     "concurrently": "^7.0.0"
+  },
+  "dependencies": {
+    "react-icons": "^4.3.1"
   }
 }
