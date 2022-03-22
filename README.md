@@ -48,7 +48,7 @@ If you would like to contribute to this project feel free to fork this repo and 
 
 <summary>MIT License</summary>
 
-> Copyright (c) [2022] [Type++]
+> Copyright (c) [2022] [Turtle]
 > 
 > __Permission is hereby granted, free of charge, to any person obtaining a copy__
 > __of this software and associated documentation files (the "Software"), to deal__
