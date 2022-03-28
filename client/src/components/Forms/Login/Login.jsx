@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useMutation } from '@apollo/client';
-import { LOGIN } from '../../../utils/mutations';
 import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import validator from 'validator';
 
@@ -9,28 +7,21 @@ const Login = ({setUser}) => {
     const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
-    const [login] = useMutation(LOGIN);
 
     const handleLogin = async (evt) => {
         evt.preventDefault();
-        // const response = await fetch('/auth/login', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         "email": email,
-        //         "password": password,
-        //     })
-        // })
-        // const data = await response.json();
-        const { data } = await login({
-            variables: {
+        const response = await fetch('/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
                 "email": email,
                 "password": password,
-            }
+            })
         })
-        setUser(data.login._id)
+        const data = await response.json();
+        setUser(data._id)
         return data;
     };
 
