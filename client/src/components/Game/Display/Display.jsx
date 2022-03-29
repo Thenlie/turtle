@@ -49,7 +49,6 @@ const Display = ({ target, guessArr }) => {
 
     return (
         <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'> 
-            <h2 className='font-bold text-lg mb-2'>Display</h2>
             <p className='text-lg pt-5 font-bold'>{target}</p>
             <div id='guess-container' className='pt-5'>
                 {guessArr.map(guess => (

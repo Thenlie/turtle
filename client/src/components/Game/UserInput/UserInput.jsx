@@ -29,7 +29,6 @@ const UserInput = ({guessArr, setGuessArr}) => {
 
     return (
         <>
-            <h2 className='font-bold text-lg mb-2'>Input</h2>
             {!validGuess && (
                 <p className='text-red-500'>Invalid Word!</p>
             )}

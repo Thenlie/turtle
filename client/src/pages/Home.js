@@ -14,7 +14,6 @@ const Home = ({user}) => {
 
     return (
         <main className='grow'>
-            <h1 className='text-center text-xl font-bold'>Home</h1>
             <div className='flex flex-wrap justify-center'>
                 <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>
                     <h2 className='font-bold text-lg mb-2'>User List</h2>
