@@ -44,7 +44,7 @@ const UserInput = ({guessArr, setGuessArr}) => {
                 <button type='submit' className='w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
             </form>
         </>
-    )
+    );
 };
 
 export default UserInput;

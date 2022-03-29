@@ -60,7 +60,7 @@ const Display = ({ target, guessArr }) => {
                 ))}
             </div>
         </section>
-    )
+    );
 };
 
 export default Display;
