@@ -3,37 +3,11 @@ import { Link } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
 import DropdownMenu from './DropdownMenu';
 import React, { useState } from 'react';
-
-// const Navigation = () => {
-//     return (
-//         <nav>
-//             <ul className='flex justify-end'>
-//                 <li className='list-none m-5 text-xl hover:text-slate-500'><Link to={'/'}>Home</Link></li>
-//                 <li className='list-none m-5 text-xl hover:text-slate-500'><Link to={'/forms'}>Forms</Link></li>
-//                 <a className='list-none m-5 text-xl hover:text-slate-500'><MdMenu /></a>
-//             </ul>
-//         </nav>
-//     )
-// };
-
-// const Menu = () => {
-//     return (
-//        <nav>
-//            <ul>
-//                <li>Hello!</li>
-//                <li>Hello!</li>
-//                <li>Hello!</li>
-//            </ul>
-//        </nav> 
-//     )
-// }
-
-// export default Navigation;
   
 const Navbar = (props) => {
   return (
-    <nav className="navbar">
-      <ul className="navbar-nav">{props.children}</ul>
+    <nav className='navbar'>
+      <ul className='navbar-nav'>{props.children}</ul>
     </nav>
   );
 };
@@ -42,8 +16,8 @@ const NavItem = (props) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <li className="nav-item">
-      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+    <li className='nav-item'>
+      <a href='#' className='icon-button' onClick={() => setOpen(!open)}>
         {props.icon}
       </a>
 
