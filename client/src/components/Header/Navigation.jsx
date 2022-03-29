@@ -1,9 +1,8 @@
 import '../../App.css';
 import { Link } from 'react-router-dom';
 import { MdMenu } from 'react-icons/md';
-
-import React, { useState, useEffect, useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import DropdownMenu from './DropdownMenu';
+import React, { useState } from 'react';
 
 // const Navigation = () => {
 //     return (
@@ -30,128 +29,41 @@ import { CSSTransition } from 'react-transition-group';
 // }
 
 // export default Navigation;
+  
+const Navbar = (props) => {
+  return (
+    <nav className="navbar">
+      <ul className="navbar-nav">{props.children}</ul>
+    </nav>
+  );
+};
+  
+const NavItem = (props) => {
+  const [open, setOpen] = useState(false);
 
-function App() {
-    return (
-      <Navbar>
-        <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Home</Link></li>
-        <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/forms'}>Forms</Link></li>
-        <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/game'}>Game</Link></li>
-  
-        <NavItem icon={<MdMenu/>} className='menu-item'>
-          <DropdownMenu></DropdownMenu>
-        </NavItem>
-      </Navbar>
-    );
-  }
-  
-  function Navbar(props) {
-    return (
-      <nav className="navbar">
-        <ul className="navbar-nav">{props.children}</ul>
-      </nav>
-    );
-  }
-  
-  function NavItem(props) {
-    const [open, setOpen] = useState(false);
-  
-    return (
-      <li className="nav-item">
-        <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
-          {props.icon}
-        </a>
-  
-        {open && props.children}
-      </li>
-    );
-  }
-  
-  function DropdownMenu() {
-    const [activeMenu, setActiveMenu] = useState('main');
-    const [menuHeight, setMenuHeight] = useState(null);
-    const dropdownRef = useRef(null);
-  
-    useEffect(() => {
-      setMenuHeight(dropdownRef.current?.firstChild.offsetHeight)
-    }, [])
-  
-    function calcHeight(el) {
-      const height = el.offsetHeight;
-      setMenuHeight(height);
-    }
-  
-    function DropdownItem(props) {
-      return (
-        <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
-          <span className="icon-button">{props.leftIcon}</span>
-          {props.children}
-          <span className="icon-right">{props.rightIcon}</span>
-        </a>
-      );
-    }
-  
-    return (
-      <div className="dropdown" ref={dropdownRef}>
-  
-        <CSSTransition
-          in={activeMenu === 'main'}
-          timeout={500}
-          classNames="menu-primary"
-          unmountOnExit
-          onEnter={calcHeight}>
-          <div className="menu">
-            <DropdownItem>My Profile</DropdownItem>
-            <DropdownItem
-              goToMenu="settings">
-              Settings
-            </DropdownItem>
-            <DropdownItem
-              goToMenu="animals">
-              Scores/Leaderboard
-            </DropdownItem>
-  
-          </div>
-        </CSSTransition>
-  
-        <CSSTransition
-          in={activeMenu === 'settings'}
-          timeout={500}
-          classNames="menu-secondary"
-          unmountOnExit
-          onEnter={calcHeight}>
-          <div className="menu">
-            
-            <DropdownItem>Setting 1</DropdownItem>
-            <DropdownItem>Setting 2</DropdownItem>
-            <DropdownItem>Setting 3</DropdownItem>
-            <DropdownItem>Setting 4</DropdownItem>
+  return (
+    <li className="nav-item">
+      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+        {props.icon}
+      </a>
 
-            <DropdownItem goToMenu="main">
-              <h2>Back</h2>
-            </DropdownItem>
-          </div>
-        </CSSTransition>
-  
-        <CSSTransition
-          in={activeMenu === 'animals'}
-          timeout={500}
-          classNames="menu-secondary"
-          unmountOnExit
-          onEnter={calcHeight}>
-          <div className="menu">
-            
-            <DropdownItem>High Scores</DropdownItem>
-            <DropdownItem>Top Ranks</DropdownItem>
-            <DropdownItem>Practice</DropdownItem>
-            
-            <DropdownItem goToMenu="main">
-              <h2>Back</h2>
-            </DropdownItem>
-          </div>
-        </CSSTransition>
-      </div>
-    );
-  }
-  
-  export default App;
+      {open && props.children}
+    </li>
+  );
+};
+
+const Navigation = () => {
+  return (
+    <Navbar>
+      <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Home</Link></li>
+      <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/forms'}>Forms</Link></li>
+      <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/game'}>Game</Link></li>
+
+      <NavItem icon={<MdMenu/>} className='menu-item'>
+        <DropdownMenu></DropdownMenu>
+      </NavItem>
+    </Navbar>
+  );
+};
+
+export default Navigation;
