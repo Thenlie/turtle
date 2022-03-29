@@ -39,7 +39,6 @@ const Home = ({user}) => {
                         <p>{myData.username}</p>
                     )}
                 </section>
-                <Game />
             </div>
         </main>        
     )

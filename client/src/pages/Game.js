@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import dictionary from '../../utils/dictionary';
-import UserInput from './UserInput/UserInput';
-import Display from './Display/Display';
-import Alphabet from './Alphabet/Alphabet';
+import dictionary from '../utils/dictionary';
+import UserInput from '../components/Game/UserInput';
+import Display from '../components/Game/Display';
+import Alphabet from '../components/Game/Alphabet';
 
 const Game = () => {
     const [guessArr, setGuessArr] = useState([]);
@@ -14,13 +14,13 @@ const Game = () => {
     }, []);
 
     return (
-        <>
+        <main className='grow m-auto'>
             <Display guessArr={guessArr} target={target} />
-            <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>
+            <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
                 <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
                 <Alphabet />
             </section>
-        </>
+        </main>
     )
 };
 

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Forms from './pages/Forms';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Game from './pages/Game';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -41,6 +42,7 @@ function App() {
           <Routes>
             <Route exact path='/' element={<Home user={user} />} />
             <Route exact path='/forms' element={<Forms user={user} setUser={setUser} />} />
+            <Route exact path='/game' element={<Game user={user} />} />
           </Routes>
           <Footer />
         </Router>

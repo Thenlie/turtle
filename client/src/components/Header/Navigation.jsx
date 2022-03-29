@@ -36,6 +36,7 @@ function App() {
       <Navbar>
         <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Home</Link></li>
         <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/forms'}>Forms</Link></li>
+        <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/game'}>Game</Link></li>
   
         <NavItem icon={<MdMenu/>} className='menu-item'>
           <DropdownMenu></DropdownMenu>

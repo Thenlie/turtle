@@ -1,5 +1,5 @@
-// import Display from './Display/Display';
-// import UserInput from './UserInput/UserInput';
-import Game from  './Game'
+import Alphabet from './Alphabet';
+import Display from './Display/Display';
+import UserInput from './UserInput/UserInput';
 
-export default Game;
+export default { Alphabet, Display, UserInput };
