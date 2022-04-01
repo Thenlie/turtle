@@ -17,7 +17,7 @@ const Forms = ({user, setUser}) => {
                 </section>
             </div>
         </main>
-    )
+    );
 };
 
 export default Forms;

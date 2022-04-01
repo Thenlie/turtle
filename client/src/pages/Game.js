@@ -21,7 +21,7 @@ const Game = () => {
                 <Alphabet />
             </section>
         </main>
-    )
+    );
 };
 
 export default Game;

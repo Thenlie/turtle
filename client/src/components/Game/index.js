@@ -1,5 +1,5 @@
 import Alphabet from './Alphabet';
-import Display from './Display/Display';
-import UserInput from './UserInput/UserInput';
+import Display from './Display';
+import UserInput from './UserInput';
 
 export default { Alphabet, Display, UserInput };

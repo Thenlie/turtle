@@ -21,6 +21,7 @@ const Display = ({ target, guessArr }) => {
         for (let i = 0; i < letters.length; i++) {
             if (c % 5 === 0) {
                 tmpArr = [...targetArr]; // reset when checking new word
+                win = 0;
             };
             // green styling
             if (tmpArr.some(target => target.name === letters[i].attributes.name.value)) {

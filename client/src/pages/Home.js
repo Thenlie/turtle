@@ -9,7 +9,7 @@ const Home = ({user}) => {
 
     if (loading) {
         return <p>Loading...</p>
-    }
+    };
 
     return (
         <main className='grow'>
@@ -39,7 +39,7 @@ const Home = ({user}) => {
                 </section>
             </div>
         </main>        
-    )
+    );
 };
 
 export default Home;
