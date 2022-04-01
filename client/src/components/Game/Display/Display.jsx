@@ -17,6 +17,7 @@ const Display = ({ target, guessArr }) => {
         
         let tmpArr = [];
         let c = 0;
+        let win = 0
         for (let i = 0; i < letters.length; i++) {
             if (c % 5 === 0) {
                 tmpArr = [...targetArr]; // reset when checking new word
@@ -27,6 +28,10 @@ const Display = ({ target, guessArr }) => {
                 tmpArr.splice(tmpArr.findIndex(obj => {return obj.name === letters[i].attributes.name.value}), 1);
                 document.getElementById(letters[i].textContent).classList.remove('bg-yellow-200');
                 document.getElementById(letters[i].textContent).classList.add('bg-green-200');
+                win++
+                if (win === 5) {
+                    console.log('win'); // run when game is won
+                }
             };
             // yellow styling
             if (tmpArr.some(target => target.value === letters[i].textContent)) {
