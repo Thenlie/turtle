@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import dictionary from '../utils/dictionary';
+import { DateTime } from 'luxon';
+import randomDictionary from '../utils/randomDictionary';
 import UserInput from '../components/Game/UserInput';
 import Display from '../components/Game/Display';
 import Alphabet from '../components/Game/Alphabet';
@@ -9,8 +10,10 @@ const DailyGame = () => {
     const [dayTarget, setDayTarget] = useState('');
     
     useEffect(() => {
-        const randInt = Math.floor(Math.random() * 2314);
-        setDayTarget(dictionary[randInt].toUpperCase());
+        const now = DateTime.now();
+        const start = DateTime.fromISO("2022-04-04");
+        const diff = Math.floor((now.diff(start, ['days']).toObject().days));
+        setDayTarget(randomDictionary[diff])
     }, []);
 
     return (
