@@ -6,11 +6,6 @@ const Display = ({ target, guessArr }) => {
     const targetArr = target.split('').map((target, i) => { return { name: target + i, value: target } });
     const navigate = useNavigate();
 
-    const navPage = () => {
-        console.log('hi')
-        navigate("/endgame")
-    }
-
     useEffect(() => {
         // get all guess elements, return if no guesses
         const guesses = Array.from(document.getElementById('guess-container').children);
@@ -38,7 +33,7 @@ const Display = ({ target, guessArr }) => {
                 document.getElementById(letters[i].textContent).classList.add('bg-green-200');
                 win++
                 if (win === 5) {
-                    navPage();
+                    navigate("/endgame")
                 }
             };
             // yellow styling
