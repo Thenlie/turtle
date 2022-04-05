@@ -5,7 +5,23 @@ const GameInfo = () => {
     console.log(location);
 
     return (
-        <h2>Game Info</h2>
+        <>
+            <div>
+                <h3>{location.state.target}</h3>
+            </div>
+            <div>
+                <h3>Your Guesses:</h3>
+                {location.state.guessArr.length > 0 && (
+                    location.state.guessArr.map((item, i) => (
+                        <p key={i}>{item}</p>
+                    ))
+                )}
+            </div>
+            <div>
+                <h3>Score:</h3>
+                <p>{location.state.guessArr.length}</p>
+            </div>
+        </>
     );
 };
 
