@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const Display = ({ target, guessArr }) => {
     const targetArr = target.split('').map((target, i) => { return { name: target + i, value: target } });
     const navigate = useNavigate();
+    console.log(target);
 
     useEffect(() => {
         // get all guess elements, return if no guesses
@@ -33,7 +34,7 @@ const Display = ({ target, guessArr }) => {
                 document.getElementById(letters[i].textContent).classList.add('bg-green-200');
                 win++
                 if (win === 5) {
-                    navigate("/endgame")
+                    navigate("/endgame", { state: { target } })
                 }
             };
             // yellow styling
