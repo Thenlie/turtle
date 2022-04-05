@@ -13,7 +13,7 @@ const DailyGame = () => {
         const now = DateTime.now();
         const start = DateTime.fromISO("2022-04-04");
         const diff = Math.floor((now.diff(start, ['days']).toObject().days));
-        setDayTarget(randomDictionary[diff])
+        setDayTarget(randomDictionary[diff].toUpperCase())
     }, []);
 
     return (

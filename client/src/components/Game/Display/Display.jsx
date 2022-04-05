@@ -14,7 +14,7 @@ const Display = ({ target, guessArr }) => {
         // create array of letters from guesses
         let letters = [];
         guesses.map(child => { letters.push(...child.children) });
-        
+
         let tmpArr = [];
         let c = 0;
         let win = 0
