@@ -55,6 +55,11 @@ const resolvers = {
                 throw new AuthenticationError('No user found');
             }
             return user;
+        },
+        addScore: async (parent, args, context) => {
+            if (context.user) {
+                Scores.create(args);
+            }
         }
     }
 }
