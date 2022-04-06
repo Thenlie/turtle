@@ -10,7 +10,7 @@ const Info = ({ user }) => {
         return (
             <section>
                 <p>Loading...</p>
-            </section>
+            </section> 
         );
     };
 
@@ -20,6 +20,7 @@ const Info = ({ user }) => {
         <section>
             <h2>Info</h2>
             <p>{user}</p>
+            <p>Username: <span>{data.user.username}</span></p>
         </section>
     );
 };
