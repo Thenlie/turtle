@@ -14,8 +14,6 @@ const Info = ({ user }) => {
         );
     };
 
-    console.log(data)
-
     return (
         <section>
             <h2>Info</h2>
