@@ -6,8 +6,8 @@ const resolvers = {
         users: async (parent, args, context) => {
             return await User.find()
         },
-        user: async (parent, { username }, context) => {
-            return await User.findOne({ username: username});
+        user: async (parent, { id }, context) => {
+            return await User.findOne({ id: id});
         },
         me: async (parent, args, context) => {
             return await User.findOne({ _id: context.session.passport.user})

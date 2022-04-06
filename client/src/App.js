@@ -9,6 +9,7 @@ import Game from './pages/Game';
 import EndGame from './pages/EndGame';
 import DailyGame from './pages/DailyGame';
 import ContGame from './pages/ContGame';
+import Profile from './pages/Profile';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,6 +50,7 @@ function App() {
             <Route exact path='/daygame' element={<DailyGame user={user} />} />
             <Route exact path='/contgame' element={<ContGame user={user} />} />
             <Route exact path='/endgame' element={<EndGame user={user} />} />
+            <Route exact path='/profile' element={<Profile user={user} />} />
           </Routes>
           <Footer />
         </Router>
