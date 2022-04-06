@@ -32,9 +32,9 @@ const GameInfo = () => {
                         </ul>
                     </div>
                     <div>
-                        <button>Home</button>
-                        <button>Next</button>
-                        <button>Replay</button>
+                        <button className='mx-2'>Home</button>
+                        <button className='mx-2'>Next</button>
+                        <button className='mx-2'>Replay</button>
                     </div>
                 </div>
             </div>
