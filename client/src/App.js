@@ -51,6 +51,7 @@ function App() {
             <Route exact path='/contgame' element={<ContGame user={user} />} />
             <Route exact path='/endgame' element={<EndGame user={user} />} />
             <Route exact path='/profile' element={<Profile user={user} />} />
+            <Route exact path='/profile/:id' element={<Profile user={user} />} />
           </Routes>
           <Footer />
         </Router>
