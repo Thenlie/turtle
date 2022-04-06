@@ -21,17 +21,21 @@ const GameInfo = () => {
                         <div className='m-2 p-4 text-4xl bg-gray-300 rounded-lg'>B</div>
                     </div>
                 </div>
-                <div>
-                    <h3>Your Guesses:</h3>
-                    {location.state.guessArr.length > 0 && (
-                        location.state.guessArr.map((item, i) => (
-                            <p key={i}>{item}</p>
-                        ))
-                    )}
-                </div>
-                <div>
-                    <h3>Score:</h3>
-                    <p>{location.state.guessArr.length}</p>
+                <div className='flex flex-col justify-center items-center bg-gray-400 w-3/4 h-full rounded-lg'>
+                    <div>
+                        <ul>
+                            <li className=''>1 |</li>
+                            <li className=''>2 |</li>
+                            <li className=''>3 |</li>
+                            <li className=''>4 |</li>
+                            <li className=''>5 |</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <button>Home</button>
+                        <button>Next</button>
+                        <button>Replay</button>
+                    </div>
                 </div>
             </div>
         </div>
