@@ -57,9 +57,9 @@ const resolvers = {
             return user;
         },
         addScore: async (parent, args, context) => {
-            if (context.user) {
-                Scores.create(args);
-            }
+            const score = Scores.create(args);
+            console.log('true')
+            return score;
         }
     }
 }
