@@ -37,7 +37,6 @@ function App() {
     getUser();
   }, [setUser])
   
-
   return (
     <ApolloProvider client={client}>
       <div className='flex flex-col h-full'>
