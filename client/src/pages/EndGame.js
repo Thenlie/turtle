@@ -1,9 +1,9 @@
 import { GameInfo } from '../components/EndGame';
 
-const EndGame = () => {
+const EndGame = ({ user }) => {
     return (
         <main className='grow'>
-            <GameInfo />
+            <GameInfo user={user} />
         </main>
     );
 };

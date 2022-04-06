@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom'
 
-const GameInfo = () => {
+const GameInfo = ({ user }) => {
+    console.log(user);
     const location = useLocation();
     console.log(location);
 
