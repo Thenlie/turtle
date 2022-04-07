@@ -8,7 +8,7 @@ const Info = ({ user }) => {
         variables: {id: user} 
     });
 
-    if (loading) {
+    if (loading || !data) {
         return (
             <section>
                 <p>Loading...</p>
