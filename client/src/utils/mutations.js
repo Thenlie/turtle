@@ -34,10 +34,9 @@ export const LOGOUT = gql`
 `
 
 export const ADD_SCORE = gql`
-  mutation addScore($userID: String!, $username: String!, $guesses: Float! ) {
-    addScore(userID: $userID, username: $username, guesses: $guesses ) {
+  mutation addScore($userID: String!, $guesses: Float! ) {
+    addScore(userID: $userID, guesses: $guesses ) {
       userID
-      username
       guesses
       createdAt
     }
