@@ -22,6 +22,7 @@ const resolvers = {
         }
     },
     Mutation: {
+        // user authentication 
         signup: async (parent, args, context) => {
             const user = await User.create(args);
             return user;
