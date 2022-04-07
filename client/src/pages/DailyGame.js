@@ -18,7 +18,7 @@ const DailyGame = () => {
 
     return (
         <main className='grow m-auto'>
-            <Display guessArr={guessArr} target={dayTarget} daily='true' />
+            <Display guessArr={guessArr} target={dayTarget} daily={true} />
             <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
                 <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
                 <Alphabet />
