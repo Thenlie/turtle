@@ -6,9 +6,15 @@ const ScoresSchema = new Schema({
         required: true,
     },
 
+
     guesses: {
         type: Number,
         required: true,
+    },
+
+    word: {
+        type: String,
+        required: true
     },
 
     createdAt: {
