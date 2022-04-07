@@ -43,17 +43,9 @@ userSchema.methods.isCorrectPassword = async function(password) {
 };
 
 userSchema.virtual('age').get(function() {
-    let diff = Date.now() - this.createdAt;
-    let s = diff/1000;
-    let m = Math.floor(s/60)
-    let r = Math.floor(s - (m * 60))
-    if (r < 10) {
-        r = '0' + r
-        
-    }
-    return m + ':' + r
+    return Date.now() - this.createdAt;
 });
 
 const User = model('User', userSchema);
 
-module.exports = User;
+module.exports = User; 
