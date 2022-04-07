@@ -7,6 +7,8 @@ export const QUERY_USERS = gql`
             username
             email
             createdAt
+            lastActive
+            age
         }
     }
 `
@@ -14,10 +16,12 @@ export const QUERY_USERS = gql`
 export const QUERY_USER = gql`
     query User($id: String!) {
         user(id: $id) {
+        _id
         username
         email
-        password
-        _id
+        createdAt
+        lastActive
+        age
         }
     }
 `
