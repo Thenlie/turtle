@@ -17,7 +17,7 @@ const GameInfo = ({ user }) => {
     console.log(user);
 
     return (
-        <div>
+        <div className='flex flex-col items-center'>
             <div>
                 {location.state.guessArr.length > 3 ? (
                     <ul>
