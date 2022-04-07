@@ -1,14 +1,15 @@
 import { Info, Scores, Stats } from "../components/Profile";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const Profile = ({ user }) => {
     const params = useParams();
+    const navigate = useNavigate();
     let targetUser;    
 
     if (params.id) {
         targetUser = params.id;
     } else if (!user) {
-        document.location.assign('/forms');
+        navigate('/forms', {replace: true});
     } else {
         targetUser = user;
     };
