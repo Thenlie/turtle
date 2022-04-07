@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { useNavigate } from 'react-router-dom'
 
-const Display = ({ target, guessArr, daily, cont }) => {
+const Display = ({ target, guessArr, type }) => {
     const targetArr = target.split('').map((target, i) => { return { name: target + i, value: target } });
     const navigate = useNavigate();
     console.log(target);
@@ -34,7 +34,7 @@ const Display = ({ target, guessArr, daily, cont }) => {
                 document.getElementById(letters[i].textContent).classList.add('bg-green-200');
                 win++
                 if (win === 5) {
-                    navigate("/endgame", { state: { target, guessArr, daily, cont } })
+                    navigate("/endgame", { state: { target, guessArr, type } })
                 }
             };
             // yellow styling
