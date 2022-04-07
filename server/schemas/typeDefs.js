@@ -14,6 +14,7 @@ const typeDefs = gql`
         word: String
         guesses: Int
         createdAt: String
+        type: String
     }
 
     type Query {
@@ -29,7 +30,7 @@ const typeDefs = gql`
         signup(username: String!, email: String!, password: String!): User
         login(email: String!, password: String!): User
         logout: User
-        addScore(userID: String!, guesses: Float!, word: String! ): Scores
+        addScore(userID: String!, guesses: Float!, word: String!, type: String! ): Scores
     }
 `
 

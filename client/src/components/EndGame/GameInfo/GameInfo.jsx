@@ -9,7 +9,7 @@ const GameInfo = ({ user }) => {
 
     useEffect(() => {
         addScore({
-            variables: { userID: user, guesses: location.state.guessArr.length, word: location.state.target }
+            variables: { userID: user, guesses: location.state.guessArr.length, word: location.state.target, type: location.state.type }
         })
     }, [])
 
