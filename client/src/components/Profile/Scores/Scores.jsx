@@ -1,7 +1,7 @@
 const Scores = () => {
     return (
-        <section>
-            <p>Scores</p>
+        <section className='bg-slate-200 m-4 p-4'>
+            <h2>Scores</h2>
         </section>
     );
 };
