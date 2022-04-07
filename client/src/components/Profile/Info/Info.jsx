@@ -8,8 +8,6 @@ const Info = ({ user }) => {
         variables: {id: user} 
     });
 
-console.log(data)
-
     if (loading) {
         return (
             <section>
