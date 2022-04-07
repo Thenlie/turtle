@@ -35,13 +35,23 @@ const GameInfo = ({ user }) => {
                 </div>
                 <div className='flex flex-col justify-center items-center bg-gray-400 w-3/4 h-full rounded-lg'>
                     <div>
-                        <ul>
-                            <li className=''>1 |</li>
-                            <li className=''>2 |</li>
-                            <li className=''>3 |</li>
-                            <li className=''>4 |</li>
-                            <li className=''>5 |</li>
-                        </ul>
+                        {location.state.guessArr.length > 3 ? (
+                            <ul>
+                                <li>{location.state.guessArr.length - 2}</li>
+                                <li>{location.state.guessArr.length - 1}</li>
+                                <li>{location.state.guessArr.length}</li>
+                                <li>{location.state.guessArr.length + 1}</li>
+                                <li>{location.state.guessArr.length + 2}</li>
+                            </ul>
+                        ) :
+                            <ul>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        }
                     </div>
                     <div>
                         <button className='mx-2'>Home</button>
