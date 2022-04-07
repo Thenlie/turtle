@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
-import { QUERY_USER } from '../../../utils/queries'
+import { QUERY_USER } from '../../../utils/queries';
+import { PencilAltIcon } from '@heroicons/react/outline';
 
 const Info = ({ user }) => {
     const { loading, data } = useQuery(QUERY_USER, {
@@ -15,10 +16,19 @@ const Info = ({ user }) => {
     };
 
     return (
-        <section>
-            <h2>Info</h2>
-            <p>{user}</p>
-            <p>Username: <span>{data.user.username}</span></p>
+        <section className='bg-slate-200 m-4 p-4 flex'>
+            <div>
+                <img src='http://placehold.jp/150x150.png' className='inline'></img>
+            </div>
+            <div className='pl-4 self-center'>
+                <p className='text-xl my-1'>Username: <span>{data.user.username}</span></p>
+                <p className='text-xl my-1'>Last Active: </p>
+                <p className='text-xl my-1'>Account Age: </p>
+                <p className='text-xl my-1'>Flag: </p>
+            </div>
+            <div className='ml-auto self-end'>
+                <PencilAltIcon width={25} className=''/>
+            </div>
         </section>
     );
 };
