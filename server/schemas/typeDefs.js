@@ -7,6 +7,7 @@ const typeDefs = gql`
         email: String!
         password: String!
         createdAt: String!
+        lastActive: String!
         age: String
     }
 

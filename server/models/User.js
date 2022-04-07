@@ -24,6 +24,11 @@ const userSchema = new Schema(
             default: Date.now,
             required: true
         },
+        lastActive: {
+            type: Date,
+            default: Date.now,
+            required: true
+        }
     }, {
         toJSON: {
             virtuals: true
