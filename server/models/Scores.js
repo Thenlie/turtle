@@ -6,6 +6,10 @@ const ScoresSchema = new Schema({
         required: true,
     },
 
+    type: {
+        type: String,
+        required: true
+    },
 
     guesses: {
         type: Number,
