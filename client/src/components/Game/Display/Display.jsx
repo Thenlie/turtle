@@ -1,11 +1,15 @@
 import { useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import { useNavigate } from 'react-router-dom'
+import { useMutation } from '@apollo/client';
+import { ADD_SCORE } from '../../../utils/mutations';
 
 const Display = ({ target, guessArr }) => {
     const targetArr = target.split('').map((target, i) => { return { name: target + i, value: target } });
     const navigate = useNavigate();
     console.log(target);
+
+    const [addScore] = useMutation(ADD_SCORE);
 
     useEffect(() => {
         // get all guess elements, return if no guesses
@@ -34,7 +38,9 @@ const Display = ({ target, guessArr }) => {
                 document.getElementById(letters[i].textContent).classList.add('bg-green-200');
                 win++
                 if (win === 5) {
-
+                    addScore({
+                        variables: { userID: target, guesses: guessArr.length }
+                    })
 
 
 
