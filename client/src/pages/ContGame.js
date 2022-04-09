@@ -7,7 +7,7 @@ import Alphabet from '../components/Game/Alphabet';
 const ContGame = () => {
     const [guessArr, setGuessArr] = useState([]);
     const [target, setTarget] = useState('');
-    
+
     useEffect(() => {
         const randInt = Math.floor(Math.random() * 2314);
         setTarget(dictionary[randInt].toUpperCase());
@@ -15,7 +15,7 @@ const ContGame = () => {
 
     return (
         <main className='grow m-auto'>
-            <Display guessArr={guessArr} target={target} />
+            <Display guessArr={guessArr} target={target} type={'cont'} />
             <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
                 <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
                 <Alphabet />

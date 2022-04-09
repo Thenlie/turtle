@@ -1,3 +1,4 @@
 import GameInfo from './GameInfo';
+import Message from './Message'
 
-export { GameInfo };
+export { GameInfo, Message };

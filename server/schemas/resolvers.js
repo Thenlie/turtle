@@ -1,17 +1,17 @@
-const { User } = require('../models');
+const { User, Scores } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
     Query: {
         users: async (parent, args, context) => {
             return await User.find({});
-        },
+        }, 
         user: async (parent, args, context) => {
             console.log(args)
             return await User.findOne({ _id: args.id});
         },
         me: async (parent, args, context) => {
-            return await User.findOne({ _id: context.session.passport.user})
+            return await User.findOne({ _id: context.session.passport.user })
         },
         loggedIn: async (parent, args, context) => {
             if (context.session.passport.user) {
@@ -19,7 +19,14 @@ const resolvers = {
             } else {
                 return null;
             }
-        }
+        },
+        scores: async () => {
+            return await Scores.find();
+        },
+        scoresByUser: async (parent, { userID }) => {
+            const params = { userID };
+            return Scores.find(params);
+        },
     },
     Mutation: {
         // user authentication 
@@ -33,7 +40,7 @@ const resolvers = {
                 throw new AuthenticationError('No user found');
             }
             const validPassword = await user.isCorrectPassword(password);
-            if(!validPassword) {
+            if (!validPassword) {
                 throw new AuthenticationError('Incorrect credentials');
             }
             context.login(user, (err) => {
@@ -45,11 +52,16 @@ const resolvers = {
             return user;
         },
         logout: async (parent, args, context) => {
-            const user = await User.findOne({ _id: context.session.passport.user});
+            const user = await User.findOne({ _id: context.session.passport.user });
             if (!user) {
                 throw new AuthenticationError('No user found');
             }
             return user;
+        },
+        addScore: async (parent, args, context) => {
+            const score = Scores.create(args);
+            console.log('true')
+            return score;
         }
     }
 }
