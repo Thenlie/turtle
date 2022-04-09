@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react';
-import dictionary from '../utils/dictionary';
+import { DateTime } from 'luxon';
+import randomDictionary from '../utils/randomDictionary';
 import UserInput from '../components/Game/UserInput';
 import Display from '../components/Game/Display';
 import Alphabet from '../components/Game/Alphabet';
 
-const Game = () => {
+const DailyGame = () => {
     const [guessArr, setGuessArr] = useState([]);
-    const [target, setTarget] = useState('');
-    
+    const [dayTarget, setDayTarget] = useState('');
+
     useEffect(() => {
-        const randInt = Math.floor(Math.random() * 2314);
-        setTarget(dictionary[randInt].toUpperCase());
+        const now = DateTime.now();
+        const start = DateTime.fromISO("2022-04-04");
+        const diff = Math.floor((now.diff(start, ['days']).toObject().days));
+        setDayTarget(randomDictionary[diff].toUpperCase())
     }, []);
 
     return (
         <main className='grow m-auto'>
-            <Display guessArr={guessArr} target={target} />
+            <Display guessArr={guessArr} target={dayTarget} type={'daily'} />
             <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
                 <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
                 <Alphabet />
@@ -24,4 +27,4 @@ const Game = () => {
     );
 };
 
-export default Game;
+export default DailyGame;

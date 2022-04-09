@@ -31,7 +31,8 @@ const Navigation = () => {
     <Navbar>
       <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Home</Link></li>
       <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/forms'}>Forms</Link></li>
-      <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/game'}>Game</Link></li>
+      <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/daygame'}>Daily Game</Link></li>
+      <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/contgame'}>Infinite Game</Link></li>
 
       <NavItem icon={<MdMenu/>} className='menu-item'>
         <DropdownMenu></DropdownMenu>

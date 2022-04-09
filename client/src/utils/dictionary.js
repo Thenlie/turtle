@@ -2314,6 +2314,6 @@ const dictionary = [
     'zebra',
     'zesty',
     'zonal',
-]
+];
 
 export default dictionary;
