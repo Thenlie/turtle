@@ -13,6 +13,7 @@ body {
   --border: 1px solid #474a4d;
   --border-radius: 8px;
   --speed: 500ms; 
+  width: 100%;
 }
 
 ul {
@@ -26,22 +27,39 @@ a {
   text-decoration: none;;
 }
 
+.grow {
+  float: right;
+  height: 100% auto;
+  top: 0;
+}
+
 /* Top Navigation Bar */
+header {
+  height: 100%;
+  width: 10%;
+  float: left;
+}
+
+footer {
+  display: flex;
+  bottom: 0;
+}
 
 /* <nav> */
 .navbar {
-  height: var(--nav-size);
+  height: 100%;
+  width: 100%;
   background-color: var(--bg);
-  padding: 0 1rem;
   border-bottom: var(--border);
+  float: left;
 }
 
 /* <ul> */
 .navbar-nav {
   max-width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: flex-end;
+  display: block;
+  justify-content: left;
 }
 
 /* <li> */
@@ -55,7 +73,7 @@ a {
 /* Icon Button */
 .icon-button {
   --button-size: calc(var(--nav-size) * 0.5);
-  width: var(--button-size);
+  width: 0;
   height: var(--button-size);
   border-radius: 50%;
   padding: 5px;
@@ -103,6 +121,7 @@ a {
   border-radius: var(--border-radius);
   transition: background var(--speed);
   padding: 0.5rem;
+  justify-content: left;
 }
 
 .menu-item .icon-button {
