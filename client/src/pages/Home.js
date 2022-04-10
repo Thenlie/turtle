@@ -13,7 +13,7 @@ const Home = ({user}) => {
 
     return (
         <main className='grow'>
-            <div className='flex flex-wrap justify-center'>
+            <div className='home-content flex flex-wrap justify-center'>
                 <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>
                     <h2 className='font-bold text-lg mb-2'>User List</h2>
                     <ul className='list-none p-0'>

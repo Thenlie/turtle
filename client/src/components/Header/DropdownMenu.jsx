@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
 const DropdownMenu = () => {
@@ -29,9 +30,11 @@ const DropdownMenu = () => {
       <div className='dropdown' ref={dropdownRef}>
         <CSSTransition in={activeMenu === 'main'} timeout={500} classNames='menu-primary' unmountOnExit onEnter={calcHeight}>
           <div className='menu'>
-            <DropdownItem>My Profile</DropdownItem>
-            <DropdownItem goToMenu='settings'>Settings</DropdownItem>
-            <DropdownItem goToMenu='animals'>Leaderboard</DropdownItem>
+            <DropdownItem><Link to={'/'}>Home</Link></DropdownItem>
+            <DropdownItem><Link to={'/'}>Profile</Link></DropdownItem>
+            <DropdownItem><Link to={'/daygame'}>Daily Game</Link></DropdownItem>
+            <DropdownItem><Link to={'/contgame'}>Infinite Game</Link></DropdownItem>
+            <DropdownItem><Link to={'/forms'}>Login/Sign Up</Link></DropdownItem>
           </div>
         </CSSTransition>
   

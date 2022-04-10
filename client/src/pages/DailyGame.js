@@ -8,7 +8,7 @@ import Alphabet from '../components/Game/Alphabet';
 const DailyGame = () => {
     const [guessArr, setGuessArr] = useState([]);
     const [dayTarget, setDayTarget] = useState('');
-    
+
     useEffect(() => {
         const now = DateTime.now();
         const start = DateTime.fromISO("2022-04-04");
@@ -18,7 +18,7 @@ const DailyGame = () => {
 
     return (
         <main className='grow m-auto'>
-            <Display guessArr={guessArr} target={dayTarget} />
+            <Display guessArr={guessArr} target={dayTarget} type={'daily'} />
             <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
                 <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
                 <Alphabet />

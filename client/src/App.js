@@ -39,7 +39,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
-      <div className='flex flex-col h-full'>
+      <div className='h-full'>
         <Router>
           <Header />
           <Routes>
@@ -50,9 +50,10 @@ function App() {
             <Route exact path='/contgame' element={<ContGame user={user} />} />
             <Route exact path='/endgame' element={<EndGame user={user} />} />
           </Routes>
-          <Footer />
+          
         </Router>
         </div>
+        <Footer />
     </ApolloProvider>
   );
 }
