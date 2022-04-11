@@ -19,6 +19,10 @@ const userSchema = new Schema(
             required: true,
             minlength: 5
         },
+        country: {
+            type: String,
+            required: true
+        },
         createdAt: {
             type: Date,
             default: Date.now,

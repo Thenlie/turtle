@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
-import { QUERY_USER } from '../../../utils/queries'; 
+import { QUERY_USERNAME } from '../../../utils/queries'; 
 import validator from 'validator';
 
 const Signup = () => {
@@ -14,7 +14,7 @@ const Signup = () => {
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [validUsername, setValidUsername] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
-    const { loading, data } = useQuery(QUERY_USER, {
+    const { loading, data } = useQuery(QUERY_USERNAME, {
         variables: { username: username }
     });
 
@@ -30,6 +30,7 @@ const Signup = () => {
                     'username': username,
                     'email': email,
                     'password': password,
+                    'country': country
                 })
             });
             return response;
@@ -84,13 +85,13 @@ const Signup = () => {
     // check if username is available
     useEffect(() => {
         if (data) {
-            if (!data.user && username.length > 2) {
+            if (!data.username && username.length > 2) {
                 setValidUsername(true);
             } else {
                 setValidUsername(false);
             }
         };
-    }, [data])
+    }, [data]);
 
     // check if email input is valid
     useEffect(() => {
