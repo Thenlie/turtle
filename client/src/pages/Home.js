@@ -19,7 +19,7 @@ const Home = ({user}) => {
                     <ul className='list-none p-0'>
                         {users.length > 0 ? (
                             users.map((user) => (
-                                <li key={user.username}>{user.username}</li>
+                                <li key={user.username}><a href={`/profile/${user._id}`}>{user.username}</a></li>
                             ))) : (
                                 <p>No Users</p>
                             )
