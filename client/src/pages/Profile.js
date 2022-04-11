@@ -22,7 +22,7 @@ const Profile = ({ user }) => {
                     <Scores />
                 </div>
                 <aside>
-                    <Stats />
+                    <Stats user={targetUser} />
                 </aside>
             </div>
         </main>
