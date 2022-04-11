@@ -34,7 +34,7 @@ const Display = ({ target, guessArr, type }) => {
                 document.getElementById(letters[i].textContent).classList.add('bg-green-200');
                 win++
                 if (win === 5) {
-                    navigate("/endgame", { state: { target, guessArr, type } })
+                    navigate("/endgame", { state: { target, guessArr, type } });
                 }
             };
             // yellow styling
