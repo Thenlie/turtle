@@ -10,6 +10,9 @@ const resolvers = {
             console.log(args)
             return await User.findOne({ _id: args.id});
         },
+        username: async (parent, { username }, context) => {
+            return await User.findOne({ username });
+        },
         me: async (parent, args, context) => {
             return await User.findOne({ _id: context.session.passport.user })
         },
