@@ -25,7 +25,7 @@ const Info = ({ user }) => {
                 <p className='text-xl my-1'>Username: <span>{data.user.username}</span></p>
                 <p className='text-xl my-1'>Last Active: <span>{formatLastActive(data.user.lastActive)}</span></p>
                 <p className='text-xl my-1'>Account Age: <span>{formatAge(data.user.createdAt)}</span></p>
-                <p className='text-xl my-1'>Flag: </p>
+                <p className='text-xl my-1'>Flag: {data.user.country}</p>
             </div>
             <div className='ml-auto self-end'>
                 <PencilAltIcon width={25} className=''/>
