@@ -4,8 +4,8 @@ import Info from "./Info";
 
 const Stats = () => {
     return (
-        <section className='bg-slate-200 m-4'>
-            <div className='bg-slate-300 p-2'>
+        <section className='bg-slate-200 m-4 rounded-md'>
+            <div className='bg-slate-300 p-2 rounded-t-md'>
                 <h2 className='font-bold'>Stats</h2>
             </div>
             <div className='p-4'>

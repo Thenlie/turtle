@@ -18,7 +18,7 @@ const Info = ({ user }) => {
     };
 
     return (
-        <section className='bg-slate-200 m-4 p-4 flex'>
+        <section className='bg-slate-200 m-4 p-4 flex rounded-md'>
             <div>
                 <img src='http://placehold.jp/150x150.png' className='inline'></img>
             </div>
