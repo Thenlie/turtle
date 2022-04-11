@@ -31,9 +31,6 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        signup(username: String!, email: String!, password: String!, country: String!): User
-        login(email: String!, password: String!): User
-        logout: User
         addScore(userID: String!, guesses: Float!, word: String!, type: String! ): Scores
     }
 `
