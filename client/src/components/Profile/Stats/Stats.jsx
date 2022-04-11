@@ -1,7 +1,18 @@
+import Calendar from "./Calendar";
+import Charts from "./Charts";
+import Info from "./Info";
+
 const Stats = () => {
     return (
-        <section className='bg-slate-200 m-4 p-4'>
-            <h2>Stats</h2>
+        <section className='bg-slate-200 m-4'>
+            <div className='bg-slate-300 p-2'>
+                <h2 className='font-bold'>Stats</h2>
+            </div>
+            <div className='p-4'>
+                <Info />
+                <Calendar />
+                <Charts />
+            </div>
         </section>
     );
 };
