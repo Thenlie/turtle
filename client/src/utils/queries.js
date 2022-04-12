@@ -50,8 +50,8 @@ export const QUERY_ME = gql`
 
 export const QUERY_SCORE = gql`
     query ScoresByUser($userId: String!) {
-        scoresByUser(userID: $userId) {
-            userID
+        scoresByUser(userId: $userId) {
+            userId
             word
             guesses
             createdAt

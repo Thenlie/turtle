@@ -5,7 +5,7 @@ import { formatScoreDate, formatCalendarDate } from '../../../utils/helper';
 
 const Calendar = ({ data }) => {
     const [value, onChange] = useState(new Date());
-    
+
     let dates = data.scoresByUser.map(score => { return formatScoreDate(score.createdAt) });
 
     return (
