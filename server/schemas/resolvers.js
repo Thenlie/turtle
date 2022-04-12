@@ -7,7 +7,6 @@ const resolvers = {
             return await User.find({});
         },
         user: async (parent, args, context) => {
-            console.log(args)
             return await User.findOne({ _id: args.id});
         },
         username: async (parent, { username }, context) => {
