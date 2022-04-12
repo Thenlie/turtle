@@ -32,7 +32,11 @@ db.once('open', async () => {
     for (let i = 0; i < newUsers.length; i++) {
         let scores = [];
         for (let j = 0; j < 5; j++) {
-            let score = new ScoreObj(newUsers[i]._id, 'cont', Math.floor(Math.random() * 6) + 1, 'CRANE')
+            let word = '';
+            while (word.length !== 5) {
+                word = faker.random.word().toUpperCase();
+            };
+            let score = new ScoreObj(newUsers[i]._id, 'cont', Math.floor(Math.random() * 6) + 1, word)
             scores.push(score);
         }
         await Scores.collection.insertMany(scores);
