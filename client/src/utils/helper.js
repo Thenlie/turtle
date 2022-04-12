@@ -18,5 +18,9 @@ export const formatLastActive = (time) => {
 
 export const formatScoreDate = (time) => {
     let date = DateTime.fromMillis(parseInt(time));
-    return date.toLocaleString(DateTime.DATE_SHORT)
+    return date.toISODate()
+};
+
+export const formatCalendarDate = (date) => {
+    return DateTime.fromJSDate(date).toISODate()
 };
