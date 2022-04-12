@@ -3,14 +3,7 @@ const UserObj = require('../lib/UserObj');
 const ScoreObj = require('../lib/ScoreObj');
 const { Scores, User } = require('../models');
 const { faker } = require('@faker-js/faker');
-
-const randomDate = () => {
-    return new Date(
-        Math.floor(Math.random() * (2022 - 2020 + 1)) + 2020,
-        Math.floor(Math.random() * 11),
-        Math.floor(Math.random() * 29)
-    );
-};
+const { getFakeUser, getFakeScore } = require('../utils/helpers');
 
 db.once('open', async () => {
     await Scores.deleteMany({});
@@ -19,13 +12,7 @@ db.once('open', async () => {
     // create 10 fake users
     let users = [];
     for (let i = 0; i < 10; i++) {
-        let user = new UserObj(
-            faker.internet.userName(), 
-            faker.internet.exampleEmail(), 
-            'password', 
-            'US', 
-            randomDate()
-        );
+        let user = await getFakeUser()
         users.push(user); 
     };
 
