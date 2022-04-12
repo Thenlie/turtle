@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { Calendar as ReactCalendar } from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import { formatScoreDate } from '../../../utils/helper';
 
-const Calendar = () => {
+const Calendar = ({ data }) => {
     const [value, onChange] = useState(new Date());
+
+    for (let i = 0; i < data.scoresByUser.length; i++) {
+        console.log(formatScoreDate(data.scoresByUser[i].createdAt))
+    } 
+    console.log(data)
 
     return (
         <div className='bg-slate-100 border border-slate-300 my-2 rounded-md shadow-sm'>

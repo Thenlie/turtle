@@ -20,7 +20,7 @@ const Stats = ({ user }) => {
             </div>
             <div className='p-4'>
                 <Info data={data} />
-                <Calendar />
+                <Calendar data={data} />
                 <Charts />
             </div>
         </section>

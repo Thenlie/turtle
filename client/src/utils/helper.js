@@ -15,3 +15,8 @@ export const formatLastActive = (time) => {
     let date = DateTime.fromMillis(parseInt(time));
     return date.toLocaleString(DateTime.DATE_FULL);
 };
+
+export const formatScoreDate = (time) => {
+    let date = DateTime.fromMillis(parseInt(time));
+    return date.toLocaleString(DateTime.DATE_SHORT)
+};
