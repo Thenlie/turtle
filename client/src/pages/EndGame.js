@@ -1,4 +1,5 @@
 import { GameInfo, Message } from '../components/EndGame';
+import { EndGameChart } from '../components/Charts';
 
 const EndGame = ({ user }) => {
     return (
@@ -9,6 +10,9 @@ const EndGame = ({ user }) => {
                 </div>
                 <div className='bg-gray-300 rounded-lg my-2 p-4'>
                     <GameInfo user={user} />
+                </div>
+                <div>
+                    <EndGameChart />
                 </div>
             </div>
         </main>
