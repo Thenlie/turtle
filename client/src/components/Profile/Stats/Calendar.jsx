@@ -15,8 +15,8 @@ const Calendar = ({ data }) => {
                 onChange={onChange} 
                 value={value} 
                 className='!w-full !bg-slate-100 !border-none !rounded-b-md'
-                tileClassName={({ date, view }) => {
-                    if (dates.find(x => x === formatCalendarDate(date))) {
+                tileClassName={({ date }) => {
+                    if (dates.find(d => d === formatCalendarDate(date))) {
                         return  '!bg-green-200'
                     }
                 }}
