@@ -4,14 +4,12 @@ const ScoreObj = require('../lib/ScoreObj');
 const { Scores, User } = require('../models');
 const { faker } = require('@faker-js/faker');
 
-function randomYear() {
-    return Math.floor(Math.random() * (2022 - 2020 + 1)) + 2020;
-};
-function randomMonth() {
-    return Math.floor(Math.random() * 11);
-};
-function randomDay() {
-    return Math.floor(Math.random() * 29);
+const randomDate = () => {
+    return new Date(
+        Math.floor(Math.random() * (2022 - 2020 + 1)) + 2020,
+        Math.floor(Math.random() * 11),
+        Math.floor(Math.random() * 29)
+    );
 };
 
 db.once('open', async () => {
@@ -21,7 +19,13 @@ db.once('open', async () => {
     // create 10 fake users
     let users = [];
     for (let i = 0; i < 10; i++) {
-        let user = new UserObj(faker.internet.userName(), faker.internet.exampleEmail(), 'password', 'US', new Date(randomYear(), randomMonth(), randomDay()));
+        let user = new UserObj(
+            faker.internet.userName(), 
+            faker.internet.exampleEmail(), 
+            'password', 
+            'US', 
+            randomDate()
+        );
         users.push(user); 
     };
 
@@ -36,7 +40,12 @@ db.once('open', async () => {
             while (word.length !== 5) {
                 word = faker.random.word().toUpperCase();
             };
-            let score = new ScoreObj(newUsers[i]._id, 'cont', Math.floor(Math.random() * 6) + 1, word)
+            let score = new ScoreObj(
+                newUsers[i]._id, 
+                'cont', 
+                Math.floor(Math.random() * 6) + 1, 
+                word
+            );
             scores.push(score);
         }
         await Scores.collection.insertMany(scores);
