@@ -11,9 +11,14 @@ const randomDate = () => {
 };
 
 const randomCountry = () => {
-    const countries = ['US', 'CA', 'MX', 'UK']
-    return countries[Math.floor(Math.random() * 4)]
-}
+    const countries = ['US', 'CA', 'MX', 'UK'];
+    return countries[Math.floor(Math.random() * 4)];
+};
+
+const randomType = () => {
+    const types = ['cont', 'daily'];
+    return types[Math.floor(Math.random() * 2)];
+};
 
 module.exports = {
     getFakeUser: async function() {
@@ -25,7 +30,17 @@ module.exports = {
             randomDate()
         );
     },
-    getFakeScore: async function() {
-
+    getFakeScore: async function(id) {
+        let word = '';
+        while (word.length !== 5) {
+            word = faker.random.word().toUpperCase();
+        };
+        return new ScoreObj(
+            id, 
+            randomType(), 
+            Math.floor(Math.random() * 6) + 1, 
+            word,
+            randomDate()
+        );
     },
 };
