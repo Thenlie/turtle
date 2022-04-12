@@ -9,7 +9,7 @@ const Calendar = ({ data }) => {
     let dates = data.scoresByUser.map(score => { return formatScoreDate(score.createdAt) });
 
     return (
-        <div className='bg-slate-100 border border-slate-300 my-2 rounded-md shadow-sm'>
+        <div className='bg-slate-100 border border-slate-300 my-3 rounded-md shadow-sm'>
             <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Calendar</h3>
             <ReactCalendar 
                 onChange={onChange} 

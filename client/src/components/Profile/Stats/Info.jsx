@@ -14,7 +14,7 @@ const Info = ({ data }) => {
     };
 
     return (
-        <div className='bg-slate-100 border border-slate-300 my-2 rounded-md shadow-sm'>
+        <div className='bg-slate-100 border border-slate-300 mb-3 rounded-md shadow-sm'>
             <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Games Played <span className='font-normal'>| {dailyGames.length + contGames.length}</span></h3>
             <div className='p-1'>
                 <p>Daily: {dailyGames.length}</p>

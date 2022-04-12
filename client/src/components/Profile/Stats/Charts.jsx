@@ -1,7 +1,10 @@
 const Charts = () => {
     return (
-        <div className='bg-slate-100 border border-slate-300 my-2 p-1 shadow-sm'>
-            <p>Charts</p>
+        <div className='bg-slate-100 border border-slate-300 mt-3 shadow-sm'>
+            <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Charts</h3>
+            <div className='p-1'>
+                <p>In development...</p>
+            </div>
         </div>
     );
 };
