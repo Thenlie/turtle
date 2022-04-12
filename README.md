@@ -1,4 +1,4 @@
-# Turtle 🐢
+# Turtle 🐢 ![tag shield](https://img.shields.io/github/v/tag/thenlie/turtle) ![license shield](https://img.shields.io/github/license/Thenlie/turtle)
 
 A [Wordle](https://www.nytimes.com/games/wordle/index.html) clone built by 3 friends for fun! 
 
