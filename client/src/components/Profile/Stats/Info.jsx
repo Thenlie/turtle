@@ -1,8 +1,4 @@
-import { useQuery } from "@apollo/client";
-import { QUERY_SCORE } from "../../../utils/queries";
-
-const Info = ({ user }) => {
-    const { loading, data } = useQuery(QUERY_SCORE, { variables: { userId: user }});
+const Info = ({ data }) => {
     let dailyGames = [], contGames = [], dailyGuesses = 0, contGuesses = 0;
     
     if (data) {
@@ -15,12 +11,6 @@ const Info = ({ user }) => {
         if (contGames.length > 0) {
             contGuesses = contGames.reduce((a, b) => ({ guesses: a.guesses + b.guesses })).guesses;
         };
-    };
-
-    if (loading) {
-        return (
-            <p>Loading...</p>
-        );
     };
 
     return (
