@@ -9,6 +9,7 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
+import { useEffect } from 'react';
 
 ChartJS.register(
     CategoryScale,
@@ -25,6 +26,7 @@ const EndGameChart = ({ data }) => {
     let labelArr = [];
     let dataArr = [];
 
+    // useEffect(() => {
     if (location.state.guessArr.length > 4) {
         labelArr = [location.state.guessArr.length - 2, location.state.guessArr.length - 1, location.state.guessArr.length, location.state.guessArr.length + 1, location.state.guessArr.length + 2];
         dataArr = data.scoresByUser.filter((item) => item.guesses <= location.state.guessArr.length + 2 && item.guesses >= location.state.guessArr.length + -2)
@@ -32,8 +34,11 @@ const EndGameChart = ({ data }) => {
         labelArr = [1, 2, 3, 4, 5]
         dataArr = data.scoresByUser.filter((item) => item.guesses >= 1 && item.guesses <= 5)
     }
-
     console.log(dataArr)
+
+    // }, [data.scoresByUser])
+
+
 
 
     return (
@@ -44,7 +49,7 @@ const EndGameChart = ({ data }) => {
                 datasets: [
                     {
                         label: 'Guesses',
-                        data: [1, 4, 4, 4, 5],
+                        data: dataArr.map((item) => item.guesses),
                         borderColor: 'rgb(255, 99, 132)',
                         backgroundColor: 'rgba(255, 99, 132, 0.5)',
                         fill: true,
