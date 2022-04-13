@@ -1,32 +1,31 @@
-import { Line } from 'react-chartjs-2';
+import { useLocation } from 'react-router-dom';
+import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend,
-    Filler,
 } from 'chart.js';
 
 ChartJS.register(
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
-    Legend,
-    Filler
+    Legend
 );
 
 const EndGameChart = () => {
+    const location = useLocation();
+
 
     return (
         <>
-            <Line
+            <Bar
                 data={{
                     labels: 'score',
                     datasets: [
