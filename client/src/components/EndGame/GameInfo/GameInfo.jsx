@@ -27,7 +27,7 @@ const GameInfo = ({ user }) => {
     return (
         <div className='flex flex-col items-center'>
             <div className='h-[250px]'>
-                <EndGameChart />
+                <EndGameChart data={data} />
             </div>
             <div>
                 <button className='mx-2'>Home</button>

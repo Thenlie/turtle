@@ -19,16 +19,21 @@ ChartJS.register(
     Legend
 );
 
-const EndGameChart = () => {
+const EndGameChart = ({ data }) => {
     const location = useLocation();
 
     let labelArr = [];
+    let dataArr = [];
 
     if (location.state.guessArr.length > 4) {
-        labelArr = [location.state.guessArr.length - 2, location.state.guessArr.length - 1, location.state.guessArr.length, location.state.guessArr.length + 1, location.state.guessArr.length + 2]
+        labelArr = [location.state.guessArr.length - 2, location.state.guessArr.length - 1, location.state.guessArr.length, location.state.guessArr.length + 1, location.state.guessArr.length + 2];
+        dataArr = data.scoresByUser.filter((item) => item.guesses <= location.state.guessArr.length + 2 && item.guesses >= location.state.guessArr.length + -2)
     } else {
         labelArr = [1, 2, 3, 4, 5]
+        dataArr = data.scoresByUser.filter((item) => item.guesses >= 1 && item.guesses <= 5)
     }
+
+    console.log(dataArr)
 
 
     return (
