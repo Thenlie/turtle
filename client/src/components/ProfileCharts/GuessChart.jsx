@@ -23,7 +23,6 @@ ChartJS.register(
 );
 
 const GuessChart = ({ data }) => {
-    // create array of total games played per day
     let games, dates;
     if (data) {
         games = data.scoresByUser.map(score => { return score.guesses });

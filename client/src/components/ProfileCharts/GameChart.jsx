@@ -23,30 +23,36 @@ ChartJS.register(
 );
 
 const GameChart = ({ data }) => {
-    // create array of total games played per day
-    let games, dates;
-    if (data) {
-        games = data.scoresByUser.map(score => { return score.guesses });
-        dates = data.scoresByUser.map(score => { return score.createdAt });
-    }
+    let games = [], dates = [];
+    let dataArr = [...data.scoresByUser]
+    // sort score array by date
+    let sortedData = dataArr.sort((a, b) => { return a.createdAt - b.createdAt })
+    // create array of total games played per day and array of unique days
+    for (let i = 0; i < sortedData.length; i++) {
+        if (!dates.includes(sortedData[i].createdAt)) {
+            dates.push(sortedData[i].createdAt);
+            games.push(1)
+        } else {
+            const c = games.pop();
+            games.push(c + 1)
+        };
+    };
 
     return (
     <div className='bg-slate-100 rounded-t-md shadow-sm'>
         <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Game Chart</h3>
         <div className='p-1'>
-        <Line
+            <Line
                 data={{
                     labels: dates,
-                    datasets: [
-                        {
+                    datasets: [{
                             label: '# of Games',
                             data: games,
                             borderColor: 'rgb(255, 99, 132)',
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
                             fill: true,
                             tension: 0.1,
-                        },
-                    ],
+                        }],
                 }}
                 options={{
                     maintainAspectRatio: false,
@@ -57,9 +63,7 @@ const GameChart = ({ data }) => {
                         title: {
                             display: false,
                             text: 'Games Played',
-                            font: {
-                                size: 20,
-                            },
+                            font: { size: 20 },
                             color: '#6b7280',
                         },
                     },
@@ -77,7 +81,7 @@ const GameChart = ({ data }) => {
                                 maxTicksLimit: 5,
                             },
                             display: false
-                        },
+                        }
                     },
                     color: '#6b7280',
                 }}
