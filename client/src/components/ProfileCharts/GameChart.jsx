@@ -41,13 +41,13 @@ const GameChart = ({ data }) => {
 
     return (
     <div className='bg-slate-100 rounded-t-md shadow-sm'>
-        <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Game Chart</h3>
+        <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Game per Day</h3>
         <div className='p-1'>
             <Line
                 data={{
                     labels: dates,
                     datasets: [{
-                            label: 'Games per Day',
+                            label: '# of Games',
                             data: games,
                             borderColor: 'rgb(255, 99, 132)',
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
