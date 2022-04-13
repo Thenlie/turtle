@@ -32,62 +32,62 @@ const EndGameChart = () => {
 
 
     return (
-        <>
-            <Bar
-                data={{
-                    labels: labelArr,
-                    datasets: [
-                        {
-                            label: 'guesses',
-                            data: [1, 2, 3, 4],
-                            borderColor: 'rgb(255, 99, 132)',
-                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                            fill: true,
-                            tension: 0.1,
-                        }
-                    ],
-                }}
-                options={{
-                    indexAxis: 'y',
-                    maintainAspectRatio: false,
-                    elements: {
-                        bar: {
-                            borderWidth: 2,
-                        }
+
+        <Bar
+            data={{
+                labels: labelArr,
+                datasets: [
+                    {
+                        label: 'Guesses',
+                        data: [],
+                        borderColor: 'rgb(255, 99, 132)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        fill: true,
+                        tension: 0.1,
+                    }
+                ],
+            }}
+            options={{
+                indexAxis: 'y',
+                maintainAspectRatio: false,
+                elements: {
+                    bar: {
+                        borderWidth: 2,
+                    }
+                },
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
                     },
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'top',
+                    title: {
+                        display: true,
+                        text: 'History',
+                        font: {
+                            size: 20,
                         },
-                        title: {
-                            display: true,
-                            text: 'History',
-                            font: {
-                                size: 20,
-                            },
+                        color: '#6b7280',
+                    },
+                },
+                scales: {
+                    y: {
+                        ticks: {
                             color: '#6b7280',
+                            autoSkip: true,
                         },
                     },
-                    scales: {
-                        y: {
-                            ticks: {
-                                color: '#6b7280',
-                                autoSkip: true,
-                            },
-                        },
-                        x: {
-                            ticks: {
-                                color: '#6b7280',
-                                autoSkip: true,
-                                maxTicksLimit: 5,
-                            },
+                    x: {
+                        ticks: {
+                            color: '#6b7280',
+                            autoSkip: true,
+                            maxTicksLimit: 5,
                         },
                     },
-                    color: '#6b7280',
-                }}
-            />
-        </>
+                },
+                color: '#6b7280',
+            }}
+        />
+
     );
 };
 

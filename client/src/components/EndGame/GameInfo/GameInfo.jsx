@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom'
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { ADD_SCORE } from '../../../utils/mutations';
 import { useEffect } from 'react';
 
