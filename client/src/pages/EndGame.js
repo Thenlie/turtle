@@ -11,9 +11,6 @@ const EndGame = ({ user }) => {
                 <div className='bg-gray-300 rounded-lg my-2 p-4'>
                     <GameInfo user={user} />
                 </div>
-                <div>
-                    <EndGameChart />
-                </div>
             </div>
         </main>
     );
