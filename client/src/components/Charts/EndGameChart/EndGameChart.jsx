@@ -22,40 +22,47 @@ ChartJS.register(
 const EndGameChart = () => {
     const location = useLocation();
 
+    let labelArr = [];
+
+    if (location.state.guessArr.length > 4) {
+        labelArr = [location.state.guessArr.length - 2, location.state.guessArr.length - 1, location.state.guessArr.length, location.state.guessArr.length + 1, location.state.guessArr.length + 2]
+    } else {
+        labelArr = [1, 2, 3, 4, 5]
+    }
+
 
     return (
         <>
             <Bar
                 data={{
-                    labels: 'score',
+                    labels: labelArr,
                     datasets: [
                         {
-                            label: 'Words Per Minute',
-                            data: 1,
+                            label: 'guesses',
+                            data: [1, 2, 3, 4],
                             borderColor: 'rgb(255, 99, 132)',
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
                             fill: true,
                             tension: 0.1,
-                        },
-                        {
-                            label: 'Accuracy',
-                            data: 1,
-                            borderColor: 'rgb(53, 162, 235)',
-                            backgroundColor: 'rgba(53, 162, 235, 0.5)',
-                            fill: true,
-                            tension: 0.1,
-                        },
+                        }
                     ],
                 }}
                 options={{
+                    indexAxis: 'y',
                     maintainAspectRatio: false,
+                    elements: {
+                        bar: {
+                            borderWidth: 2,
+                        }
+                    },
+                    responsive: true,
                     plugins: {
                         legend: {
                             position: 'top',
                         },
                         title: {
                             display: true,
-                            text: 'Typing Progress',
+                            text: 'History',
                             font: {
                                 size: 20,
                             },
