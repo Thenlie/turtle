@@ -1,3 +1,4 @@
+import { formatDateFull } from '../../utils/helper';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -29,12 +30,12 @@ const GameChart = ({ data }) => {
     let sortedData = dataArr.sort((a, b) => { return a.createdAt - b.createdAt })
     // create array of total games played per day and array of unique days
     for (let i = 0; i < sortedData.length; i++) {
-        if (!dates.includes(sortedData[i].createdAt)) {
-            dates.push(sortedData[i].createdAt);
-            games.push(1)
+        if (!dates.includes(formatDateFull(sortedData[i].createdAt))) {
+            dates.push(formatDateFull(sortedData[i].createdAt));
+            games.push(1);
         } else {
             const c = games.pop();
-            games.push(c + 1)
+            games.push(c + 1);
         };
     };
 

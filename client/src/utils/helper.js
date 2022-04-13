@@ -11,7 +11,7 @@ export const formatAge = (time) => {
     return (`${y > 0 ? y + ` year${y > 1 ? 's,' : ','}` : ''} ${m > 0 ? m + ` month${m > 1 ? 's, ' : ', '}` : ''}` + d + ` day${d > 1 ? 's' : ''}`);
 };
 
-export const formatLastActive = (time) => {
+export const formatDateFull = (time) => {
     let date = DateTime.fromMillis(parseInt(time));
     return date.toLocaleString(DateTime.DATE_FULL);
 };

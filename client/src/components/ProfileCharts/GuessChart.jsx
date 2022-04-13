@@ -1,3 +1,4 @@
+import { formatDateFull } from '../../utils/helper';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -29,8 +30,8 @@ const GuessChart = ({ data }) => {
     let sortedData = dataArr.sort((a, b) => { return a.createdAt - b.createdAt })
     // create array of total guesses per day and array of unique days
     for (let i = 0; i < sortedData.length; i++) {
-        if (!dates.includes(sortedData[i].createdAt)) {
-            dates.push(sortedData[i].createdAt);
+        if (!dates.includes(formatDateFull(sortedData[i].createdAt))) {
+            dates.push(formatDateFull(sortedData[i].createdAt));
             guesses.push(sortedData[i].guesses);
         } else {
             const c = guesses.pop();
