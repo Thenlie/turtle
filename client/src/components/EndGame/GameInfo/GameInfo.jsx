@@ -13,6 +13,8 @@ const GameInfo = ({ user }) => {
         variables: { userId: user }
     })
 
+    console.log(data);
+
     useEffect(() => {
         addScore({
             variables: { userId: user, guesses: location.state.guessArr.length, word: location.state.target, type: location.state.type }
