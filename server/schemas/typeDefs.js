@@ -13,7 +13,7 @@ const typeDefs = gql`
     }
 
     type Scores {
-        userID: String
+        userId: String
         word: String
         guesses: Int
         createdAt: String
@@ -27,11 +27,11 @@ const typeDefs = gql`
         me: User
         loggedIn: String
         scores: [Scores]
-        scoresByUser(userID: String!): [Scores]
+        scoresByUser(userId: String!): [Scores]
     }
 
     type Mutation {
-        addScore(userID: String!, guesses: Float!, word: String!, type: String! ): Scores
+        addScore(userId: String!, guesses: Float!, word: String!, type: String! ): Scores
     }
 `
 
