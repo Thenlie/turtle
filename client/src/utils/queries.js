@@ -6,18 +6,32 @@ export const QUERY_USERS = gql`
             _id
             username
             email
+            country
             createdAt
+            lastActive
+            age
         }
     }
 `
 
 export const QUERY_USER = gql`
-    query User($username: String!) {
-        user(username: $username) {
-        username
-        email
-        password
-        _id
+    query User($id: String!) {
+        user(id: $id) {
+            _id
+            username
+            email
+            country
+            createdAt
+            lastActive
+            age
+        }
+    }
+`
+
+export const QUERY_USERNAME = gql`
+    query Username($username: String!) {
+        username(username: $username) {
+            _id
         }
     }
 `
@@ -28,6 +42,7 @@ export const QUERY_ME = gql`
             username
             _id
             email
+            country
             createdAt
         }
     }
