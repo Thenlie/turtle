@@ -22,30 +22,37 @@ ChartJS.register(
     Filler
 );
 
-const GuessChart = ({ data }) => {
-    let games, dates;
-    if (data) {
-        games = data.scoresByUser.map(score => { return score.guesses });
-        dates = data.scoresByUser.map(score => { return score.createdAt });
-    }
+const GuessChart = ({ data }) => {    
+    let guesses = [], dates = [];
+    let dataArr = [...data.scoresByUser]
+    // sort score array by date
+    let sortedData = dataArr.sort((a, b) => { return a.createdAt - b.createdAt })
+    // create array of total guesses per day and array of unique days
+    for (let i = 0; i < sortedData.length; i++) {
+        if (!dates.includes(sortedData[i].createdAt)) {
+            dates.push(sortedData[i].createdAt);
+            guesses.push(sortedData[i].guesses);
+        } else {
+            const c = guesses.pop();
+            guesses.push(c + sortedData[i].guesses);
+        };
+    };
 
     return (
     <div className='bg-slate-100 rounded-t-md shadow-sm'>
         <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Game Chart</h3>
         <div className='p-1'>
-        <Line
+            <Line
                 data={{
                     labels: dates,
-                    datasets: [
-                        {
-                            label: '# of Guesses',
-                            data: games,
+                    datasets: [{
+                            label: 'Guesses per Day',
+                            data: guesses,
                             borderColor: 'rgb(53, 162, 235)',
                             backgroundColor: 'rgba(53, 162, 235, 0.5)',
                             fill: true,
                             tension: 0.1,
-                        },
-                    ],
+                        }],
                 }}
                 options={{
                     maintainAspectRatio: false,

@@ -46,7 +46,7 @@ const GameChart = ({ data }) => {
                 data={{
                     labels: dates,
                     datasets: [{
-                            label: '# of Games',
+                            label: 'Games per Day',
                             data: games,
                             borderColor: 'rgb(255, 99, 132)',
                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
