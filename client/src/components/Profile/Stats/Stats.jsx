@@ -21,7 +21,7 @@ const Stats = ({ user }) => {
             <div className='p-4'>
                 <Info data={data} />
                 <Calendar data={data} />
-                <Charts />
+                <Charts data={data} />
             </div>
         </section>
     );
