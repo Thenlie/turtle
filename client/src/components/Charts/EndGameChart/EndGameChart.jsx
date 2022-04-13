@@ -39,7 +39,7 @@ const EndGameChart = () => {
                 datasets: [
                     {
                         label: 'Guesses',
-                        data: [],
+                        data: [1, 4, 4, 4, 5],
                         borderColor: 'rgb(255, 99, 132)',
                         backgroundColor: 'rgba(255, 99, 132, 0.5)',
                         fill: true,
@@ -73,16 +73,10 @@ const EndGameChart = () => {
                     y: {
                         ticks: {
                             color: '#6b7280',
-                            autoSkip: true,
+                            autoSkip: false,
                         },
                     },
-                    x: {
-                        ticks: {
-                            color: '#6b7280',
-                            autoSkip: true,
-                            maxTicksLimit: 5,
-                        },
-                    },
+
                 },
                 color: '#6b7280',
             }}

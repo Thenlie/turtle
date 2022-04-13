@@ -20,7 +20,7 @@ const GameInfo = ({ user }) => {
 
     return (
         <div className='flex flex-col items-center'>
-            <div>
+            <div className='h-[250px]'>
                 <EndGameChart />
             </div>
             <div>
