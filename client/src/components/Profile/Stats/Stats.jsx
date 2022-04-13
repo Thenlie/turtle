@@ -7,8 +7,6 @@ import Info from "./Info";
 const Stats = ({ user }) => {
     const { loading, data } = useQuery(QUERY_SCORE, { variables: { userId: user }});
 
-    console.log(data)
-
     if (loading) {
         return (
             <p>Loading...</p>
