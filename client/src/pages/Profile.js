@@ -5,15 +5,22 @@ import { useEffect, useState } from "react";
 const Profile = ({ user }) => {
     const params = useParams();
     const navigate = useNavigate();
-    let targetUser;    
+    const [targetUser, setTargetUser] = useState('') 
 
     useEffect(() => {
         if (params.id) {
-            targetUser = params.id;
-        } else if (!user) {
-            navigate('/forms');
+            setTargetUser(params.id);
+            return;
+        } else if (!params.id && user) {
+            setTargetUser(user);
+            return;
         } else {
-            targetUser = user;
+            if (localStorage.getItem('turtleUID')) {
+                setTargetUser(localStorage.getItem('turtleUID'));
+                return;
+            }
+            navigate('/forms');
+            return;
         };
     }, []);
 

@@ -8,8 +8,6 @@ const Calendar = ({ data }) => {
 
     let dates = data.scoresByUser.map(score => { return formatScoreDate(score.createdAt) });
 
-    console.log(dates)
-
     return (
         <div className='bg-slate-100 my-3 rounded-md shadow-sm'>
             <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Calendar</h3>

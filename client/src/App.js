@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import Home from './pages/Home';
@@ -23,6 +23,10 @@ const client = new ApolloClient({
 function App() {
   const [user, setUser] = useState('');
 
+  const wrapperSetUser = useCallback(val => {
+    setUser(val);
+  }, [setUser]);
+
   const getUser = async () => {
     const response = await fetch('/auth/user');
     const data = await response.json();
@@ -34,8 +38,12 @@ function App() {
   }
 
   useEffect(() => {
-    getUser();
-  }, [setUser])
+    if (localStorage.getItem('turtleUID')) {
+      setUser(localStorage.getItem('turtleUID'));
+    } else {
+      getUser();
+    }
+  }, [])
   
   return (
     <ApolloProvider client={client}>
@@ -44,12 +52,12 @@ function App() {
           <Header />
           <Routes>
             <Route exact path='/' element={<Home user={user} />} />
-            <Route exact path='/forms' element={<Forms user={user} setUser={setUser} />} />
+            <Route exact path='/forms' element={<Forms user={user} setUser={wrapperSetUser} />} />
             <Route exact path='/game' element={<Game user={user} />} />
             <Route exact path='/daygame' element={<DailyGame user={user} />} />
             <Route exact path='/contgame' element={<ContGame user={user} />} />
             <Route exact path='/endgame' element={<EndGame user={user} />} />
-            <Route exact path='/profile' element={<Profile user={user} />} />
+            <Route exact path='/profile' element={<Profile user={user} setUSer={wrapperSetUser} />} />
             <Route exact path='/profile/:id' element={<Profile user={user} />} />
           </Routes>
           <Footer />
