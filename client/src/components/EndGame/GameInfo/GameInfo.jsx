@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_SCORE } from '../../../utils/mutations';
+import { QUERY_SCORE } from '../../../utils/queries';
 import { useEffect } from 'react';
 
 import { EndGameChart } from '../../Charts';
@@ -8,10 +9,13 @@ import { EndGameChart } from '../../Charts';
 const GameInfo = ({ user }) => {
     const [addScore] = useMutation(ADD_SCORE)
     const location = useLocation();
+    const { loading, error, data } = useQuery(QUERY_SCORE, {
+        variables: { userId: user }
+    })
 
     useEffect(() => {
         addScore({
-            variables: { userID: user, guesses: location.state.guessArr.length, word: location.state.target, type: location.state.type }
+            variables: { userId: user, guesses: location.state.guessArr.length, word: location.state.target, type: location.state.type }
         })
     }, [])
 
