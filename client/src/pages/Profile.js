@@ -1,18 +1,21 @@
 import { Info, Scores, Stats } from "../components/Profile";
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Profile = ({ user }) => {
     const params = useParams();
     const navigate = useNavigate();
     let targetUser;    
 
-    if (params.id) {
-        targetUser = params.id;
-    } else if (!user) {
-        navigate('/forms', {replace: true});
-    } else {
-        targetUser = user;
-    };
+    useEffect(() => {
+        if (params.id) {
+            targetUser = params.id;
+        } else if (!user) {
+            navigate('/forms');
+        } else {
+            targetUser = user;
+        };
+    }, []);
 
     return (
         <main className='grow'>
