@@ -22,6 +22,7 @@ ChartJS.register(
 
 const EndGameChart = ({ data }) => {
     const location = useLocation();
+    const currentGuesses = location.state.guessArr.length;
 
     let labelArr = [];
     let dataArr = [];
@@ -32,14 +33,14 @@ const EndGameChart = ({ data }) => {
     let indexFive = [];
 
     // useEffect(() => {
-    if (location.state.guessArr.length > 4) {
-        labelArr = [location.state.guessArr.length - 2, location.state.guessArr.length - 1, location.state.guessArr.length, location.state.guessArr.length + 1, location.state.guessArr.length + 2];
+    if (currentGuesses > 4) {
+        labelArr = [currentGuesses - 2, currentGuesses - 1, currentGuesses, currentGuesses + 1, currentGuesses + 2];
         // dataArr = data.scoresByUser.filter((item) => item.guesses <= location.state.guessArr.length + 2 && item.guesses >= location.state.guessArr.length + -2)
-        indexOne = data.scoresByUser.filter((item) => item.guesses === location.state.guessArr.length - 2)
-        indexTwo = data.scoresByuser.filter((item) => item.guesses === location.state.guessArr.length - 1)
-        indexThree = data.scoresByuser.filter((item) => item.guesses === location.state.guessArr.length)
-        indexFour = data.scoresByuser.filter((item) => item.guesses === location.state.guessArr.length + 1)
-        indexFive = data.scoresByuser.filter((item) => item.guesses === location.state.guessArr.length + 2)
+        indexOne = data.scoresByUser.filter((item) => item.guesses === currentGuesses - 2)
+        indexTwo = data.scoresByuser.filter((item) => item.guesses === currentGuesses - 1)
+        indexThree = data.scoresByuser.filter((item) => item.guesses === currentGuesses)
+        indexFour = data.scoresByuser.filter((item) => item.guesses === currentGuesses + 1)
+        indexFive = data.scoresByuser.filter((item) => item.guesses === currentGuesses + 2)
 
         dataArr.push(indexOne.length)
         dataArr.push(indexTwo.length)
