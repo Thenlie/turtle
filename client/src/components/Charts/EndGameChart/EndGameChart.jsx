@@ -39,7 +39,11 @@ const EndGameChart = ({ data }) => {
         console.log(dataArr)
     } else {
         labelArr = [1, 2, 3, 4, 5]
-        dataArr = data.scoresByUser.filter((item) => item.guesses >= 1 && item.guesses <= 5)
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 1).length)
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 2).length)
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 3).length)
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 4).length)
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 5).length)
     }
     console.log(dataArr)
 
