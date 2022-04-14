@@ -20,12 +20,13 @@ const Profile = ({ user }) => {
             setTargetUser(params.id);
         } else if (user) {
             setTargetUser(user);
+            localStorage.setItem('turtleUID', user);
         } else {
             if (localStorage.getItem('turtleUID')) {
                 setTargetUser(localStorage.getItem('turtleUID'));
-                return;
-            }
-            navigate('/forms');
+            } else {
+                navigate('/forms');
+            };
         };
     };
 

@@ -34,8 +34,8 @@ function App() {
       setUser(null);
     } else {
       setUser(data);
-    }
-  }
+    };
+  };
 
   useEffect(() => {
     if (localStorage.getItem('turtleUID')) {
@@ -58,8 +58,8 @@ function App() {
             <Route exact path='/contgame' element={<ContGame user={user} />} />
             <Route exact path='/endgame' element={<EndGame user={user} />} />
             <Route path='/profile' element={<Profile user={user} />} >
-              <Route path='dashboard' element={<Profile user={user} />} />
-              <Route path=':id' element={<Profile user={null} />}  />
+              <Route path='dashboard' />
+              <Route path=':id' />
             </Route>
           </Routes>
           <Footer />
