@@ -52,7 +52,7 @@ const GuessChart = ({ data }) => {
                             borderColor: 'rgb(53, 162, 235)',
                             backgroundColor: 'rgba(53, 162, 235, 0.5)',
                             fill: true,
-                            tension: 0.1,
+                            stepped: true
                         }],
                 }}
                 options={{
