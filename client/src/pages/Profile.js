@@ -8,21 +8,26 @@ const Profile = ({ user }) => {
     const [targetUser, setTargetUser] = useState('') 
 
     useEffect(() => {
+        assignUser();
+    }, []);
+
+    useEffect(() => {
+        assignUser();
+    }, [window.location.pathname]);
+
+    const assignUser = () => {
         if (params.id) {
             setTargetUser(params.id);
-            return;
-        } else if (!params.id && user) {
+        } else if (user) {
             setTargetUser(user);
-            return;
         } else {
             if (localStorage.getItem('turtleUID')) {
                 setTargetUser(localStorage.getItem('turtleUID'));
                 return;
             }
             navigate('/forms');
-            return;
         };
-    }, []);
+    };
 
     return (
         <main className='grow'>

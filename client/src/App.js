@@ -43,7 +43,7 @@ function App() {
     } else {
       getUser();
     }
-  }, [])
+  }, []);
   
   return (
     <ApolloProvider client={client}>
@@ -57,8 +57,10 @@ function App() {
             <Route exact path='/daygame' element={<DailyGame user={user} />} />
             <Route exact path='/contgame' element={<ContGame user={user} />} />
             <Route exact path='/endgame' element={<EndGame user={user} />} />
-            <Route exact path='/profile' element={<Profile user={user} setUSer={wrapperSetUser} />} />
-            <Route exact path='/profile/:id' element={<Profile user={user} />} />
+            <Route path='/profile' element={<Profile user={user} />} >
+              <Route path='dashboard' element={<Profile user={user} />} />
+              <Route path=':id' element={<Profile user={null} />}  />
+            </Route>
           </Routes>
           <Footer />
         </Router>
