@@ -25,11 +25,27 @@ const EndGameChart = ({ data }) => {
 
     let labelArr = [];
     let dataArr = [];
+    let indexOne = [];
+    let indexTwo = [];
+    let indexThree = [];
+    let indexFour = []
+    let indexFive = [];
 
     // useEffect(() => {
     if (location.state.guessArr.length > 4) {
         labelArr = [location.state.guessArr.length - 2, location.state.guessArr.length - 1, location.state.guessArr.length, location.state.guessArr.length + 1, location.state.guessArr.length + 2];
-        dataArr = data.scoresByUser.filter((item) => item.guesses <= location.state.guessArr.length + 2 && item.guesses >= location.state.guessArr.length + -2)
+        // dataArr = data.scoresByUser.filter((item) => item.guesses <= location.state.guessArr.length + 2 && item.guesses >= location.state.guessArr.length + -2)
+        indexOne = data.scoresByUser.filter((item) => item.guesses === location.state.guessArr.length - 2)
+        indexTwo = data.scoresByuser.filter((item) => item.guesses === location.state.guessArr.length - 1)
+        indexThree = data.scoresByuser.filter((item) => item.guesses === location.state.guessArr.length)
+        indexFour = data.scoresByuser.filter((item) => item.guesses === location.state.guessArr.length + 1)
+        indexFive = data.scoresByuser.filter((item) => item.guesses === location.state.guessArr.length + 2)
+
+        dataArr.push(indexOne.length)
+        dataArr.push(indexTwo.length)
+        dataArr.push(indexThree.length)
+        dataArr.push(indexFour.length)
+        dataArr.push(indexFive.length)
     } else {
         labelArr = [1, 2, 3, 4, 5]
         dataArr = data.scoresByUser.filter((item) => item.guesses >= 1 && item.guesses <= 5)
@@ -49,7 +65,7 @@ const EndGameChart = ({ data }) => {
                 datasets: [
                     {
                         label: 'Guesses',
-                        data: dataArr.map((item) => item.guesses),
+                        data: [4, 1, 1, 1, 56],
                         borderColor: 'rgb(255, 99, 132)',
                         backgroundColor: 'rgba(255, 99, 132, 0.5)',
                         fill: true,
