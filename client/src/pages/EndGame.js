@@ -1,4 +1,5 @@
 import { GameInfo, Message } from '../components/EndGame';
+import { EndGameChart } from '../components/Charts';
 
 const EndGame = ({ user }) => {
     return (
