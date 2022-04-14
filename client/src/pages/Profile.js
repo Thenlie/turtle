@@ -32,8 +32,8 @@ const Profile = ({ user }) => {
 
     return (
         <main className='grow'>
-            <div className='grid grid-cols-3'>
-                <div className='col-span-2'>
+            <div className='lg:grid grid-cols-3'>
+                <div className='lg:col-span-2'>
                     <Info user={targetUser} />
                     <Scores />
                 </div>
