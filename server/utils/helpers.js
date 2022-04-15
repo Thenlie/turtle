@@ -36,7 +36,7 @@ module.exports = {
             word = faker.random.word().toUpperCase();
         };
         return new ScoreObj(
-            id, 
+            id.toString(), 
             randomType(), 
             Math.floor(Math.random() * 6) + 1, 
             word,

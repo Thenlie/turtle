@@ -59,5 +59,3 @@ export const QUERY_SCORE = gql`
         }
     }
 `
-
-

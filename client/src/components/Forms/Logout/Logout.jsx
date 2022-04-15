@@ -6,6 +6,7 @@ const Logout = ({setUser}) => {
             method: 'POST',
         })
         setUser(null);
+        localStorage.clear();
         return response;
     };
 

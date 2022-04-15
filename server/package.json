@@ -19,6 +19,7 @@
     "body-parser": "^1.19.2",
     "connect-mongo": "^4.6.0",
     "cors": "^2.8.5",
+    "country-flag-icons": "^1.4.25",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
