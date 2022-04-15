@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_SCORE } from '../utils/queries';
 
 const EndGame = ({ user }) => {
-    const { loading, data } = useQuery(QUERY_SCORE, {
+    const { loading, data, refetch } = useQuery(QUERY_SCORE, {
         variables: { userId: user }
     });
 
@@ -20,7 +20,7 @@ const EndGame = ({ user }) => {
                     <Message />
                 </div>
                 <div className='bg-gray-300 rounded-lg my-2 p-4'>
-                    <GameInfo user={user} data={data} />
+                    <GameInfo user={user} data={data} refetch={refetch} />
                 </div>
             </div>
         </main>

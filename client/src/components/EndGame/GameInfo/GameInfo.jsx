@@ -4,7 +4,7 @@ import { ADD_SCORE } from '../../../utils/mutations';
 import { useEffect } from 'react';
 import { EndGameChart } from '../../Charts';
 
-const GameInfo = ({ user, data }) => {
+const GameInfo = ({ user, data, refetch }) => {
     const [addScore] = useMutation(ADD_SCORE);
     const location = useLocation();
 
@@ -12,7 +12,8 @@ const GameInfo = ({ user, data }) => {
         addScore({
             variables: { userId: user, guesses: location.state.guessArr.length, word: location.state.target, type: location.state.type }
         });
-    }, [addScore, location.state.guessArr.length, location.state.target, location.state.type, user]);
+        refetch();
+    }, [addScore, location.state.guessArr.length, location.state.target, location.state.type, user, refetch]);
 
     return (
         <div className='flex flex-col items-center'>
