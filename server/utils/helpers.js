@@ -4,7 +4,7 @@ const ScoreObj = require('../lib/ScoreObj');
 
 const randomDate = () => {
     return new Date(
-        Math.floor(Math.random() * (2022 - 2020 + 1)) + 2020,
+        2022,
         Math.floor(Math.random() * 11),
         Math.floor(Math.random() * 29)
     );
