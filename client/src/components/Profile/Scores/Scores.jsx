@@ -1,4 +1,4 @@
-import { EndGameChart } from "../../Charts";
+import { GuessPerGameChart } from "../../Charts";
 
 const Scores = ({ data }) => {
     return (
@@ -7,7 +7,7 @@ const Scores = ({ data }) => {
                 <h2 className='font-bold'>Scores</h2>
             </div>
             <div className='p-4 h-96'>
-                <EndGameChart data={data} />
+                <GuessPerGameChart data={data} />
             </div>
         </section>
     );

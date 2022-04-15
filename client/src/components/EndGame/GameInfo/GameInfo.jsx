@@ -1,8 +1,8 @@
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_SCORE } from '../../../utils/mutations';
 import { useEffect } from 'react';
-import { EndGameChart } from '../../Charts';
+import { GuessPerGameChart } from '../../Charts';
 
 const GameInfo = ({ user, data, refetch }) => {
     const [addScore] = useMutation(ADD_SCORE);
@@ -18,7 +18,7 @@ const GameInfo = ({ user, data, refetch }) => {
     return (
         <div className='flex flex-col items-center'>
             <div className='h-[250px]'>
-                {data && <EndGameChart data={data} />}
+                {data && <GuessPerGameChart data={data} />}
             </div>
             <div>
                 <Link to={'/'}><button className='mx-2 text-black'>Home</button></Link>

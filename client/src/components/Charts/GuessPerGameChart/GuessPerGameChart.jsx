@@ -19,18 +19,13 @@ ChartJS.register(
     Legend
 );
 
-const EndGameChart = ({ data }) => {
+const GuessPerGameChart = ({ data }) => {
     const location = useLocation();
     let currentGuesses = 3;
-    // ------------
 
     if (location.state) {
         currentGuesses = location.state.guessArr.length;
     };
-
-    // ------------
-
-    // const currentGuesses = location.state.guessArr.length;
 
     let labelArr = [];
     let dataArr = [];
@@ -38,19 +33,19 @@ const EndGameChart = ({ data }) => {
     if (currentGuesses > 4) {
         labelArr = [currentGuesses - 2, currentGuesses - 1, currentGuesses, currentGuesses + 1, currentGuesses + 2];
 
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses - 2).length)
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses - 1).length)
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses).length)
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses + 1).length)
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses + 2).length)
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses - 2).length);
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses - 1).length);
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses).length);
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses + 1).length);
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses + 2).length);
     } else {
         labelArr = [1, 2, 3, 4, 5]
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 1).length)
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 2).length)
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 3).length)
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 4).length)
-        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 5).length)
-    }
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 1).length);
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 2).length);
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 3).length);
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 4).length);
+        dataArr.push(data.scoresByUser.filter((item) => item.guesses === 5).length);
+    };
 
     return (
         <div className='h-full'>
@@ -107,4 +102,4 @@ const EndGameChart = ({ data }) => {
 };
 
 
-export default EndGameChart;
+export default GuessPerGameChart;
