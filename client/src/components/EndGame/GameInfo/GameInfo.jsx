@@ -12,7 +12,7 @@ const GameInfo = ({ user, data }) => {
         addScore({
             variables: { userId: user, guesses: location.state.guessArr.length, word: location.state.target, type: location.state.type }
         });
-    }, []);
+    }, [addScore, location.state.guessArr.length, location.state.target, location.state.type, user]);
 
     return (
         <div className='flex flex-col items-center'>

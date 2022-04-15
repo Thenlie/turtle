@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 const Display = ({ target, guessArr, type }) => {
     const targetArr = target.split('').map((target, i) => { return { name: target + i, value: target } });
     const navigate = useNavigate();
-    console.log(target);
 
     useEffect(() => {
         // get all guess elements, return if no guesses
@@ -16,7 +15,7 @@ const Display = ({ target, guessArr, type }) => {
 
         // create array of letters from guesses
         let letters = [];
-        guesses.map(child => { letters.push(...child.children) });
+        guesses.map(child => ( letters.push(...child.children) ));
 
         let tmpArr = [];
         let c = 0;
@@ -56,7 +55,7 @@ const Display = ({ target, guessArr, type }) => {
             }
             c++;
         };
-    }, [guessArr]);
+    }, [guessArr, navigate, target, targetArr, type]);
 
     return (
         <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>

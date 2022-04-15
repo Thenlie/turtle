@@ -14,7 +14,7 @@ const Signup = () => {
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [validUsername, setValidUsername] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
-    const { loading, data } = useQuery(QUERY_USERNAME, {
+    const { data } = useQuery(QUERY_USERNAME, {
         variables: { username: username }
     });
 
@@ -91,7 +91,7 @@ const Signup = () => {
                 setValidUsername(false);
             }
         };
-    }, [data]);
+    }, [data, username.length]);
 
     // check if email input is valid
     useEffect(() => {
@@ -103,7 +103,7 @@ const Signup = () => {
     }, [email]);
 
     useEffect(() => {
-        console.log(country)
+        return;
     }, [country]);
 
 
