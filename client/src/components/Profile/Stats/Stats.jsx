@@ -1,17 +1,8 @@
-import { useQuery } from "@apollo/client";
-import { QUERY_SCORE } from "../../../utils/queries";
 import Calendar from "./Calendar";
 import Charts from "./Charts";
 import Info from "./Info";
 
-const Stats = ({ user }) => {
-    const { loading, data } = useQuery(QUERY_SCORE, { variables: { userId: user }});
-
-    if (loading) {
-        return (
-            <p>Loading...</p>
-        );
-    };
+const Stats = ({ data }) => {
 
     return (
         <section className='bg-slate-200 m-4 rounded-md'>

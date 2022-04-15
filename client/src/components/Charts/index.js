@@ -1,3 +1,5 @@
-import EndGameChart from "./EndGameChart";
+import GuessPerGameChart from "./GuessPerGameChart";
+import GamePerDayChart from "./GamePerDayChart";
+import GuessPerDayChart from "./GuessPerDayChart";
 
-export { EndGameChart }
+export { GuessPerGameChart, GamePerDayChart, GuessPerDayChart };
