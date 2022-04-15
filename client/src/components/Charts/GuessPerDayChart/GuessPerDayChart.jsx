@@ -1,4 +1,4 @@
-import { formatDateFull } from '../../utils/helper';
+import { formatDateFull } from '../../../utils/helper';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -23,34 +23,34 @@ ChartJS.register(
     Filler
 );
 
-const GameChart = ({ data }) => {
-    let games = [], dates = [];
+const GuessPerDayChart = ({ data }) => {    
+    let guesses = [], dates = [];
     let dataArr = [...data.scoresByUser]
     // sort score array by date
     let sortedData = dataArr.sort((a, b) => { return a.createdAt - b.createdAt })
-    // create array of total games played per day and array of unique days
+    // create array of total guesses per day and array of unique days
     for (let i = 0; i < sortedData.length; i++) {
         if (!dates.includes(formatDateFull(sortedData[i].createdAt))) {
             dates.push(formatDateFull(sortedData[i].createdAt));
-            games.push(1);
+            guesses.push(sortedData[i].guesses);
         } else {
-            const c = games.pop();
-            games.push(c + 1);
+            const c = guesses.pop();
+            guesses.push(c + sortedData[i].guesses);
         };
     };
 
     return (
     <div className='bg-slate-100 rounded-t-md shadow-sm'>
-        <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Game per Day</h3>
+        <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Guesses per Day</h3>
         <div className='p-1'>
             <Line
                 data={{
                     labels: dates,
                     datasets: [{
-                            label: '# of Games',
-                            data: games,
-                            borderColor: 'rgb(255, 99, 132)',
-                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            label: '# of Guesses',
+                            data: guesses,
+                            borderColor: 'rgb(53, 162, 235)',
+                            backgroundColor: 'rgba(53, 162, 235, 0.5)',
                             fill: true,
                             stepped: true
                         }],
@@ -64,7 +64,9 @@ const GameChart = ({ data }) => {
                         title: {
                             display: false,
                             text: 'Games Played',
-                            font: { size: 20 },
+                            font: {
+                                size: 20,
+                            },
                             color: '#6b7280',
                         },
                     },
@@ -82,7 +84,7 @@ const GameChart = ({ data }) => {
                                 maxTicksLimit: 5,
                             },
                             display: false
-                        }
+                        },
                     },
                     color: '#6b7280',
                 }}
@@ -91,5 +93,4 @@ const GameChart = ({ data }) => {
     </div>
     );
 };
-
-export default GameChart;
+export default GuessPerDayChart;
