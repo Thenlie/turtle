@@ -21,7 +21,8 @@ const Login = ({setUser}) => {
             })
         })
         const data = await response.json();
-        setUser(data._id)
+        setUser(data._id);
+        localStorage.setItem('turtleUID', data._id);
         return data;
     };
 
