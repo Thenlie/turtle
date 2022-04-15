@@ -1,21 +1,13 @@
 import { Info, Scores, Stats } from "../components/Profile";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 const Profile = ({ user }) => {
     const params = useParams();
     const navigate = useNavigate();
     const [targetUser, setTargetUser] = useState('') 
 
-    useEffect(() => {
-        assignUser();
-    }, []);
-
-    useEffect(() => {
-        assignUser();
-    }, [window.location.pathname]);
-
-    const assignUser = () => {
+    const assignUser = useCallback(() => {
         if (params.id) {
             setTargetUser(params.id);
         } else if (user) {
@@ -28,7 +20,11 @@ const Profile = ({ user }) => {
                 navigate('/forms');
             };
         };
-    };
+    }, [navigate, params.id, user]);
+
+    useEffect(() => {
+        assignUser();
+    }, [assignUser]);
 
     return (
         <main className='grow'>

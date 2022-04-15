@@ -22,6 +22,7 @@ const Display = ({ target, guessArr, type }) => {
         let c = 0;
         let win = 0
         for (let i = 0; i < letters.length; i++) {
+            const cur = document.getElementById(letters[i].textContent);
             if (c % 5 === 0) {
                 tmpArr = [...targetArr]; // reset when checking new word
                 win = 0;
@@ -30,12 +31,13 @@ const Display = ({ target, guessArr, type }) => {
             if (tmpArr.some(target => target.name === letters[i].attributes.name.value)) {
                 letters[i].classList.add('bg-green-200');
                 tmpArr.splice(tmpArr.findIndex(obj => { return obj.name === letters[i].attributes.name.value }), 1);
-                document.getElementById(letters[i].textContent).classList.remove('bg-yellow-200');
-                document.getElementById(letters[i].textContent).classList.add('bg-green-200');
+                cur.classList.remove('bg-yellow-200');
+                cur.classList.add('bg-green-200');
                 win++
+                // check if game is won
                 if (win === 5) {
                     navigate("/endgame", { state: { target, guessArr, type } });
-                }
+                };
             };
             // yellow styling
             if (tmpArr.some(target => target.value === letters[i].textContent)) {
@@ -43,13 +45,13 @@ const Display = ({ target, guessArr, type }) => {
                     letters[i].classList.add('bg-yellow-200');
                     tmpArr.splice(tmpArr.findIndex(obj => { return obj.value === letters[i].textContent }), 1);
                 };
-                if (!document.getElementById(letters[i].textContent).classList.contains('bg-green-200')) {
-                    document.getElementById(letters[i].textContent).classList.add('bg-yellow-200');
+                if (!cur.classList.contains('bg-green-200')) {
+                    cur.classList.add('bg-yellow-200');
                 };
                 // grey styling
             } else {
-                if (!document.getElementById(letters[i].textContent).classList.contains('bg-green-200')) {
-                    document.getElementById(letters[i].textContent).classList.add('bg-slate-400');
+                if (!cur.classList.contains('bg-green-200')) {
+                    cur.classList.add('bg-slate-400');
                 };
             }
             c++;

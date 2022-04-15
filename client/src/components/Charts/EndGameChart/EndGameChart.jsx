@@ -9,7 +9,6 @@ import {
     Tooltip,
     Legend,
 } from 'chart.js';
-import { useEffect } from 'react';
 
 ChartJS.register(
     CategoryScale,
@@ -35,8 +34,6 @@ const EndGameChart = ({ data }) => {
         dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses).length)
         dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses + 1).length)
         dataArr.push(data.scoresByUser.filter((item) => item.guesses === currentGuesses + 2).length)
-
-        console.log(dataArr)
     } else {
         labelArr = [1, 2, 3, 4, 5]
         dataArr.push(data.scoresByUser.filter((item) => item.guesses === 1).length)
@@ -45,7 +42,6 @@ const EndGameChart = ({ data }) => {
         dataArr.push(data.scoresByUser.filter((item) => item.guesses === 4).length)
         dataArr.push(data.scoresByUser.filter((item) => item.guesses === 5).length)
     }
-    console.log(dataArr)
 
     return (
 
