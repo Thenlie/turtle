@@ -1,8 +1,7 @@
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useMutation } from '@apollo/client';
 import { ADD_SCORE } from '../../../utils/mutations';
 import { useEffect } from 'react';
-
 import { EndGameChart } from '../../Charts';
 
 const GameInfo = ({ user, data }) => {
@@ -12,7 +11,7 @@ const GameInfo = ({ user, data }) => {
     useEffect(() => {
         addScore({
             variables: { userId: user, guesses: location.state.guessArr.length, word: location.state.target, type: location.state.type }
-        })
+        });
     }, []);
 
     return (
@@ -21,11 +20,10 @@ const GameInfo = ({ user, data }) => {
                 {data && <EndGameChart data={data} />}
             </div>
             <div>
-                <button className='mx-2'>Home</button>
-                < button className='mx-2' > Next</button >
-                <button className='mx-2'>Replay</button>
+                <Link to={'/'}><button className='mx-2 text-black'>Home</button></Link>
+                <Link to={'/contgame'}><button className='mx-2 text-black'>Play Again</button ></Link>
             </div >
-        </div >
+        </div>
     );
 };
 

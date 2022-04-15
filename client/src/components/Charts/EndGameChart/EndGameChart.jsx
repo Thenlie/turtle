@@ -21,14 +21,12 @@ ChartJS.register(
 
 const EndGameChart = ({ data }) => {
     const location = useLocation();
-    let currentGuesses;
+    let currentGuesses = 3;
     // ------------
 
     if (location.state) {
         currentGuesses = location.state.guessArr.length;
-    } else {
-        currentGuesses = 4
-    }
+    };
 
     // ------------
 

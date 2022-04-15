@@ -20,7 +20,6 @@ const NavItem = (props) => {
       <a href='#' className='icon-button' onClick={() => setOpen(!open)}>
         {props.icon}
       </a>
-
       {open && props.children}
     </li>
   );
