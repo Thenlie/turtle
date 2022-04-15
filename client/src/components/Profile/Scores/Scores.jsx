@@ -6,8 +6,7 @@ const Scores = ({ data }) => {
             <div className='bg-slate-300 p-2 rounded-t-md'>
                 <h2 className='font-bold'>Scores</h2>
             </div>
-            <div className='p-4'>
-                <p>In development...</p>
+            <div className='p-4 h-96'>
                 <EndGameChart data={data} />
             </div>
         </section>

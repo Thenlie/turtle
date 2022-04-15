@@ -55,7 +55,7 @@ const EndGameChart = ({ data }) => {
     }
 
     return (
-        <div>
+        <div className='h-full'>
             <Bar
                 data={{
                     labels: labelArr,
@@ -84,7 +84,7 @@ const EndGameChart = ({ data }) => {
                             position: 'top',
                         },
                         title: {
-                            display: true,
+                            display: false,
                             text: 'History',
                             font: {
                                 size: 20,
@@ -103,7 +103,6 @@ const EndGameChart = ({ data }) => {
                     },
                     color: '#6b7280',
                 }}
-                className='h-1/2'
             />
         </div>
     );
