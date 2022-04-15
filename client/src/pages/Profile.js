@@ -1,11 +1,14 @@
 import { Info, Scores, Stats } from "../components/Profile";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_SCORE } from "../utils/queries";
 
 const Profile = ({ user }) => {
     const params = useParams();
     const navigate = useNavigate();
     const [targetUser, setTargetUser] = useState('') 
+    const { loading, data } = useQuery(QUERY_SCORE, { variables: { userId: targetUser }});
 
     const assignUser = useCallback(() => {
         if (params.id) {
@@ -26,15 +29,21 @@ const Profile = ({ user }) => {
         assignUser();
     }, [assignUser]);
 
+    if (loading) {
+        return (
+            <p>Loading...</p>
+        );
+    };
+
     return (
         <main className='grow'>
             <div className='lg:grid grid-cols-3'>
                 <div className='lg:col-span-2'>
                     <Info user={targetUser} />
-                    <Scores />
+                    <Scores data={data} />
                 </div>
                 <aside>
-                    <Stats user={targetUser} />
+                    <Stats data={data} />
                 </aside>
             </div>
         </main>

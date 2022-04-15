@@ -1,4 +1,6 @@
-const Scores = () => {
+import { EndGameChart } from "../../Charts";
+
+const Scores = ({ data }) => {
     return (
         <section className='bg-slate-200 m-4 rounded-md'>
             <div className='bg-slate-300 p-2 rounded-t-md'>
@@ -6,6 +8,7 @@ const Scores = () => {
             </div>
             <div className='p-4'>
                 <p>In development...</p>
+                <EndGameChart data={data} />
             </div>
         </section>
     );
