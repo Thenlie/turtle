@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
 import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import { QUERY_USERNAME } from '../../../utils/queries'; 
@@ -14,6 +15,7 @@ const Signup = () => {
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [validUsername, setValidUsername] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
+    const navigate = useNavigate();
     const { data } = useQuery(QUERY_USERNAME, {
         variables: { username: username }
     });
@@ -21,7 +23,7 @@ const Signup = () => {
     const handleSignup = async (evt) => {
         evt.preventDefault();
         if (password === confirmPassword) {
-            const response = await fetch('/auth/signup', {
+            await fetch('/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -33,7 +35,7 @@ const Signup = () => {
                     'country': country
                 })
             });
-            return response;
+            navigate("/profile/dashboard");
         } else {
             // toggle error message
             console.log('passwords must match');

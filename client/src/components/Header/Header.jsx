@@ -1,9 +1,9 @@
 import Navigation from "./Navigation";
 
-const Header = () => {
+const Header = ({ user }) => {
     return (
         <header className='h-16 bg-slate-200'>
-            <Navigation />
+            <Navigation user={user} />
         </header>
     )
 };

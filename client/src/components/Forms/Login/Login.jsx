@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
 import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import validator from 'validator';
 
@@ -7,6 +8,7 @@ const Login = ({setUser}) => {
     const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
+    const navigate = useNavigate();
 
     const handleLogin = async (evt) => {
         evt.preventDefault();
@@ -23,7 +25,7 @@ const Login = ({setUser}) => {
         const data = await response.json();
         setUser(data._id);
         localStorage.setItem('turtleUID', data._id);
-        return data;
+        navigate("/profile/dashboard");
     };
 
     const handleChange = (evt) => {
