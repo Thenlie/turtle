@@ -10,6 +10,7 @@ import EndGame from './pages/EndGame';
 import DailyGame from './pages/DailyGame';
 import ContGame from './pages/ContGame';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
 import { Login, Signup } from './components/Forms';
 
 const httpLink = createHttpLink({
@@ -52,9 +53,10 @@ function App() {
         <Router>
           <Header />
           <Routes>
+            <Route exact path='*' element={<NotFound />} />
             <Route exact path='/' element={<Home user={user} />} />
             {/* <Route exact path='/forms' element={<Forms user={user} setUser={wrapperSetUser} />} /> */}
-            <Route path='/forms' element={<Forms user={user} />} >
+            <Route element={<Forms user={user} />} >
               <Route exact path='login' element={<Login setUser={wrapperSetUser} />} />
               <Route exact path='signup' element={<Signup setUser={wrapperSetUser} />} />
             </Route>
