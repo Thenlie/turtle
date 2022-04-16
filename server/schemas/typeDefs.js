@@ -24,6 +24,7 @@ const typeDefs = gql`
         users: [User]
         user(id: String!): User
         username(username: String!): User
+        email(email: String!): User
         me: User
         loggedIn: String
         scores: [Scores]

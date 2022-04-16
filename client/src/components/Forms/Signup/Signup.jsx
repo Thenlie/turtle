@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
 import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
-import { QUERY_USERNAME } from '../../../utils/queries'; 
+import { QUERY_USERNAME, QUERY_EMAIL } from '../../../utils/queries'; 
 import validator from 'validator';
 
 const Signup = () => {
@@ -19,10 +19,13 @@ const Signup = () => {
     const { data } = useQuery(QUERY_USERNAME, {
         variables: { username: username }
     });
+    const emailQuery = useQuery(QUERY_EMAIL, {
+        variables: { email: email }
+    });
 
     const handleSignup = async (evt) => {
         evt.preventDefault();
-        if (password === confirmPassword) {
+        if (password === confirmPassword && validUsername && validEmail) {
             await fetch('/auth/signup', {
                 method: 'POST',
                 headers: {
@@ -91,18 +94,26 @@ const Signup = () => {
                 setValidUsername(true);
             } else {
                 setValidUsername(false);
-            }
+            };
         };
     }, [data, username.length]);
 
     // check if email input is valid
     useEffect(() => {
-        if (validator.isEmail(email)) {
-            setValidEmail(true);
-        } else {
-            setValidEmail(false);
-        }
-    }, [email]);
+        if (email && emailQuery.data) {
+            if (validator.isEmail(email) && !emailQuery.data.email) {
+                setValidEmail(true);
+            } else {
+                setValidEmail(false);
+            };
+        } else if (email) {
+            if (validator.isEmail(email)) {
+                setValidEmail(true);
+            } else {
+                setValidEmail(false);
+            };
+        };
+    }, [email, emailQuery]);
 
     useEffect(() => {
         return;
@@ -115,19 +126,19 @@ const Signup = () => {
             {/* signup form */}
             <form onSubmit={handleSignup} className='flex flex-col'>
                 <div className='flex items-center'>
-                    <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='username' placeholder='username' type='text' value={username}></input>
+                    <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='username' placeholder='Username' type='text' value={username}></input>
                     <div title={validUsername ? ('Username Available') : ('Username Unavailable')} className='bg-white p-2 rounded-r-md'>{validUsername ? (<CheckCircleIcon width={25} className='stroke-green-400'/>) : (<XCircleIcon width={25} className='stroke-red-400'/>)}</div>
                 </div>
                 <div className='flex items-center'>
-                    <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='email' placeholder='email' type='email' value={email}></input>
+                    <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='email' placeholder='E-mail' type='email' value={email}></input>
                     <div title={validEmail ? ('Email Valid') : ('Email Invalid')} className='bg-white p-2 rounded-r-md'>{validEmail ? (<CheckCircleIcon width={25} className='stroke-green-400'/>) : (<XCircleIcon width={25} className='stroke-red-400'/>)}</div>
                 </div>
                 <div className='flex items-center'>
-                    <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='password' placeholder='password' type='password' id='password' value={password}></input>
+                    <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='password' placeholder='Password' type='password' id='password' value={password}></input>
                     <div title='Toggle Password Visibility' onClick={togglePasswordVisible} className='bg-white p-2 rounded-r-md'>{passwordVisible ? (<EyeIcon width={25} className='stroke-slate-500'/>) : (<EyeOffIcon width={25} className='stroke-slate-500'/>)}</div>
                 </div>
                 <div className='flex items-center'>
-                    <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='confirmPassword' placeholder='confirmPassword' type='password' id='confirmPassword' value={confirmPassword}></input>
+                    <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='confirmPassword' placeholder='Confirm Password' type='password' id='confirmPassword' value={confirmPassword}></input>
                     <div title='Toggle Password Visibility' onClick={toggleConfirmPasswordVisible} className='bg-white p-2 rounded-r-md'>{confirmPasswordVisible ? (<EyeIcon width={25} className='stroke-slate-500'/>) : (<EyeOffIcon width={25} className='stroke-slate-500'/>)}</div>
                 </div>
                 <select name='country' className='form-control m-2 p-2 rounded-md' id='country' onChange={handleChange}>
