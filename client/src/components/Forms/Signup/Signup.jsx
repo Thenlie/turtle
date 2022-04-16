@@ -44,7 +44,7 @@ const Signup = ({ setUser }) => {
         } else {
             // toggle error message
             console.log('passwords must match');
-        }
+        };
     };
 
     const handleChange = (evt) => {
@@ -68,7 +68,7 @@ const Signup = ({ setUser }) => {
                 return;
             default: 
                 return;
-        }
+        };
     };
 
     const togglePasswordVisible = () => {
@@ -120,7 +120,6 @@ const Signup = ({ setUser }) => {
     }, [email, emailQuery]);
 
     useEffect(() => {
-        console.log(country)
         return;
     }, [country]);
 
@@ -128,7 +127,6 @@ const Signup = ({ setUser }) => {
     return (
         <section className='p-4 mt-6 mx-auto w-1/3 text-center bg-slate-100 rounded-md'>
             <h2 className='font-bold text-lg mb-2'>Signup</h2>
-            {/* signup form */}
             <form onSubmit={handleSignup} className='flex flex-col'>
                 <div className='flex items-center'>
                     <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='username' placeholder='Username' type='text' value={username}></input>

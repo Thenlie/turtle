@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import validator from 'validator';
 
@@ -21,7 +21,7 @@ const Login = ({ setUser }) => {
                 "email": email,
                 "password": password,
             })
-        })
+        });
         const data = await response.json();
         setUser(data._id);
         localStorage.setItem('turtleUID', data._id);
@@ -38,7 +38,7 @@ const Login = ({ setUser }) => {
                 return ;
             default: 
                 return;
-        }
+        };
     };
 
     const togglePasswordVisible = () => {
@@ -48,7 +48,7 @@ const Login = ({ setUser }) => {
         } else {
             setPasswordVisible(true);
             document.getElementById('login-password').type = 'text';
-        }
+        };
     };
 
     // check if email input is valid
@@ -63,7 +63,6 @@ const Login = ({ setUser }) => {
     return (
         <section className="p-4 mt-6 mx-auto w-1/3 text-center bg-slate-100 rounded-md">
             <h2 className='font-bold text-lg mb-2'>Login</h2>
-            {/* login form */}
             <form onSubmit={handleLogin} className='flex flex-col'>
             <div className='flex items-center'>
                     <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='email' placeholder='email' type='email' value={email}></input>
@@ -76,7 +75,7 @@ const Login = ({ setUser }) => {
                 <button type='submit' className='w-1/4 m-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Login</button>
             </form>
         </section>
-    )
+    );
 };
 
 export default Login;

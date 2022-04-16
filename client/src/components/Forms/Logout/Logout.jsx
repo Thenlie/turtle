@@ -1,13 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Logout = ({setUser}) => {
+    const navigate = useNavigate();
+
     const handleLogout = async () => {
-        const response = await fetch('/auth/logout', {
+        await fetch('/auth/logout', {
             method: 'POST',
-        })
+        });
         setUser(null);
         localStorage.clear();
-        return response;
+        navigate('/');
     };
 
     return (
@@ -15,7 +18,7 @@ const Logout = ({setUser}) => {
             <h2 className='font-bold text-lg mb-2'>Logout</h2>
             <button onClick={handleLogout} className='w-1/4 m-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Logout</button>
         </section>
-    )
+    );
 };
 
 export default Logout;
