@@ -1,13 +1,18 @@
 const { User, Scores } = require('../models');
-const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
     Query: {
         users: async (parent, args, context) => {
-            return await User.find()
+            return await User.find({});
         },
-        user: async (parent, { username }, context) => {
-            return await User.findOne({ username: username });
+        user: async (parent, args, context) => {
+            return await User.findOne({ _id: args.id});
+        },
+        username: async (parent, { username }, context) => {
+            return await User.findOne({ username });
+        },
+        email: async (parent, { email }, context) => {
+            return await User.findOne({ email });
         },
         me: async (parent, args, context) => {
             return await User.findOne({ _id: context.session.passport.user })
@@ -22,43 +27,13 @@ const resolvers = {
         scores: async () => {
             return await Scores.find();
         },
-        scoresByUser: async (parent, { userID }) => {
-            const params = { userID };
-            return Scores.find(params);
+        scoresByUser: async (parent, { userId }, context) => {
+            return await Scores.find({ userId });
         },
     },
     Mutation: {
-        signup: async (parent, args, context) => {
-            const user = await User.create(args);
-            return user;
-        },
-        login: async (parent, { email, password }, context) => {
-            const user = await User.findOne({ email });
-            if (!user) {
-                throw new AuthenticationError('No user found');
-            }
-            const validPassword = await user.isCorrectPassword(password);
-            if (!validPassword) {
-                throw new AuthenticationError('Incorrect credentials');
-            }
-            context.login(user, (err) => {
-                if (err) {
-                    return err;
-                }
-                return user;
-            });
-            return user;
-        },
-        logout: async (parent, args, context) => {
-            const user = await User.findOne({ _id: context.session.passport.user });
-            if (!user) {
-                throw new AuthenticationError('No user found');
-            }
-            return user;
-        },
         addScore: async (parent, args, context) => {
             const score = Scores.create(args);
-            console.log('true')
             return score;
         }
     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import Home from './pages/Home';
@@ -9,6 +9,9 @@ import Game from './pages/Game';
 import EndGame from './pages/EndGame';
 import DailyGame from './pages/DailyGame';
 import ContGame from './pages/ContGame';
+import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
+import { Login, Logout, Signup } from './components/Forms';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -22,6 +25,10 @@ const client = new ApolloClient({
 function App() {
   const [user, setUser] = useState('');
 
+  const wrapperSetUser = useCallback(val => {
+    setUser(val);
+  }, [setUser]);
+
   const getUser = async () => {
     const response = await fetch('/auth/user');
     const data = await response.json();
@@ -29,26 +36,38 @@ function App() {
       setUser(null);
     } else {
       setUser(data);
-    }
-  }
+    };
+  };
 
   useEffect(() => {
-    getUser();
-  }, [setUser])
+    if (localStorage.getItem('turtleUID')) {
+      setUser(localStorage.getItem('turtleUID'));
+    } else {
+      getUser();
+    }
+  }, []);
   
-
   return (
     <ApolloProvider client={client}>
       <div className='h-full'>
         <Router>
-          <Header />
+          <Header user={user} />
           <Routes>
+            <Route exact path='*' element={<NotFound />} />
             <Route exact path='/' element={<Home user={user} />} />
-            <Route exact path='/forms' element={<Forms user={user} setUser={setUser} />} />
+            <Route element={<Forms user={user} />} >
+              <Route exact path='login' element={<Login setUser={wrapperSetUser} />} />
+              <Route exact path='signup' element={<Signup setUser={wrapperSetUser} />} />
+              <Route exact path='logout' element={<Logout setUser={wrapperSetUser} />} />
+            </Route>
             <Route exact path='/game' element={<Game user={user} />} />
             <Route exact path='/daygame' element={<DailyGame user={user} />} />
             <Route exact path='/contgame' element={<ContGame user={user} />} />
             <Route exact path='/endgame' element={<EndGame user={user} />} />
+            <Route path='/profile' element={<Profile user={user} />} >
+              <Route path='dashboard' element={<Profile />}/>
+              <Route path=':id'element={<Profile />} />
+            </Route>
           </Routes>
           
         </Router>

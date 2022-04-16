@@ -19,10 +19,14 @@ router.post("/login", (req, res, next) => {
         if (!user) {
             return res.status(400).json({ errors: "No user found" });
         }
-        req.login(user, (err) => {
+        req.login(user, async (err) => {
             if (err) {
                 return res.status(400).json({ errors: err });
             }
+            await User.updateOne(
+                { _id: user._id }, 
+                { lastActive: Date.now() }
+            );
             return res.status(200).json({ _id: user._id });
         });
     })(req, res, next);
@@ -34,6 +38,7 @@ router.post("/signup", async (req, res, next) => {
             email: req.body.email,
             username: req.body.username,
             password: req.body.password,
+            country: req.body.country
         });
         const user = {
             'email': req.body.email,
@@ -41,7 +46,7 @@ router.post("/signup", async (req, res, next) => {
         }
         req.login(user, (err) => {
             if (err) { return next(err); }
-            res.json({ user: response.username, message: 'Signup Successful!' });
+            res.json({ _id: response._id, message: 'Signup Successful!' });
         });
     }
     catch (err) {
