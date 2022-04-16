@@ -32,7 +32,8 @@ const Navigation = ({ user }) => {
       <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Profile</Link></li>
       <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/daygame'}>Daily Game</Link></li>
       <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/contgame'}>Infinite Game</Link></li>
-      <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/forms'}>Login/Sign Up</Link></li>
+      <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/login'}>Login</Link></li>
+      <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/signup'}>Sign Up</Link></li>
       {user && <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/logout'}>Logout</Link></li>}
       <NavItem icon={<MdMenu/>} className='menu-item'>
         <DropdownMenu></DropdownMenu>
