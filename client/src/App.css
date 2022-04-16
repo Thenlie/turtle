@@ -253,13 +253,17 @@ footer {
     transition: filter 300ms;
   }
 
+  .h-16 {
+    height: rem 1;
+  }
+
   .mobile-hide {
     width: 0;
     display: none;
   }
 
   header {
-    height: 10%;
+    height: 7%;
     width: 100%;
     float: right;
   }
