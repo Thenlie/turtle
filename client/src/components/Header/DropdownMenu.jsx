@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { Link } from 'react-router-dom';
 
 const DropdownMenu = () => {
     const [activeMenu, setActiveMenu] = useState('main');
@@ -29,9 +30,10 @@ const DropdownMenu = () => {
       <div className='dropdown' ref={dropdownRef}>
         <CSSTransition in={activeMenu === 'main'} timeout={500} classNames='menu-primary' unmountOnExit onEnter={calcHeight}>
           <div className='menu'>
-            <DropdownItem>My Profile</DropdownItem>
+          <Link to={'/profile/dashboard'}><DropdownItem>Profile</DropdownItem></Link>
             <DropdownItem goToMenu='settings'>Settings</DropdownItem>
-            <DropdownItem goToMenu='animals'>Leaderboard</DropdownItem>
+            <Link to={'/login'}><DropdownItem>Login</DropdownItem></Link>
+            <Link to={'/signup'}><DropdownItem>Signup</DropdownItem></Link>
           </div>
         </CSSTransition>
   

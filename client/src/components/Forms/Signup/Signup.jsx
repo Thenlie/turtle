@@ -14,7 +14,7 @@ const Signup = () => {
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [validUsername, setValidUsername] = useState(false);
     const [validEmail, setValidEmail] = useState(false);
-    const { loading, data } = useQuery(QUERY_USERNAME, {
+    const { data } = useQuery(QUERY_USERNAME, {
         variables: { username: username }
     });
 
