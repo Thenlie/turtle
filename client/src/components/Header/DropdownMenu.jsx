@@ -30,10 +30,9 @@ const DropdownMenu = () => {
       <div className='dropdown' ref={dropdownRef}>
         <CSSTransition in={activeMenu === 'main'} timeout={500} classNames='menu-primary' unmountOnExit onEnter={calcHeight}>
           <div className='menu'>
-          <Link to={'/profile/dashboard'}><DropdownItem>Profile</DropdownItem></Link>
-            <DropdownItem goToMenu='settings'>Settings</DropdownItem>
-            <Link to={'/login'}><DropdownItem>Login</DropdownItem></Link>
-            <Link to={'/signup'}><DropdownItem>Signup</DropdownItem></Link>
+          <Link to={'/profile/dashboard'}><div className='list-none m-5 hover:text-slate-500 menu-item bar-item'>Profile</div></Link>
+            <Link to={'/login'}><div className='list-none m-5 hover:text-slate-500 menu-item bar-item'>Login</div></Link>
+            <Link to={'/signup'}><div className='list-none m-5 hover:text-slate-500 menu-item bar-item'>Signup</div></Link>
           </div>
         </CSSTransition>
   
