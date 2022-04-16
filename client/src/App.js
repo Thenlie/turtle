@@ -10,6 +10,8 @@ import EndGame from './pages/EndGame';
 import DailyGame from './pages/DailyGame';
 import ContGame from './pages/ContGame';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
+import { Login, Logout, Signup } from './components/Forms';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,17 +51,22 @@ function App() {
     <ApolloProvider client={client}>
       <div className='flex flex-col h-full'>
         <Router>
-          <Header />
+          <Header user={user} />
           <Routes>
+            <Route exact path='*' element={<NotFound />} />
             <Route exact path='/' element={<Home user={user} />} />
-            <Route exact path='/forms' element={<Forms user={user} setUser={wrapperSetUser} />} />
+            <Route element={<Forms user={user} />} >
+              <Route exact path='login' element={<Login setUser={wrapperSetUser} />} />
+              <Route exact path='signup' element={<Signup setUser={wrapperSetUser} />} />
+              <Route exact path='logout' element={<Logout setUser={wrapperSetUser} />} />
+            </Route>
             <Route exact path='/game' element={<Game user={user} />} />
             <Route exact path='/daygame' element={<DailyGame user={user} />} />
             <Route exact path='/contgame' element={<ContGame user={user} />} />
             <Route exact path='/endgame' element={<EndGame user={user} />} />
             <Route path='/profile' element={<Profile user={user} />} >
-              <Route path='dashboard' element={<Profile user={user} />}/>
-              <Route path=':id' element={<Profile user={user} />}/>
+              <Route path='dashboard' element={<Profile />}/>
+              <Route path=':id'element={<Profile />} />
             </Route>
           </Routes>
           <Footer />
