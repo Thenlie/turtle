@@ -5,12 +5,12 @@ import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/re
 import { QUERY_USERNAME, QUERY_EMAIL } from '../../../utils/queries'; 
 import validator from 'validator';
 
-const Signup = () => {
+const Signup = ({ setUser }) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [country, setCountry] = useState('');
+    const [country, setCountry] = useState(null);
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const [validUsername, setValidUsername] = useState(false);
@@ -25,8 +25,8 @@ const Signup = () => {
 
     const handleSignup = async (evt) => {
         evt.preventDefault();
-        if (password === confirmPassword && validUsername && validEmail) {
-            await fetch('/auth/signup', {
+        if (password === confirmPassword && validUsername && validEmail && country) {
+            const response = await fetch('/auth/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -38,6 +38,8 @@ const Signup = () => {
                     'country': country
                 })
             });
+            const data = await response.json();
+            setUser(data._id);
             navigate("/profile/dashboard");
         } else {
             // toggle error message
@@ -60,7 +62,9 @@ const Signup = () => {
                 setConfirmPassword(evt.target.value);
                 return;
             case 'country':
-                setCountry(evt.target.value);
+                if (evt.target.value !== '0') {
+                    setCountry(evt.target.value);
+                };
                 return;
             default: 
                 return;
@@ -116,6 +120,7 @@ const Signup = () => {
     }, [email, emailQuery]);
 
     useEffect(() => {
+        console.log(country)
         return;
     }, [country]);
 

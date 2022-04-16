@@ -20,7 +20,7 @@ const Profile = ({ user }) => {
             if (localStorage.getItem('turtleUID')) {
                 setTargetUser(localStorage.getItem('turtleUID'));
             } else {
-                navigate('/forms');
+                navigate('/login');
             };
         };
     }, [navigate, params.id, user]);
