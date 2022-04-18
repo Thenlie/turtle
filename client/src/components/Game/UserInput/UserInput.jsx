@@ -36,7 +36,6 @@ const UserInput = ({guessArr, setGuessArr}) => {
     }, [input]);
 
     useEffect(() => {
-        console.log(key)
         if (key) {
             if (key.key === 'BACKSPACE') {
                 if (input.length > 0) {
