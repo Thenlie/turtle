@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import dictionary from '../../../utils/dictionary';
+import { v4 as uuid } from 'uuid';
 
 const UserInput = ({guessArr, setGuessArr}) => {
     const [input, setInput] = useState('');
@@ -8,12 +9,10 @@ const UserInput = ({guessArr, setGuessArr}) => {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     const handleChange = (evt) => {
-        console.log(evt.key)
-        setKey(evt.key.toUpperCase());
+        setKey({key: evt.key.toUpperCase(), id: uuid});
     };
 
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
+    const handleSubmit = () => {
         if (dictionary.includes(input.toLowerCase())) {
             setGuessArr([...guessArr, input]);
             setInput('');
@@ -33,28 +32,28 @@ const UserInput = ({guessArr, setGuessArr}) => {
     }, []);
 
     useEffect(() => {
-        console.log(input);
+        return;
     }, [input]);
 
     useEffect(() => {
-        if (key === 'BACKSPACE') {
-            if (input.length > 0) {
-                let tmpArr = input.split('');
-                tmpArr.pop();
-                let tmp = tmpArr.join('').trim();
-                setInput(tmp);
-            };
-        } else if (key.length === 1 && input.length < 5) {
-            if (letters.includes(key)) {
-                let tmp = input + key;
-                setInput(tmp);
+        console.log(key)
+        if (key) {
+            if (key.key === 'BACKSPACE') {
+                if (input.length > 0) {
+                    let tmpArr = input.split('');
+                    tmpArr.pop();
+                    let tmp = tmpArr.join('').trim();
+                    setInput(tmp);
+                };
+            } else if (key.key === 'ENTER') {
+                handleSubmit();
+            } else if (key.key.length === 1 && input.length < 5) {
+                if (letters.includes(key.key)) {
+                    let tmp = input + key.key;
+                    setInput(tmp);
+                };
             };
         };
-
-        // switch (key) {
-        //     case ''
-        // }
-
     }, [key]);
 
     return (
