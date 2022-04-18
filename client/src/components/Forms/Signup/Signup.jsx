@@ -103,7 +103,7 @@ const Signup = () => {
     }, [email]);
 
     useEffect(() => {
-        console.log(country)
+        return;
     }, [country]);
 
 
