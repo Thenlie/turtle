@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import Home from './pages/Home';
 import Forms from './pages/Forms';
@@ -55,18 +55,28 @@ function App() {
             <Route exact path='*' element={<NotFound />} />
             <Route exact path='/' element={<Home user={user} />} />
             <Route element={<Forms user={user} />} >
-              <Route exact path='login' element={<Login setUser={wrapperSetUser} />} />
-              <Route exact path='signup' element={<Signup setUser={wrapperSetUser} />} />
-              <Route exact path='logout' element={<Logout setUser={wrapperSetUser} />} />
+              {user === null ? (
+                <>
+                  <Route exact path='login' element={<Login user={user} setUser={wrapperSetUser} />} />
+                  <Route exact path='signup' element={<Signup user={user} setUser={wrapperSetUser} />} />
+                </>
+              ) : (
+                <Route exact path='logout' element={<Logout setUser={wrapperSetUser} />} />
+              )
+              }
             </Route>
-            <Route exact path='/game' element={<Game user={user} />} />
-            <Route exact path='/daygame' element={<DailyGame user={user} />} />
-            <Route exact path='/contgame' element={<ContGame user={user} />} />
-            <Route exact path='/endgame' element={<EndGame user={user} />} />
-            <Route path='/profile' element={<Profile user={user} />} >
-              <Route path='dashboard' element={<Profile />}/>
-              <Route path=':id'element={<Profile />} />
-            </Route>
+            {user !== null && 
+              <>
+                <Route exact path='/game' element={<Game user={user} />} />
+                <Route exact path='/daygame' element={<DailyGame user={user} />} />
+                <Route exact path='/contgame' element={<ContGame user={user} />} />
+                <Route exact path='/endgame' element={<EndGame user={user} />} />
+                <Route path='/profile' element={<Profile user={user} />} >
+                  <Route path='dashboard' element={<Profile />}/>
+                  <Route path=':id'element={<Profile />} />
+                </Route>
+              </>
+            }
           </Routes>
         </Router>
         </div>

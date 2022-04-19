@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const Home = ({ user }) => {
     return (
         <main className='grow flex flex-col justify-center items-center'>
             <div className='flex flex-col items-center'>
@@ -14,11 +14,13 @@ const Home = () => {
                 </div>
                 <div className='flex flex-col items-center'>
                     <div className='mb-8'>
-                    <Link to="/signup" className='text-black'><button className='text-2xl bg-[#C4C4C4] hover:bg-slate-300 rounded-lg py-2 px-6'>Get Started</button></Link>
+                    <Link to={`${user ? ('/profile/dashboard') : ('/signup')}`} className='text-black'><button className='text-2xl bg-[#C4C4C4] hover:bg-slate-300 rounded-lg py-2 px-6'>Get Started</button></Link>
                     </div>
-                    <div>
-                        <span>Already have an account?<Link to="/login" className='text-[#86CF84] hover:text-green-700'> Login</Link></span>
-                    </div>
+                    {!user &&
+                        <div>
+                            <span>Already have an account?<Link to="/login" className='text-[#86CF84] hover:text-green-700'> Login</Link></span>
+                        </div>
+                    }
                 </div>
             </div>
         </main>
