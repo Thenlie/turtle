@@ -26,7 +26,7 @@ const Home = ({ user }) => {
                     </div>
                     <div className='flex flex-col items-center'>
                         <div>
-                            <button className='text-2xl bg-slate-400 rounded-lg py-2 px-6'>Get Started</button>
+                            <button className='text-2xl bg-slate-400 rounded-lg py-2 px-6'><Link to="/signup">Get Started</Link></button>
                         </div>
                         <div>
                             <span>Already have an account?<Link to="/login"> Login</Link></span>
