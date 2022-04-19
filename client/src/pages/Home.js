@@ -16,12 +16,12 @@ const Home = ({ user }) => {
         <main className='grow flex flex-col justify-center items-center'>
             <div className='flex flex-col items-center'>
                 <div className='flex flex-row text-4xl my-8'>
-                    <div className='bg-[#86CF84] m-2 p-4 rounded'>T</div>
-                    <div className='bg-[#F4F59F] m-2 p-4 rounded'>U</div>
-                    <div className='bg-[#C4C4C4] m-2 p-4 rounded'>R</div>
-                    <div className='bg-[#86CF84] m-2 p-4 rounded'>T</div>
-                    <div className='bg-[#F4F59F] m-2 p-4 rounded'>L</div>
-                    <div className='bg-[#C4C4C4] m-2 p-4 rounded'>E</div>
+                    <div className='bg-[#86CF84] m-2 py-2 px-4 rounded rotate-[345deg]'>T</div>
+                    <div className='bg-[#F4F59F] m-2 py-2 px-4 rounded'>U</div>
+                    <div className='bg-[#C4C4C4] m-2 py-2 px-4 rounded'>R</div>
+                    <div className='bg-[#86CF84] m-2 py-2 px-4 rounded'>T</div>
+                    <div className='bg-[#F4F59F] m-2 py-2 px-4 rounded'>L</div>
+                    <div className='bg-[#C4C4C4] m-2 py-2 px-4 rounded'>E</div>
                 </div>
                 <div className='flex flex-col items-center'>
                     <div className='mb-8'>
