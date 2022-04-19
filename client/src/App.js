@@ -4,7 +4,6 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import Home from './pages/Home';
 import Forms from './pages/Forms';
 import Header from './components/Header';
-import Footer from './components/Footer';
 import Game from './pages/Game';
 import EndGame from './pages/EndGame';
 import DailyGame from './pages/DailyGame';
@@ -69,7 +68,6 @@ function App() {
               <Route path=':id'element={<Profile />} />
             </Route>
           </Routes>
-          <Footer />
         </Router>
         </div>
     </ApolloProvider>

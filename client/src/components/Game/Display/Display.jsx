@@ -51,6 +51,7 @@ const Display = ({ target, guessArr, type }) => {
             } else {
                 if (!cur.classList.contains('bg-green-200')) {
                     cur.classList.add('bg-slate-400');
+                    letters[i].classList.add('bg-slate-300');
                 };
             }
             c++;
@@ -60,15 +61,26 @@ const Display = ({ target, guessArr, type }) => {
     return (
         <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
             <p className='text-lg pt-5 font-bold'>{target}</p>
-            <div id='guess-container' className='pt-5'>
+            <div id='guess-container' className={`pt-5 ${guessArr.length === 6 && 'pb-5'}`}>
                 {guessArr.map(guess => (
-                    <div key={uuid()} className='flex flex-wrap justify-center' >
+                    <div key={uuid()} className='flex flex-wrap justify-center'>
                         {guess.split('').map((letter, i) => (
-                            <span key={uuid()} name={letter + i} className='p-1 m-1 w-[30px] bg-slate-200 rounded-sm text-center'>{letter}</span>
+                            <span key={uuid()} name={letter + i} className='w-16 h-16 m-1 pt-3 text-3xl rounded-md shadow-md'>{letter}</span>
                         ))}
                     </div>
                 ))}
             </div>
+            {guessArr.length < 6 ? (
+                <div className='flex justify-center pb-5'>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                </div>
+            ) : (
+                <></>
+            )}
         </section>
     );
 };
