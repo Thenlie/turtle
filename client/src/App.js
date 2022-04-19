@@ -55,9 +55,15 @@ function App() {
             <Route exact path='*' element={<NotFound />} />
             <Route exact path='/' element={<Home user={user} />} />
             <Route element={<Forms user={user} />} >
-              <Route exact path='login' element={<Login user={user} setUser={wrapperSetUser} />} />
-              <Route exact path='signup' element={<Signup user={user} setUser={wrapperSetUser} />} />
-              <Route exact path='logout' element={<Logout setUser={wrapperSetUser} />} />
+              {user === null ? (
+                <>
+                  <Route exact path='login' element={<Login user={user} setUser={wrapperSetUser} />} />
+                  <Route exact path='signup' element={<Signup user={user} setUser={wrapperSetUser} />} />
+                </>
+              ) : (
+                <Route exact path='logout' element={<Logout setUser={wrapperSetUser} />} />
+              )
+              }
             </Route>
             {user !== null && 
               <>
