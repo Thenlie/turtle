@@ -1,4 +1,5 @@
 import { useQuery } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { QUERY_ME, QUERY_USERS } from '../utils/queries';
 
 const Home = ({ user }) => {
@@ -12,9 +13,9 @@ const Home = ({ user }) => {
     };
 
     return (
-        <main className='grow'>
+        <main className='grow flex flex-col justify-center'>
             <div className='flex flex-wrap justify-center'>
-                <div>
+                <div className='flex flex-col items-center'>
                     <div className='flex flex-row text-4xl'>
                         <div className='bg-slate-200 m-2 p-4 rounded-xl'>T</div>
                         <div className='bg-slate-200 m-2 p-4 rounded-xl'>U</div>
@@ -24,7 +25,12 @@ const Home = ({ user }) => {
                         <div className='bg-slate-200 m-2 p-4 rounded-xl'>E</div>
                     </div>
                     <div>
-
+                        <div>
+                            <button>Get Started</button>
+                        </div>
+                        <div>
+                            <span>Already have an account?<Link to="/login">Login</Link></span>
+                        </div>
                     </div>
                 </div>
                 {/* <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'> */}
