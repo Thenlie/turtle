@@ -17,19 +17,19 @@ const Home = ({ user }) => {
             <div className='flex flex-wrap justify-center'>
                 <div className='flex flex-col items-center'>
                     <div className='flex flex-row text-4xl'>
-                        <div className='bg-slate-200 m-2 p-4 rounded-xl'>T</div>
-                        <div className='bg-slate-200 m-2 p-4 rounded-xl'>U</div>
-                        <div className='bg-slate-200 m-2 p-4 rounded-xl'>R</div>
-                        <div className='bg-slate-200 m-2 p-4 rounded-xl'>T</div>
-                        <div className='bg-slate-200 m-2 p-4 rounded-xl'>L</div>
-                        <div className='bg-slate-200 m-2 p-4 rounded-xl'>E</div>
+                        <div className='bg-slate-400 m-2 p-4 rounded'>T</div>
+                        <div className='bg-slate-400 m-2 p-4 rounded'>U</div>
+                        <div className='bg-slate-400 m-2 p-4 rounded'>R</div>
+                        <div className='bg-slate-400 m-2 p-4 rounded'>T</div>
+                        <div className='bg-slate-400 m-2 p-4 rounded'>L</div>
+                        <div className='bg-slate-400 m-2 p-4 rounded'>E</div>
                     </div>
-                    <div>
+                    <div className='flex flex-col items-center'>
                         <div>
-                            <button>Get Started</button>
+                            <button className='text-2xl bg-slate-400 rounded-lg py-2 px-6'>Get Started</button>
                         </div>
                         <div>
-                            <span>Already have an account?<Link to="/login">Login</Link></span>
+                            <span>Already have an account?<Link to="/login"> Login</Link></span>
                         </div>
                     </div>
                 </div>
