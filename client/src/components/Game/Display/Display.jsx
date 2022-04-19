@@ -71,7 +71,7 @@ const Display = ({ target, guessArr, type }) => {
                 ))}
             </div>
             {guessArr.length < 6 ? (
-                <div className='flex justify-center'>
+                <div className='flex justify-center pb-5'>
                     <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
                     <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
                     <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
