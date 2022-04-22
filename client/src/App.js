@@ -4,7 +4,6 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import Home from './pages/Home';
 import Forms from './pages/Forms';
 import Header from './components/Header';
-import Game from './pages/Game';
 import EndGame from './pages/EndGame';
 import DailyGame from './pages/DailyGame';
 import ContGame from './pages/ContGame';
@@ -68,7 +67,7 @@ function App() {
             {user !== null && 
               <>
                 <Route exact path='/daygame' element={<DailyGame user={user} />} />
-                <Route exact path='/contgame' element={<ContGame user={user} />} />
+                <Route exact path='/contgame' element={<ContGame />} />
                 <Route exact path='/endgame' element={<EndGame user={user} />} />
                 <Route path='/profile' element={<Profile user={user} />} >
                   <Route path='dashboard' element={<Profile />}/>
