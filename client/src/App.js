@@ -67,7 +67,6 @@ function App() {
             </Route>
             {user !== null && 
               <>
-                <Route exact path='/game' element={<Game user={user} />} />
                 <Route exact path='/daygame' element={<DailyGame user={user} />} />
                 <Route exact path='/contgame' element={<ContGame user={user} />} />
                 <Route exact path='/endgame' element={<EndGame user={user} />} />
