@@ -6,13 +6,14 @@ import randomDictionary from '../utils/randomDictionary';
 import UserInput from '../components/Game/UserInput';
 import Display from '../components/Game/Display';
 import Alphabet from '../components/Game/Alphabet';
+import LockOut from '../components/LockOut';
 
 const DailyGame = ({ user }) => {
     const [guessArr, setGuessArr] = useState([]);
     const [dayTarget, setDayTarget] = useState('');
     const { loading, data } = useQuery(QUERY_SCORE, { variables: { userId: user }});
-
     const scoreData = data?.scoresByUser || [];
+
     useEffect(() => {
         const now = DateTime.now();
         const start = DateTime.fromISO("2022-04-04");
@@ -24,7 +25,7 @@ const DailyGame = ({ user }) => {
     
     if (daily.length > 0) {
         return (
-            <p>Locked Out!</p>
+            <LockOut />
         );
     };
 
