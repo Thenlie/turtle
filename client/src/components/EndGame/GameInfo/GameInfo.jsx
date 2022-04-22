@@ -23,7 +23,7 @@ const GameInfo = ({ user, data, refetch }) => {
             <div className='h-[250px]'>
                 {data && <GuessPerGameChart data={data} />}
             </div>
-            <div className='flex'>
+            <div className='flex my-6'>
                 <div className='bg-[#7B7B7B] p-2 mx-2 rounded-full'>
                     <Link to={'/'}><UserCircleIcon className='text-black h-8 w-8' /></Link>
                 </div>
