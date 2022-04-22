@@ -28,7 +28,7 @@ const GameInfo = ({ user, data, refetch }) => {
                     <Link to={'/'}><UserCircleIcon className='text-black h-8 w-8' /></Link>
                 </div>
                 <div className='bg-[#7B7B7B] p-2 mx-2 rounded-full'>
-                    <Link to={'/contgame'}><RefreshIcon className='text-black h-8 w-8' /></Link>
+                    <Link to={'/profile/dashboard'}><RefreshIcon className='text-black h-8 w-8' /></Link>
                 </div>
             </div >
         </div>

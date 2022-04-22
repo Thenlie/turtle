@@ -75,6 +75,7 @@ const GuessPerGameChart = ({ data }) => {
                     plugins: {
                         legend: {
                             position: 'top',
+                            display: false
                         },
                         title: {
                             display: false,
