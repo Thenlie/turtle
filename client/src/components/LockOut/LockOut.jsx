@@ -38,9 +38,9 @@ const LockOut = () => {
             <div className='flex justify-center'>
                 <div className='text-2xl w-14 h-14 text-center bg-[#86CF84] m-2 pt-3 px-4 rounded shadow-lg rotate-[345deg]'>{time.hours}</div>
                 <p className='py-2 text-3xl'>:</p>
-                <div className='text-2xl w-14 h-14 text-center bg-[#C4C4C4] m-2 pt-3 px-4 rounded shadow-lg'>{time.minutes}</div>
+                <div className='text-2xl w-14 h-14 text-center bg-[#C4C4C4] m-2 pt-3 px-4 rounded shadow-lg'>{time.minutes > 9 ? (time.minutes) : ('0' + time.minutes)}</div>
                 <p className='py-2 text-3xl self-end'>.</p>
-                <div className='text-2xl w-14 h-14 text-center bg-[#F4F59F] m-2 pt-3 px-4 rounded shadow-lg'>{time.seconds}</div>
+                <div className='text-2xl w-14 h-14 text-center bg-[#F4F59F] m-2 pt-3 px-4 rounded shadow-lg'>{time.seconds > 9 ? (time.seconds) : ('0' + time.seconds)}</div>
             </div>
         </main>
     );
