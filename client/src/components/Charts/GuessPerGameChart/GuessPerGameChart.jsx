@@ -56,8 +56,8 @@ const GuessPerGameChart = ({ data }) => {
                         {
                             label: 'Guesses',
                             data: dataArr,
-                            borderColor: 'rgb(255, 99, 132)',
-                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                            borderColor: '#7B7B7B',
+                            backgroundColor: '#7B7B7B',
                             fill: true,
                             tension: 0.1,
                         }

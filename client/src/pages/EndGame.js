@@ -15,11 +15,11 @@ const EndGame = ({ user }) => {
 
     return (
         <main className='grow flex flex-col items-center justify-center'>
-            <div className='p-8 bg-gray-200 rounded-lg my-2 '>
+            <div className='p-8 bg-[#E5E5E5] rounded-lg my-2 '>
                 <div>
                     <Message />
                 </div>
-                <div className='bg-gray-300 rounded-lg my-2 p-4'>
+                <div className='bg-[#C4C4C4] rounded-lg my-2 p-4'>
                     <GameInfo user={user} data={data} refetch={refetch} />
                 </div>
             </div>
