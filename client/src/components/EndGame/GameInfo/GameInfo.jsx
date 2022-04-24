@@ -4,6 +4,9 @@ import { ADD_SCORE } from '../../../utils/mutations';
 import { useEffect } from 'react';
 import { GuessPerGameChart } from '../../Charts';
 
+import { UserCircleIcon } from '@heroicons/react/outline'
+import { RefreshIcon } from '@heroicons/react/outline'
+
 const GameInfo = ({ user, data, refetch }) => {
     const [addScore] = useMutation(ADD_SCORE);
     const location = useLocation();
@@ -20,9 +23,13 @@ const GameInfo = ({ user, data, refetch }) => {
             <div className='h-[250px]'>
                 {data && <GuessPerGameChart data={data} />}
             </div>
-            <div>
-                <Link to={'/'}><button className='mx-2 text-black'>Home</button></Link>
-                <Link to={'/contgame'}><button className='mx-2 text-black'>Play Again</button ></Link>
+            <div className='flex my-6'>
+                <div className='bg-[#7B7B7B] p-2 mx-2 rounded-full'>
+                    <Link to={'/'}><UserCircleIcon className='text-black h-8 w-8' /></Link>
+                </div>
+                <div className='bg-[#7B7B7B] p-2 mx-2 rounded-full'>
+                    <Link to={'/profile/dashboard'}><RefreshIcon className='text-black h-8 w-8' /></Link>
+                </div>
             </div >
         </div>
     );
