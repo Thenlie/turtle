@@ -61,7 +61,7 @@ const Login = ({ setUser }) => {
     }, [email]);
     
     return (
-        <section className="p-4 mt-6 mx-auto w-1/3 text-center bg-slate-100 rounded-md">
+        <section className="p-4 mx-auto w-2/3 lg:w-1/2 xl:w-1/3 text-center bg-slate-100 rounded-md">
             <h2 className='font-bold text-lg mb-2'>Login</h2>
             <form onSubmit={handleLogin} className='flex flex-col'>
             <div className='flex items-center'>

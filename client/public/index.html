@@ -8,10 +8,28 @@
     <meta name="description" content="Web site created using create-react-app"/>
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <title>Turtle 🐢</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <script>
+    (function () {
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker
+                .register('/svcWorker.js')
+                .then(() =>
+                    console.log('Service Worker registered successfully.')
+                )
+                .catch((error) =>
+                    console.log(
+                        'Service Worker registration failed:',
+                        error
+                    )
+                );
+        }
+    })();
+</script>
 </html>
