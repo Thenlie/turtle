@@ -36,6 +36,14 @@ export const QUERY_USERNAME = gql`
     }
 `
 
+export const QUERY_EMAIL = gql`
+    query Email($email: String!) {
+        email(email: $email) {
+            _id
+        }
+    }
+`
+
 export const QUERY_ME = gql`
     query Me {
         me {

@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 const Display = ({ target, guessArr, type }) => {
     const targetArr = target.split('').map((target, i) => { return { name: target + i, value: target } });
     const navigate = useNavigate();
-    console.log(target);
 
     useEffect(() => {
         // get all guess elements, return if no guesses
@@ -16,12 +15,13 @@ const Display = ({ target, guessArr, type }) => {
 
         // create array of letters from guesses
         let letters = [];
-        guesses.map(child => { letters.push(...child.children) });
+        guesses.map(child => ( letters.push(...child.children) ));
 
         let tmpArr = [];
         let c = 0;
         let win = 0
         for (let i = 0; i < letters.length; i++) {
+            const cur = document.getElementById(letters[i].textContent);
             if (c % 5 === 0) {
                 tmpArr = [...targetArr]; // reset when checking new word
                 win = 0;
@@ -30,12 +30,13 @@ const Display = ({ target, guessArr, type }) => {
             if (tmpArr.some(target => target.name === letters[i].attributes.name.value)) {
                 letters[i].classList.add('bg-green-200');
                 tmpArr.splice(tmpArr.findIndex(obj => { return obj.name === letters[i].attributes.name.value }), 1);
-                document.getElementById(letters[i].textContent).classList.remove('bg-yellow-200');
-                document.getElementById(letters[i].textContent).classList.add('bg-green-200');
+                cur.classList.remove('bg-yellow-200');
+                cur.classList.add('bg-green-200');
                 win++
+                // check if game is won
                 if (win === 5) {
                     navigate("/endgame", { state: { target, guessArr, type } });
-                }
+                };
             };
             // yellow styling
             if (tmpArr.some(target => target.value === letters[i].textContent)) {
@@ -43,31 +44,43 @@ const Display = ({ target, guessArr, type }) => {
                     letters[i].classList.add('bg-yellow-200');
                     tmpArr.splice(tmpArr.findIndex(obj => { return obj.value === letters[i].textContent }), 1);
                 };
-                if (!document.getElementById(letters[i].textContent).classList.contains('bg-green-200')) {
-                    document.getElementById(letters[i].textContent).classList.add('bg-yellow-200');
+                if (!cur.classList.contains('bg-green-200')) {
+                    cur.classList.add('bg-yellow-200');
                 };
                 // grey styling
             } else {
-                if (!document.getElementById(letters[i].textContent).classList.contains('bg-green-200')) {
-                    document.getElementById(letters[i].textContent).classList.add('bg-slate-400');
+                if (!cur.classList.contains('bg-green-200')) {
+                    cur.classList.add('bg-slate-400');
+                    letters[i].classList.add('bg-slate-300');
                 };
             }
             c++;
         };
-    }, [guessArr]);
+    }, [guessArr, navigate, target, targetArr, type]);
 
     return (
         <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
             <p className='text-lg pt-5 font-bold'>{target}</p>
-            <div id='guess-container' className='pt-5'>
+            <div id='guess-container' className={`pt-5 ${guessArr.length === 6 && 'pb-5'}`}>
                 {guessArr.map(guess => (
-                    <div key={uuid()} className='flex flex-wrap justify-center' >
+                    <div key={uuid()} className='flex flex-wrap justify-center'>
                         {guess.split('').map((letter, i) => (
-                            <span key={uuid()} name={letter + i} className='p-1 m-1 w-[30px] bg-slate-200 rounded-sm text-center'>{letter}</span>
+                            <span key={uuid()} name={letter + i} className='w-16 h-16 m-1 pt-3 text-3xl rounded-md shadow-md'>{letter}</span>
                         ))}
                     </div>
                 ))}
             </div>
+            {guessArr.length < 6 ? (
+                <div className='flex justify-center pb-5'>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                </div>
+            ) : (
+                <></>
+            )}
         </section>
     );
 };

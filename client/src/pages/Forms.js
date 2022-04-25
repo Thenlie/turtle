@@ -1,21 +1,9 @@
-import { Signup, Login, Logout } from '../components/Forms';
+import { Outlet } from 'react-router-dom';
 
-const Forms = ({user, setUser}) => {
+const Forms = () => {
     return (
-        <main className='grow'>
-            <div className='flex flex-wrap justify-center'>
-                <Signup />
-                <Login setUser={setUser} />
-                <Logout setUser={setUser} />
-                <section className='p-4 m-4 w-1/3 text-center bg-slate-100 rounded-md'>
-                    <h2 className='font-bold text-lg mb-2'>Logged In User ID</h2>
-                    {user ? (
-                        <p>{user}</p>
-                        ) : (
-                            <p>Not logged in</p>
-                            )}
-                </section>
-            </div>
+        <main className='grow flex flex-col justify-center'>
+            <Outlet />
         </main>
     );
 };

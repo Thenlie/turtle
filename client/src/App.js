@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import Home from './pages/Home';
 import Forms from './pages/Forms';
 import Header from './components/Header';
-import Footer from './components/Footer';
-import Game from './pages/Game';
 import EndGame from './pages/EndGame';
 import DailyGame from './pages/DailyGame';
 import ContGame from './pages/ContGame';
 import Profile from './pages/Profile';
+import NotFound from './pages/NotFound';
+import { Login, Logout, Signup } from './components/Forms';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,20 +49,33 @@ function App() {
     <ApolloProvider client={client}>
       <div className='flex flex-col h-full'>
         <Router>
-          <Header />
+          <Header user={user} />
           <Routes>
+            <Route exact path='*' element={<NotFound />} />
             <Route exact path='/' element={<Home user={user} />} />
-            <Route exact path='/forms' element={<Forms user={user} setUser={wrapperSetUser} />} />
-            <Route exact path='/game' element={<Game user={user} />} />
-            <Route exact path='/daygame' element={<DailyGame user={user} />} />
-            <Route exact path='/contgame' element={<ContGame user={user} />} />
-            <Route exact path='/endgame' element={<EndGame user={user} />} />
-            <Route path='/profile' element={<Profile user={user} />} >
-              <Route path='dashboard' />
-              <Route path=':id' />
+            <Route element={<Forms user={user} />} >
+              {user === null ? (
+                <>
+                  <Route exact path='login' element={<Login user={user} setUser={wrapperSetUser} />} />
+                  <Route exact path='signup' element={<Signup user={user} setUser={wrapperSetUser} />} />
+                </>
+              ) : (
+                <Route exact path='logout' element={<Logout setUser={wrapperSetUser} />} />
+              )
+              }
             </Route>
+            {user !== null && 
+              <>
+                <Route exact path='/daygame' element={<DailyGame user={user} />} />
+                <Route exact path='/contgame' element={<ContGame />} />
+                <Route exact path='/endgame' element={<EndGame user={user} />} />
+                <Route path='/profile' element={<Profile user={user} />} >
+                  <Route path='dashboard' element={<Profile />}/>
+                  <Route path=':id'element={<Profile />} />
+                </Route>
+              </>
+            }
           </Routes>
-          <Footer />
         </Router>
         </div>
     </ApolloProvider>

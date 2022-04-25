@@ -1,40 +1,37 @@
-import { useLocation } from 'react-router-dom'
-import { useMutation, useQuery } from '@apollo/client';
+import { Link, useLocation } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
 import { ADD_SCORE } from '../../../utils/mutations';
-import { QUERY_SCORE } from '../../../utils/queries';
 import { useEffect } from 'react';
+import { GuessPerGameChart } from '../../Charts';
 
-import { EndGameChart } from '../../Charts';
+import { UserCircleIcon } from '@heroicons/react/outline'
+import { RefreshIcon } from '@heroicons/react/outline'
 
-const GameInfo = ({ user }) => {
-    const [addScore] = useMutation(ADD_SCORE)
+const GameInfo = ({ user, data, refetch }) => {
+    const [addScore] = useMutation(ADD_SCORE);
     const location = useLocation();
-    const { loading, error, data } = useQuery(QUERY_SCORE, {
-        variables: { userId: user }
-    })
-
-    console.log(data);
 
     useEffect(() => {
         addScore({
             variables: { userId: user, guesses: location.state.guessArr.length, word: location.state.target, type: location.state.type }
-        })
-    }, [])
-
-    console.log(location);
-    console.log(user);
+        });
+        refetch();
+    }, [addScore, location.state.guessArr.length, location.state.target, location.state.type, user, refetch]);
 
     return (
         <div className='flex flex-col items-center'>
             <div className='h-[250px]'>
-                {data && <EndGameChart data={data} />}
+                {data && <GuessPerGameChart data={data} />}
             </div>
-            <div>
-                <button className='mx-2'>Home</button>
-                < button className='mx-2' > Next</button >
-                <button className='mx-2'>Replay</button>
+            <div className='flex my-6'>
+                <div className='bg-[#7B7B7B] p-2 mx-2 rounded-full'>
+                    <Link to={'/profile/dashboard'}><UserCircleIcon className='text-black h-8 w-8' /></Link>
+                </div>
+                <div className='bg-[#7B7B7B] p-2 mx-2 rounded-full'>
+                    <Link to={'/contgame'}><RefreshIcon className='text-black h-8 w-8' /></Link>
+                </div>
             </div >
-        </div >
+        </div>
     );
 };
 

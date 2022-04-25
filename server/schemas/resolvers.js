@@ -11,6 +11,9 @@ const resolvers = {
         username: async (parent, { username }, context) => {
             return await User.findOne({ username });
         },
+        email: async (parent, { email }, context) => {
+            return await User.findOne({ email });
+        },
         me: async (parent, args, context) => {
             return await User.findOne({ _id: context.session.passport.user })
         },

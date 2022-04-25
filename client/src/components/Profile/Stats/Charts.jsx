@@ -1,11 +1,11 @@
-import GameChart from "../../ProfileCharts/GameChart";
-import GuessChart from "../../ProfileCharts/GuessChart";
+import GamePerDayChart from "../../Charts/GamePerDayChart/GamePerDayChart";
+import GuessPerDayChart from "../../Charts/GuessPerDayChart/GuessPerDayChart";
 
 const Charts = ({ data }) => {
     return (
             <div className='bg-slate-100 rounded-md shadow-sm'>
-                <GameChart data={data}/>
-                <GuessChart data={data} />
+                <GamePerDayChart data={data} />
+                <GuessPerDayChart data={data} />
             </div>
     );
 };

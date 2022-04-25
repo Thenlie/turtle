@@ -1,4 +1,4 @@
-import { formatDateFull } from '../../utils/helper';
+import { formatDateFull } from '../../../utils/helper';
 import { Line } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
@@ -23,7 +23,7 @@ ChartJS.register(
     Filler
 );
 
-const GameChart = ({ data }) => {
+const GamePerDayChart = ({ data }) => {
     let games = [], dates = [];
     let dataArr = [...data.scoresByUser]
     // sort score array by date
@@ -73,7 +73,9 @@ const GameChart = ({ data }) => {
                             ticks: {
                                 color: '#6b7280',
                                 autoSkip: true,
+                                precision: 0
                             },
+                            beginAtZero: true
                         },
                         x: {
                             ticks: {
@@ -92,4 +94,4 @@ const GameChart = ({ data }) => {
     );
 };
 
-export default GameChart;
+export default GamePerDayChart;
