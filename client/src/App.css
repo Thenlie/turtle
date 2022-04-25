@@ -72,6 +72,10 @@ footer {
   justify-content: center;
 }
 
+.dropdown {
+  width: 0;
+}
+
 /* Icon Button */
 .icon-button {
   --button-size: calc(var(--nav-size) * 0.5);

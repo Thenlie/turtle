@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 
-const DropdownMenu = () => {
+const DropdownMenu = ({ user }) => {
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
     const dropdownRef = useRef(null);
@@ -36,6 +36,7 @@ const DropdownMenu = () => {
           <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/contgame'}>Infinite Game</Link></li>
           <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/login'}>Login</Link></li>
           <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/signup'}>Sign Up</Link></li>
+          {user && <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/logout'}>Logout</Link></li>}
           </div>
         </CSSTransition>
   

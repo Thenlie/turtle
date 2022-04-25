@@ -28,13 +28,19 @@ const NavItem = (props) => {
 const Navigation = ({ user }) => {
   return (
     <Navbar>
-      <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Home</Link></li>
       <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Profile</Link></li>
+      <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Home</Link></li>
       <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/daygame'}>Daily Game</Link></li>
       <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/contgame'}>Infinite Game</Link></li>
-      <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/login'}>Login</Link></li>
-      <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/signup'}>Sign Up</Link></li>
-      {user && <li className='list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/logout'}>Logout</Link></li>}
+      {!user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/login'}>Login</Link></li>}
+      {!user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/signup'}>Sign Up</Link></li>}
+      {user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/logout'}>Logout</Link></li>}
+      {/* {user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Profile</Link></li>}
+      {user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/'}>Home</Link></li>}
+      {user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/daygame'}>Daily Game</Link></li>}
+      {user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/contgame'}>Infinite Game</Link></li>}
+      {user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/login'}>Login</Link></li>}
+      {user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/signup'}>Sign Up</Link></li>} */}
       <NavItem icon={<MdMenu/>} className='menu-item'>
         <DropdownMenu></DropdownMenu>
       </NavItem>
