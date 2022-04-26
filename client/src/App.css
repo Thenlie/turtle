@@ -147,6 +147,15 @@ footer {
   margin-left: auto;
 }
 
+.tutorial {
+  color: white;
+}
+
+.tut-header {
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
 /* CSSTransition classes  */
 .menu-primary-enter {
   position: absolute;
