@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 
 const Forms = () => {
     return (
-        <main className='grow'>
+        <main className='grow flex flex-col justify-center'>
             <Outlet />
         </main>
     );

@@ -75,7 +75,9 @@ const GuessPerDayChart = ({ data }) => {
                             ticks: {
                                 color: '#6b7280',
                                 autoSkip: true,
+                                precision: 0
                             },
+                            beginAtZero: true
                         },
                         x: {
                             ticks: {
