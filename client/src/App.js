@@ -4,6 +4,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@ap
 import Home from './pages/Home';
 import Forms from './pages/Forms';
 import Header from './components/Header';
+// import Footer from './components/Footer';
 import EndGame from './pages/EndGame';
 import DailyGame from './pages/DailyGame';
 import ContGame from './pages/ContGame';
@@ -47,7 +48,7 @@ function App() {
   
   return (
     <ApolloProvider client={client}>
-      <div className='flex flex-col h-full'>
+      <div className='h-full'>
         <Router>
           <Header user={user} />
           <Routes>
@@ -78,6 +79,7 @@ function App() {
           </Routes>
         </Router>
         </div>
+        {/* <Footer /> */}
     </ApolloProvider>
   );
 }

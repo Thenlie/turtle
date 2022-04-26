@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 
-const DropdownMenu = () => {
+const DropdownMenu = ({ user }) => {
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
     const dropdownRef = useRef(null);
@@ -29,10 +29,16 @@ const DropdownMenu = () => {
     return (
       <div className='dropdown' ref={dropdownRef}>
         <CSSTransition in={activeMenu === 'main'} timeout={500} classNames='menu-primary' unmountOnExit onEnter={calcHeight}>
-          <div className='menu'>
-          <Link to={'/profile/dashboard'}><div className='list-none m-5 hover:text-slate-500 menu-item bar-item'>Profile</div></Link>
-            <Link to={'/login'}><div className='list-none m-5 hover:text-slate-500 menu-item bar-item'>Login</div></Link>
-            <Link to={'/signup'}><div className='list-none m-5 hover:text-slate-500 menu-item bar-item'>Signup</div></Link>
+          <div className='tutorial'>
+            <h1 className='tut-header'>How To Play</h1>
+            <ul className='instructions'>
+              <li>- The goal of the game is to guess the five-letter word by typing guesses.</li>
+              <li>-With each guess, you will be given feedback on each letter, telling you if you are close or not.</li>
+              <li>-When a letter is highlighted in green, you got that letter right! It is the correct letter in the correct place.</li>
+              <li>- When a letter is highlighted in yellow, you are on the right track. That letter is in the word, just not in the right spot.</li>
+              <li>- When a letter is grey, you can cross it off. That letter isn't found anywhere in the word.</li>
+              <li>- See if you can guess the word in as few guesses as possible!</li>
+            </ul>
           </div>
         </CSSTransition>
   
