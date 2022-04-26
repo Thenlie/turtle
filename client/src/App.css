@@ -72,8 +72,15 @@ footer {
   justify-content: center;
 }
 
-.dropdown {
-  width: 0;
+.nav-item2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.q-mark {
+  width: 30%;
+  height: 30%;
 }
 
 /* Icon Button */
@@ -90,6 +97,20 @@ footer {
   transition: filter 300ms;
 }
 
+.tut-icon-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  transition: filter 300ms;
+  color: white;
+}
+
 .icon-button:hover {
   filter: brightness(1.2);
 }
@@ -102,12 +123,12 @@ footer {
 
 
 /* Dropdown Menu */
-
 .dropdown {
   position: absolute;
-  top: 58px;
-  width: 300px;
-  transform: translateX(-45%);
+  top: 450px;
+  left: -250px;
+  width: 400px;
+  transform: translateX(100%);
   background-color: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
@@ -130,6 +151,15 @@ footer {
   justify-content: left;
 }
 
+.tut-item {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius);
+  transition: background var(--speed);
+  padding: 0.5rem;
+  justify-content: left;
+}
 .menu-item .icon-button {
   margin-right: 0.5rem;
 }
@@ -181,9 +211,7 @@ footer {
   transform: translateX(0%);
   transition: all var(--speed) ease;
 }
-.menu-secondary-exit {
 
-}
 .menu-secondary-exit-active {
   transform: translateX(110%);
   transition: all var(--speed) ease;
@@ -252,6 +280,33 @@ footer {
     justify-content: right;
   }
 
+  .navbar-nav {
+    max-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: left;
+  }
+
+  .nav-item {
+    width: calc(var(--nav-size) * 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dropdown {
+    position: absolute;
+    top: 58px;
+    width: 300px;
+    background-color: var(--bg);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    overflow: hidden;
+    transition: height var(--speed) ease;
+    justify-content: right;
+  }
+
   .icon-button {
     --button-size: calc(var(--nav-size) * 0.5);
     width: var(--button-size);
@@ -264,6 +319,23 @@ footer {
     align-items: right;
     justify-content: right;
     transition: filter 300ms;
+  }
+
+  .tut-icon-button {
+    --button-size: calc(var(--nav-size) * 0.5);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin-top: 10px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    transition: filter 300ms;
+  }
+
+  .q-mark {
+    width: 60%;
+    height: 60%;
   }
 
   .h-16 {

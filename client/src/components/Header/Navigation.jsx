@@ -27,6 +27,19 @@ const NavItem = (props) => {
   );
 };
 
+const NavItem2 = (props) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <li className='nav-item2'>
+      <button className='tut-icon-button' onClick={() => setOpen(!open)}>
+        {props.icon}
+      </button>
+      {open && props.children}
+    </li>
+  );
+};
+
 const Navigation = ({ user }) => {
   return (
     <Navbar>
@@ -37,13 +50,12 @@ const Navigation = ({ user }) => {
       {!user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/login'}>Login</Link></li>}
       {!user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/signup'}>Sign Up</Link></li>}
       {user && <li className='mobile-hide list-none m-5 text-xl hover:text-slate-500 menu-item bar-item'><Link to={'/logout'}>Logout</Link></li>}
-      <NavItem icon={<MdHelpOutline/>} className='menu-item'>
+      <NavItem2 icon={<MdHelpOutline className='q-mark'/>} className='menu-item'>
       <Tutorial></Tutorial>
-      </NavItem>
-      <NavItem icon={<MdMenu/>} className='menu-item'>
+      </NavItem2>
+      <NavItem icon={<MdMenu/>} className='tut-item'>
         <DropdownMenu></DropdownMenu>
       </NavItem>
-      
     </Navbar>
   );
 };
