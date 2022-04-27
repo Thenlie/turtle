@@ -5,15 +5,19 @@ const Header = ({ currentPage, setCurrentPage }) => {
     const toggleNav = () => {
         console.log('hit')
         const nav = document.getElementsByTagName('nav');
+        const menu = document.getElementById('menu');
         if (nav[0].classList.contains('hidden')) {
             nav[0].classList.remove('hidden');
+            menu.classList.add('hidden');
         } else {
             nav[0].classList.add('hidden');
+            menu.classList.remove('hidden');
         };
     };
 
     return (
         <header className='min-w-fit shadow-md lg:shadow-none'>
+            <div id='menu' className='bg-slate-400 p-2 lg:hidden'><MenuIcon className='w-6 hover:stroke-slate-300' onClick={() => {toggleNav()}}/></div>
             <nav className='h-full hidden lg:flex flex-col justify-between'>
                 <div className='flex justify-between'>
                     <div className='bg-slate-400 p-2 lg:hidden'><MenuIcon className='w-6 hover:stroke-slate-300' onClick={() => {toggleNav()}}/></div>
