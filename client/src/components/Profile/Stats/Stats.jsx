@@ -5,8 +5,8 @@ import Info from "./Info";
 const Stats = ({ data }) => {
 
     return (
-        <section className='bg-slate-200 my-4 mx-4 lg:ml-0 rounded-md'>
-            <div className='bg-slate-300 p-2 rounded-t-md'>
+        <section className='bg-slate-300 my-4 mx-4 lg:ml-0 rounded-md'>
+            <div className='bg-slate-400 p-2 rounded-t-md'>
                 <h2 className='font-bold'>Stats</h2>
             </div>
             <div className='p-4 flex flex-col'>

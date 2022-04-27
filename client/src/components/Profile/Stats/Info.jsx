@@ -15,12 +15,12 @@ const Info = ({ data }) => {
 
     return (
         <div className='bg-slate-100 mb-3 sm:mr-3 rounded-md shadow-sm sm:w-1/2 lg:w-full'>
-            <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Games Played <span className='font-normal'>| {dailyGames.length + contGames.length}</span></h3>
+            <h3 className='bg-slate-400 font-bold p-1 rounded-t-md'>Games Played <span className='font-normal'>| {dailyGames.length + contGames.length}</span></h3>
             <div className='p-1 h-1/3'>
                 <p>Daily: {dailyGames.length}</p>
                 <p>Continuous: {contGames.length}</p>
             </div>
-            <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Total Guesses <span className='font-normal'>| {dailyGuesses + contGuesses}</span></h3>
+            <h3 className='bg-slate-400 font-bold p-1 rounded-t-md'>Total Guesses <span className='font-normal'>| {dailyGuesses + contGuesses}</span></h3>
             <div className='p-1'>
                 <p>Daily: {dailyGuesses}</p>
                 <p>Continuous: {contGuesses}</p>
