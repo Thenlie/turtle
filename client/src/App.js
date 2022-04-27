@@ -48,7 +48,7 @@ function App() {
   
   return (
     <ApolloProvider client={client}>
-      <div className='flex h-full'>
+      <div className='flex flex-col lg:flex-row h-full'>
         <Router>
         {currentPage !== 'home' &&
           <Header currentPage={currentPage} setCurrentPage={setCurrentPage}/>

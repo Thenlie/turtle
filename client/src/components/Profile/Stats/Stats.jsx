@@ -5,7 +5,7 @@ import Info from "./Info";
 const Stats = ({ data }) => {
 
     return (
-        <section className='bg-slate-200 m-4 rounded-md'>
+        <section className='bg-slate-200 my-4 mr-4 rounded-md'>
             <div className='bg-slate-300 p-2 rounded-t-md'>
                 <h2 className='font-bold'>Stats</h2>
             </div>
