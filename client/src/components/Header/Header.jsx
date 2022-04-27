@@ -14,7 +14,7 @@ const Header = ({ currentPage, setCurrentPage }) => {
 
     return (
         <header className='lg:h-full bg-slate-200 min-w-fit'>
-            <div className='bg-slate-400 p-2 block lg:hidden'><MenuIcon className='w-6' onClick={() => {toggleNav()}}/></div>
+            <div className='bg-slate-400 p-2 block lg:hidden'><MenuIcon className='w-6 hover:stroke-slate-300' onClick={() => {toggleNav()}}/></div>
             <nav className='h-full hidden lg:flex flex-col justify-between'>
                 <ul>
                     <Link to={'/profile/dashboard'} onClick={() => setCurrentPage('dash')}>
