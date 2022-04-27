@@ -14,15 +14,23 @@ const Header = ({ currentPage, setCurrentPage }) => {
 
     return (
         <header className='lg:h-full bg-slate-200 min-w-fit'>
-            <div className='bg-slate-200 p-2 block lg:hidden'><MenuIcon className='w-6 ml-auto' onClick={() => {toggleNav()}}/></div>
+            <div className='bg-slate-400 p-2 block lg:hidden'><MenuIcon className='w-6' onClick={() => {toggleNav()}}/></div>
             <nav className='h-full hidden lg:flex flex-col justify-between'>
                 <ul>
-                    <li className='p-2 hover:bg-slate-300'><UserCircleIcon className='inline w-6'/><Link to={'/profile/dashboard'} onClick={() => setCurrentPage('dash')} className={`${currentPage === 'dash' && 'text-green-600'}`}>Dashboard</Link></li>
-                    <li className='p-2 hover:bg-slate-300'><CalendarIcon className='inline w-6'/><Link to={'/daygame'} onClick={() => setCurrentPage('daygame')} className={`${currentPage === 'daygame' && 'text-green-600'}`}>Daily Game</Link></li>
-                    <li className='p-2 hover:bg-slate-300'><PuzzleIcon className='inline w-6'/><Link to={'/contgame'} onClick={() => setCurrentPage('contgame')} className={`${currentPage === 'contgame' && 'text-green-600'}`}>Endless Game</Link></li>
+                    <Link to={'/profile/dashboard'} onClick={() => setCurrentPage('dash')}>
+                        <li className={`p-2 hover:bg-slate-300 ${currentPage === 'dash' && 'bg-white'}`}><UserCircleIcon className='inline w-6'/>Dashboard</li>
+                    </Link>
+                    <Link to={'/daygame'} onClick={() => setCurrentPage('daygame')}>
+                        <li className={`p-2 hover:bg-slate-300 ${currentPage === 'daygame' && 'bg-white'}`}><CalendarIcon className='inline w-6'/>Daily Game</li>
+                    </Link>
+                    <Link to={'/contgame'} onClick={() => setCurrentPage('contgame')}>
+                        <li className={`p-2 hover:bg-slate-300 ${currentPage === 'contgame' && 'bg-white'}`}><PuzzleIcon className='inline w-6'/>Endless Game</li>
+                    </Link>
                 </ul>
                 <ul>
-                    <li className='p-2 hover:bg-slate-300'><LogoutIcon className='inline w-6'/><Link to={'/logout'} onClick={() => setCurrentPage('logout')} className={`${currentPage === 'logout' && 'text-green-600'}`}>Logout</Link></li>
+                <Link to={'/logout'} onClick={() => setCurrentPage('logout')}>
+                    <li className={`p-2 hover:bg-slate-300 ${currentPage === 'logout' && 'bg-white'}`}><LogoutIcon className='inline w-6'/>Logout</li>
+                </Link>
                     {/* <li className='p-2 hover:bg-slate-300'><QuestionMarkCircleIcon className='inline w-6'/>Tutorial (WIP)</li> */}
                 </ul>
             </nav>
