@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import Home from './pages/Home';
 import Forms from './pages/Forms';
@@ -22,6 +22,7 @@ const client = new ApolloClient({
 
 function App() {
   const [user, setUser] = useState('');
+  const [currentPage, setCurrentPage] = useState('home')
 
   const wrapperSetUser = useCallback(val => {
     setUser(val);
@@ -49,10 +50,12 @@ function App() {
     <ApolloProvider client={client}>
       <div className='flex h-full'>
         <Router>
-        <Header />
+        {currentPage !== 'home' &&
+          <Header currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+        }
           <Routes>
             <Route exact path='*' element={<NotFound />} />
-            <Route exact path='/' element={<Home user={user} />} />
+            <Route exact path='/' element={<Home user={user} setCurrentPage={setCurrentPage}/>} />
             <Route element={<Forms user={user} />} >
               {user === null ? (
                 <>
