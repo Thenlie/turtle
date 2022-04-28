@@ -17,10 +17,15 @@ const Header = ({ currentPage, setCurrentPage }) => {
 
     return (
         <header className='min-w-fit shadow-md lg:shadow-none'>
-            <div id='menu' className='bg-slate-400 p-2 lg:hidden'><MenuIcon className='w-6 hover:stroke-slate-300' onClick={() => {toggleNav()}}/></div>
+            <div id='menu' className='flex justify-between lg:hidden'>
+                    <div className='bg-slate-400 p-2 cursor-pointer' onClick={() => {toggleNav()}}><MenuIcon className='w-6 hover:stroke-slate-300'/></div>
+                    <Link to={'/'} onClick={() => setCurrentPage('home')} className='grow'>
+                        <div className={`p-2 bg-slate-400 hover:bg-slate-500 text-center font-bold text-xl ${currentPage === 'dash' && 'lg:rounded-br-md'}`}>Turtle 🐢</div>
+                    </Link>
+                </div>
             <nav className='h-full hidden lg:flex flex-col justify-between'>
                 <div className='flex justify-between'>
-                    <div className='bg-slate-400 p-2 lg:hidden'><MenuIcon className='w-6 hover:stroke-slate-300' onClick={() => {toggleNav()}}/></div>
+                    <div className='bg-slate-400 p-2 lg:hidden cursor-pointer' onClick={() => {toggleNav()}}><MenuIcon className='w-6 hover:stroke-slate-300'/></div>
                     <Link to={'/'} onClick={() => setCurrentPage('home')} className='grow'>
                         <div className={`p-2 bg-slate-400 hover:bg-slate-500 text-center font-bold text-xl ${currentPage === 'dash' && 'lg:rounded-br-md'}`}>Turtle 🐢</div>
                     </Link>
