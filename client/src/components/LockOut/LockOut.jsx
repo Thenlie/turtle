@@ -34,7 +34,7 @@ const LockOut = () => {
     }, []);
 
     return (
-        <main className='h-full text-center flex flex-col justify-center'>
+        <main className='grow text-center flex flex-col justify-center'>
             <h1 className='text-center font-bold text-3xl'>Locked Out!</h1>
             <div className='flex justify-center my-4'>
                 <div className='text-2xl w-14 h-14 text-center bg-[#86CF84] m-2 pt-3 px-4 rounded shadow-lg rotate-[345deg]'>{time.hours}</div>

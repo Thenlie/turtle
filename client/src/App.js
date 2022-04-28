@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
 import Home from './pages/Home';
 import Forms from './pages/Forms';
@@ -22,6 +22,7 @@ const client = new ApolloClient({
 
 function App() {
   const [user, setUser] = useState('');
+  const [currentPage, setCurrentPage] = useState('home')
 
   const wrapperSetUser = useCallback(val => {
     setUser(val);
@@ -47,12 +48,14 @@ function App() {
   
   return (
     <ApolloProvider client={client}>
-      <div className='flex flex-col h-full'>
+      <div className='flex flex-col lg:flex-row min-h-full h-fit bg-slate-200'>
         <Router>
-          <Header user={user} />
+        {currentPage !== 'home' &&
+          <Header currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+        }
           <Routes>
             <Route exact path='*' element={<NotFound />} />
-            <Route exact path='/' element={<Home user={user} />} />
+            <Route exact path='/' element={<Home user={user} setCurrentPage={setCurrentPage}/>} />
             <Route element={<Forms user={user} />} >
               {user === null ? (
                 <>
@@ -66,10 +69,10 @@ function App() {
             </Route>
             {user !== null && 
               <>
-                <Route exact path='/daygame' element={<DailyGame user={user} />} />
-                <Route exact path='/contgame' element={<ContGame />} />
+                <Route exact path='/daygame' element={<DailyGame user={user} setCurrentPage={setCurrentPage} />} />
+                <Route exact path='/contgame' element={<ContGame setCurrentPage={setCurrentPage} />} />
                 <Route exact path='/endgame' element={<EndGame user={user} />} />
-                <Route path='/profile' element={<Profile user={user} />} >
+                <Route path='/profile' element={<Profile user={user} setCurrentPage={setCurrentPage} />} >
                   <Route path='dashboard' element={<Profile />}/>
                   <Route path=':id'element={<Profile />} />
                 </Route>

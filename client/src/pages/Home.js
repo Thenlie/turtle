@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
 
-const Home = ({ user }) => {
+const Home = ({ user, setCurrentPage }) => {
+
+    useEffect(() => {
+        setCurrentPage('home');
+    });
+
     return (
         <main className='grow flex flex-col justify-center items-center'>
             <div className='flex flex-col items-center'>
@@ -14,7 +20,7 @@ const Home = ({ user }) => {
                 </div>
                 <div className='flex flex-col items-center'>
                     <div className='mb-8'>
-                    <Link to={`${user ? ('/profile/dashboard') : ('/signup')}`} className='text-black'><button className='text-2xl bg-[#C4C4C4] hover:bg-slate-300 rounded-lg py-2 px-6'>Get Started</button></Link>
+                    <Link to={`${user ? ('/profile/dashboard') : ('/signup')}`} onClick={() => setCurrentPage('dash')} className='text-black'><button className='text-2xl bg-[#C4C4C4] hover:bg-slate-300 rounded-lg py-2 px-6'>Get Started</button></Link>
                     </div>
                     {!user &&
                         <div>
