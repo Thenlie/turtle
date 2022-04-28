@@ -1,6 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from "react";
 
 const Home = ({ user, setCurrentPage }) => {
+
+    useEffect(() => {
+        setCurrentPage('home');
+    });
+
     return (
         <main className='grow flex flex-col justify-center items-center'>
             <div className='flex flex-col items-center'>

@@ -8,7 +8,7 @@ import Display from '../components/Game/Display';
 import Alphabet from '../components/Game/Alphabet';
 import LockOut from '../components/LockOut';
 
-const DailyGame = ({ user }) => {
+const DailyGame = ({ user, setCurrentPage }) => {
     const [guessArr, setGuessArr] = useState([]);
     const [dayTarget, setDayTarget] = useState('');
     const { loading, data } = useQuery(QUERY_SCORE, { variables: { userId: user }});
@@ -22,6 +22,10 @@ const DailyGame = ({ user }) => {
     }, []);
 
     let daily = scoreData.filter(score => score.type === 'daily' && score.word === dayTarget);
+
+    useEffect(() => {
+        setCurrentPage('daygame');
+    });
     
     if (daily.length > 0) {
         return (

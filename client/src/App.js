@@ -69,10 +69,10 @@ function App() {
             </Route>
             {user !== null && 
               <>
-                <Route exact path='/daygame' element={<DailyGame user={user} />} />
-                <Route exact path='/contgame' element={<ContGame />} />
+                <Route exact path='/daygame' element={<DailyGame user={user} setCurrentPage={setCurrentPage} />} />
+                <Route exact path='/contgame' element={<ContGame setCurrentPage={setCurrentPage} />} />
                 <Route exact path='/endgame' element={<EndGame user={user} />} />
-                <Route path='/profile' element={<Profile user={user} />} >
+                <Route path='/profile' element={<Profile user={user} setCurrentPage={setCurrentPage} />} >
                   <Route path='dashboard' element={<Profile />}/>
                   <Route path=':id'element={<Profile />} />
                 </Route>

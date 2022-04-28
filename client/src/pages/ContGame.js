@@ -4,7 +4,7 @@ import UserInput from '../components/Game/UserInput';
 import Display from '../components/Game/Display';
 import Alphabet from '../components/Game/Alphabet';
 
-const ContGame = () => {
+const ContGame = ({ setCurrentPage }) => {
     const [guessArr, setGuessArr] = useState([]);
     const [target, setTarget] = useState('');
 
@@ -12,6 +12,10 @@ const ContGame = () => {
         const randInt = Math.floor(Math.random() * 2314);
         setTarget(dictionary[randInt].toUpperCase());
     }, []);
+
+    useEffect(() => {
+        setCurrentPage('contgame');
+    });
 
     return (
         <main className='grow m-auto flex flex-col justify-center'>

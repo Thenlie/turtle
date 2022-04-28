@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_SCORE } from "../utils/queries";
 
-const Profile = ({ user }) => {
+const Profile = ({ user, setCurrentPage }) => {
     const params = useParams();
     const navigate = useNavigate();
     const [targetUser, setTargetUser] = useState('') 
@@ -28,6 +28,10 @@ const Profile = ({ user }) => {
     useEffect(() => {
         assignUser();
     }, [assignUser]);
+    
+    useEffect(() => {
+        setCurrentPage('dash');
+    });
 
     if (loading) {
         return (
