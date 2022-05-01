@@ -18,9 +18,9 @@ const ContGame = ({ setCurrentPage }) => {
     });
 
     return (
-        <main className='grow m-auto flex flex-col justify-center'>
+        <main className='grow m-auto flex flex-col justify-center w-full'>
             <Display guessArr={guessArr} target={target} type={'cont'} />
-            <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
+            <section className='p-4 mx-auto my-4 w-3/4 md:w-1/2 text-center bg-slate-100 rounded-md'>
                 <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
                 <Alphabet />
             </section>

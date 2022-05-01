@@ -61,23 +61,23 @@ const UserInput = ({guessArr, setGuessArr}) => {
                 <p className='text-red-500'>Invalid Word!</p>
             )}
             <div className='flex justify-center'>
-                <div className='w-20 h-20 m-1 pt-4 bg-white text-3xl border-2 border-slate-300 rounded-md shadow-md'>
+                <div className='w-12 md:w-20 h-12 md:h-20 m-1 pt-1 md:pt-4 bg-white text-2xl md:text-3xl border-2 border-slate-300 rounded-md shadow-md'>
                     {input.length > 0 ? (input[0]) : ('')}
                 </div>
-                <div className='w-20 h-20 m-1 pt-4 bg-white text-3xl border-2 border-slate-300 rounded-md shadow-md'>
+                <div className='w-12 md:w-20 h-12 md:h-20 m-1 pt-1 md:pt-4 bg-white text-2xl md:text-3xl border-2 border-slate-300 rounded-md shadow-md'>
                     {input.length > 1 ? (input[1]) : ('')}
                 </div>
-                <div className='w-20 h-20 m-1 pt-4 bg-white text-3xl border-2 border-slate-300 rounded-md shadow-md'>
+                <div className='w-12 md:w-20 h-12 md:h-20 m-1 pt-1 md:pt-4 bg-white text-2xl md:text-3xl border-2 border-slate-300 rounded-md shadow-md'>
                     {input.length > 2 ? (input[2]) : ('')}
                 </div>
-                <div className='w-20 h-20 m-1 pt-4 bg-white text-3xl border-2 border-slate-300 rounded-md shadow-md'>
+                <div className='w-12 md:w-20 h-12 md:h-20 m-1 pt-1 md:pt-4 bg-white text-2xl md:text-3xl border-2 border-slate-300 rounded-md shadow-md'>
                     {input.length > 3 ? (input[3]) : ('')}
                 </div>
-                <div className='w-20 h-20 m-1 pt-4 bg-white text-3xl border-2 border-slate-300 rounded-md shadow-md'>
+                <div className='w-12 md:w-20 h-12 md:h-20 m-1 pt-1 md:pt-4 bg-white text-2xl md:text-3xl border-2 border-slate-300 rounded-md shadow-md'>
                     {input.length > 4 ? (input[4]) : ('')}
                 </div>
             </div>
-            <button type='submit' className='w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
+            <button type='submit' className='w-1/2 md:w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
         </>
     );
 };
