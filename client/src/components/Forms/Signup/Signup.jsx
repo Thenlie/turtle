@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useQuery } from '@apollo/client';
 import { EyeIcon, EyeOffIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/outline';
 import { QUERY_USERNAME, QUERY_EMAIL } from '../../../utils/queries'; 
@@ -409,7 +409,8 @@ const Signup = ({ setUser }) => {
                         <option value='WF' label='Wallis and Futuna'>Wallis and Futuna</option>
                     </optgroup>
                 </select>
-                <button type='submit' className='w-1/4 m-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Signup</button>
+                <button type='submit' className='w-1/4 mx-auto my-2 p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Signup</button>
+                <span>Already have an account?<Link to="/login" className='text-[#86CF84] hover:text-green-700'> Login</Link></span>
             </form>
         </section>
     )

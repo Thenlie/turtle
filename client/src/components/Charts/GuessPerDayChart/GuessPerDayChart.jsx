@@ -41,7 +41,7 @@ const GuessPerDayChart = ({ data }) => {
 
     return (
     <div className='bg-slate-100 rounded-t-md shadow-sm'>
-        <h3 className='bg-slate-300 font-bold p-1 rounded-t-md'>Guesses per Day</h3>
+        <h3 className='bg-slate-400 font-bold p-1 rounded-t-md'>Guesses per Day</h3>
         <div className='p-1'>
             <Line
                 data={{

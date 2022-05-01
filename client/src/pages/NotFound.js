@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 const NotFound = () => {
     return (
-        <main className='grow text-center'>
+        <main className='grow text-center flex flex-col justify-center'>
             <div className='flex justify-center my-4'>
                 <div className='text-2xl w-14 h-14 text-center bg-[#86CF84] m-2 pt-3 px-4 rounded shadow-lg rotate-[345deg]'>4</div>
                 <div className='text-2xl w-14 h-14 text-center bg-[#C4C4C4] m-2 pt-3 px-4 rounded shadow-lg'>0</div>
