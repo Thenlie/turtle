@@ -91,8 +91,14 @@ const GuessPerGameChart = ({ data }) => {
                             ticks: {
                                 color: '#6b7280',
                                 autoSkip: false,
+                                precision: 0
                             },
                         },
+                        x: {
+                            ticks: {
+                                precision: 0
+                            }
+                        }
 
                     },
                     color: '#6b7280',
