@@ -59,24 +59,24 @@ const Display = ({ target, guessArr, type }) => {
     }, [guessArr, navigate, target, targetArr, type]);
 
     return (
-        <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
+        <section className='p-4 mx-auto my-4 w-3/4 md:w-1/2 text-center bg-slate-100 rounded-md'>
             {/* <p className='text-lg pt-5 font-bold'>{target}</p> */}
             <div id='guess-container' className={`pt-5 ${guessArr.length === 6 && 'pb-5'}`}>
                 {guessArr.map(guess => (
                     <div key={uuid()} className='flex flex-wrap justify-center'>
                         {guess.split('').map((letter, i) => (
-                            <span key={uuid()} name={letter + i} className='w-16 h-16 m-1 pt-3 text-3xl rounded-md shadow-md'>{letter}</span>
+                            <span key={uuid()} name={letter + i} className='w-12 md:w-16 h-12 md:h-16 m-1 pt-1 md:pt-3 text-3xl rounded-md shadow-md'>{letter}</span>
                         ))}
                     </div>
                 ))}
             </div>
             {guessArr.length < 6 ? (
                 <div className='flex justify-center pb-5'>
-                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
-                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
-                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
-                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
-                    <div className='w-16 h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-12 md:w-16 h-12 md:h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-12 md:w-16 h-12 md:h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-12 md:w-16 h-12 md:h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-12 md:w-16 h-12 md:h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
+                    <div className='w-12 md:w-16 h-12 md:h-16 m-1 pt-4 bg-white text-3xl rounded-md shadow-md'></div>
                 </div>
             ) : (
                 <></>
