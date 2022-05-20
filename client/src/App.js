@@ -50,7 +50,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className='flex flex-col lg:flex-row min-h-full h-fit bg-slate-200'>
         <Router>
-        {currentPage !== 'home' &&
+        {currentPage !== 'home' && currentPage !== 'form' &&
           <Header currentPage={currentPage} setCurrentPage={setCurrentPage}/>
         }
           <Routes>

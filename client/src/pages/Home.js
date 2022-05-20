@@ -20,11 +20,11 @@ const Home = ({ user, setCurrentPage }) => {
                 </div>
                 <div className='flex flex-col items-center'>
                     <div className='mb-8'>
-                    <Link to={`${user ? ('/profile/dashboard') : ('/signup')}`} onClick={() => setCurrentPage('dash')} className='text-black'><button className='text-2xl bg-[#C4C4C4] hover:bg-slate-300 rounded-lg py-2 px-6'>Get Started</button></Link>
+                    <Link to={`${user ? ('/profile/dashboard') : ('/signup')}`} onClick={() => setCurrentPage(`${user ? ('dash') : ('form')}`)} className='text-black'><button className='text-2xl bg-[#C4C4C4] hover:bg-slate-300 rounded-lg py-2 px-6'>Get Started</button></Link>
                     </div>
                     {!user &&
                         <div>
-                            <span>Already have an account?<Link to="/login" className='text-[#86CF84] hover:text-green-700'> Login</Link></span>
+                            <span>Already have an account?<Link to="/login" onClick={() => setCurrentPage('form')} className='text-[#86CF84] hover:text-green-700'> Login</Link></span>
                         </div>
                     }
                 </div>
