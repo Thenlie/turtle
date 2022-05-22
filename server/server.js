@@ -34,7 +34,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: MongoStore.create({
-    mongoUrl: 'mongodb://localhost/turtle',
+    mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost/turtle',
   })
 }))
 
