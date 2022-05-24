@@ -125,7 +125,7 @@ const Signup = ({ setUser }) => {
 
 
     return (
-        <section className='p-4 mt-6 mx-auto w-2/3 lg:w-1/2 xl:w-1/3 text-center bg-slate-100 rounded-md'>
+        <section className='p-4 mt-6 mx-auto w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 text-center bg-slate-100 rounded-md'>
             <h2 className='font-bold text-lg mb-2'>Signup</h2>
             <form onSubmit={handleSignup} className='flex flex-col'>
                 <div className='flex items-center'>
@@ -409,7 +409,7 @@ const Signup = ({ setUser }) => {
                         <option value='WF' label='Wallis and Futuna'>Wallis and Futuna</option>
                     </optgroup>
                 </select>
-                <button type='submit' className='w-1/4 mx-auto my-2 p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Signup</button>
+                <button type='submit' className='w-1/2 sm:w-1/4 mx-auto my-2 p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Signup</button>
                 <span>Already have an account?<Link to="/login" className='text-[#86CF84] hover:text-green-700'> Login</Link></span>
             </form>
         </section>

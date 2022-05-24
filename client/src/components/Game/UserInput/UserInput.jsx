@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import dictionary from '../../../utils/dictionary';
 import { v4 as uuid } from 'uuid';
+import Alphabet from '../Alphabet';
 
 const UserInput = ({guessArr, setGuessArr}) => {
     const [input, setInput] = useState('');
@@ -55,6 +56,13 @@ const UserInput = ({guessArr, setGuessArr}) => {
         };
     }, [key]);
 
+    const test = (evt) => {
+        let curr = evt.target.id
+        if (letters.includes(curr) || curr == 'BACKSPACE') {
+            setKey({key: curr, id: uuid});
+        }
+    };
+
     return (
         <>
             {!validGuess && (
@@ -77,7 +85,10 @@ const UserInput = ({guessArr, setGuessArr}) => {
                     {input.length > 4 ? (input[4]) : ('')}
                 </div>
             </div>
-            <button onClick={handleSubmit} className='w-1/2 md:w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
+            <button onClick={handleSubmit} className='w-1/3 sm:w-1/2 md:w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
+            <div onClick={test}>
+                <Alphabet />
+            </div>
         </>
     );
 };

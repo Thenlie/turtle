@@ -61,7 +61,7 @@ const Login = ({ setUser }) => {
     }, [email]);
     
     return (
-        <section className="p-4 mx-auto w-2/3 lg:w-1/2 xl:w-1/3 text-center bg-slate-100 rounded-md">
+        <section className="p-4 mx-auto w-full sm:w-2/3 lg:w-1/2 xl:w-1/3 text-center bg-slate-100 rounded-md">
             <h2 className='font-bold text-lg mb-2'>Login</h2>
             <form onSubmit={handleLogin} className='flex flex-col'>
             <div className='flex items-center'>
@@ -72,7 +72,7 @@ const Login = ({ setUser }) => {
                     <input className='m-2 p-2 rounded-l-md grow mr-0' onChange={handleChange} name='password' placeholder='password' type='password' id='login-password' value={password}></input>
                     <div title='Toggle Password Visibility' onClick={togglePasswordVisible} className='bg-white p-2 rounded-r-md'>{passwordVisible ? (<EyeIcon width={25} className='stroke-slate-500'/>) : (<EyeOffIcon width={25} className='stroke-slate-500'/>)}</div>
                 </div>
-                <button type='submit' className='w-1/4 mx-auto my-2 p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Login</button>
+                <button type='submit' className='w-1/2 sm:w-1/4 mx-auto my-2 p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Login</button>
                 <span>Don't have an account?<Link to="/signup" className='text-[#86CF84] hover:text-green-700'> Signup</Link></span>
             </form>
         </section>
