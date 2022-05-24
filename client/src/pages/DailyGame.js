@@ -40,11 +40,11 @@ const DailyGame = ({ user, setCurrentPage }) => {
     };
 
     return (
-        <main className='grow m-auto flex flex-col justify-center'>
+        <main className='grow m-auto flex flex-col justify-center w-full'>
             <Display guessArr={guessArr} target={dayTarget} type={'daily'} />
-            <section className='p-4 mx-auto my-4 w-1/2 text-center bg-slate-100 rounded-md'>
+            <section className='px-1 py-4 sm:px-4 mx-0 sm:mx-auto my-4 w-full sm:w-3/4 md:w-1/2 text-center bg-slate-100 rounded-md text-sm sm:text-base'>
                 <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
-                <Alphabet />
+                {/* <Alphabet /> */}
             </section>
         </main>
     );
