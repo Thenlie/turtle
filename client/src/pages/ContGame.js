@@ -22,7 +22,7 @@ const ContGame = ({ setCurrentPage }) => {
             <Display guessArr={guessArr} target={target} type={'cont'} />
             <section className='p-4 mx-auto my-4 w-3/4 md:w-1/2 text-center bg-slate-100 rounded-md'>
                 <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
-                <Alphabet />
+                {/* <Alphabet /> */}
             </section>
         </main>
     );
