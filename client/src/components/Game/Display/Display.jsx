@@ -59,7 +59,7 @@ const Display = ({ target, guessArr, type }) => {
     }, [guessArr, navigate, target, targetArr, type]);
 
     return (
-        <section className='p-4 mx-auto my-4 w-3/4 md:w-1/2 text-center bg-slate-100 rounded-md'>
+        <section className='p-4 mx-none sm:mx-auto my-4 w-full sm:w-3/4 md:w-1/2 text-center bg-slate-100 rounded-md'>
             {/* <p className='text-lg pt-5 font-bold'>{target}</p> */}
             <div id='guess-container' className={`pt-5 ${guessArr.length === 6 && 'pb-5'}`}>
                 {guessArr.map(guess => (
