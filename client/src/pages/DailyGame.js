@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import { useQuery } from "@apollo/client";
+import { v4 as uuid } from 'uuid';
 import { QUERY_SCORE } from "../utils/queries";
 import randomDictionary from '../utils/randomDictionary';
 import UserInput from '../components/Game/UserInput';
@@ -9,10 +10,12 @@ import Alphabet from '../components/Game/Alphabet';
 import LockOut from '../components/LockOut';
 
 const DailyGame = ({ user, setCurrentPage }) => {
+    const [key, setKey] = useState('');
     const [guessArr, setGuessArr] = useState([]);
     const [dayTarget, setDayTarget] = useState('');
     const { loading, data } = useQuery(QUERY_SCORE, { variables: { userId: user }});
     const scoreData = data?.scoresByUser || [];
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
     useEffect(() => {
         const now = DateTime.now();
@@ -26,6 +29,14 @@ const DailyGame = ({ user, setCurrentPage }) => {
     useEffect(() => {
         setCurrentPage('daygame');
     });
+
+    const test = (evt) => {
+        let curr = evt.target.id
+        console.log(curr);
+        if (letters.includes(curr) || curr == 'BACKSPACE') {
+            setKey({key: curr, id: uuid});
+        }
+    };
     
     if (daily.length > 0) {
         return (
@@ -43,8 +54,10 @@ const DailyGame = ({ user, setCurrentPage }) => {
         <main className='grow m-auto flex flex-col justify-center w-full'>
             <Display guessArr={guessArr} target={dayTarget} type={'daily'} />
             <section className='px-1 py-4 sm:px-4 mx-0 sm:mx-auto my-4 w-full sm:w-3/4 md:w-1/2 text-center bg-slate-100 rounded-md text-sm sm:text-base'>
-                <UserInput guessArr={guessArr} setGuessArr={setGuessArr} />
-                {/* <Alphabet /> */}
+                <UserInput guessArr={guessArr} setGuessArr={setGuessArr} key2={key} setKey={setKey} />
+                <div onClick={test}>
+                    <Alphabet />
+                </div>
             </section>
         </main>
     );

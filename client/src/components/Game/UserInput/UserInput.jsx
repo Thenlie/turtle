@@ -3,9 +3,9 @@ import dictionary from '../../../utils/dictionary';
 import { v4 as uuid } from 'uuid';
 import Alphabet from '../Alphabet';
 
-const UserInput = ({guessArr, setGuessArr}) => {
+const UserInput = ({guessArr, setGuessArr, key2, setKey}) => {
     const [input, setInput] = useState('');
-    const [key, setKey] = useState('');
+    // const [key, setKey] = useState('');
     const [validGuess, setValidGuess] = useState(true);
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -37,31 +37,24 @@ const UserInput = ({guessArr, setGuessArr}) => {
     }, [input]);
 
     useEffect(() => {
-        if (key) {
-            if (key.key === 'BACKSPACE') {
+        if (key2) {
+            if (key2.key === 'BACKSPACE') {
                 if (input.length > 0) {
                     let tmpArr = input.split('');
                     tmpArr.pop();
                     let tmp = tmpArr.join('').trim();
                     setInput(tmp);
                 };
-            } else if (key.key === 'ENTER') {
+            } else if (key2.key === 'ENTER') {
                 handleSubmit();
-            } else if (key.key.length === 1 && input.length < 5) {
-                if (letters.includes(key.key)) {
-                    let tmp = input + key.key;
+            } else if (key2.key.length === 1 && input.length < 5) {
+                if (letters.includes(key2.key)) {
+                    let tmp = input + key2.key;
                     setInput(tmp);
                 };
             };
         };
-    }, [key]);
-
-    const test = (evt) => {
-        let curr = evt.target.id
-        if (letters.includes(curr) || curr == 'BACKSPACE') {
-            setKey({key: curr, id: uuid});
-        }
-    };
+    }, [key2]);
 
     return (
         <>
@@ -86,9 +79,9 @@ const UserInput = ({guessArr, setGuessArr}) => {
                 </div>
             </div>
             <button onClick={handleSubmit} className='w-1/3 sm:w-1/2 md:w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
-            <div onClick={test}>
+            {/* <div onClick={test}>
                 <Alphabet />
-            </div>
+            </div> */}
         </>
     );
 };

@@ -7,6 +7,7 @@ const Display = ({ target, guessArr, type }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log('effecting')
         // get all guess elements, return if no guesses
         const guesses = Array.from(document.getElementById('guess-container').children);
         if (guesses.length < 1) {
