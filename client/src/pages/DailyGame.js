@@ -17,6 +17,7 @@ const DailyGame = ({ user, setCurrentPage }) => {
     const scoreData = data?.scoresByUser || [];
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
+    // generate daily word based on date
     useEffect(() => {
         const now = DateTime.now();
         const start = DateTime.fromISO("2022-04-04");
@@ -30,6 +31,7 @@ const DailyGame = ({ user, setCurrentPage }) => {
         setCurrentPage('daygame');
     });
 
+    // run anytime a letter on the built in keyboard is pressed
     const letterClickHandler = (evt) => {
         let curr = evt.target.id
         if (curr.length > 0) {

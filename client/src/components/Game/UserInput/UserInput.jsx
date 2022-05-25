@@ -77,9 +77,6 @@ const UserInput = ({guessArr, setGuessArr, myKey, setKey}) => {
                 </div>
             </div>
             <button onClick={handleSubmit} className='w-1/3 sm:w-1/2 md:w-1/4 my-3 mx-auto p-2 rounded-lg bg-slate-300 hover:bg-slate-400'>Submit</button>
-            {/* <div onClick={test}>
-                <Alphabet />
-            </div> */}
         </>
     );
 };

@@ -10,7 +10,18 @@ const ContGame = ({ setCurrentPage }) => {
     const [guessArr, setGuessArr] = useState([]);
     const [target, setTarget] = useState('');
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
+    
+    // generate random word
+    useEffect(() => {
+        const randInt = Math.floor(Math.random() * 2314);
+        setTarget(dictionary[randInt].toUpperCase());
+    }, []);
+    
+    useEffect(() => {
+        setCurrentPage('contgame');
+    });
+    
+    // run anytime a letter on the built in keyboard is pressed
     const letterClickHandler = (evt) => {
         let curr = evt.target.id
         if (curr.length > 0) {
@@ -19,15 +30,6 @@ const ContGame = ({ setCurrentPage }) => {
             };
         };
     };
-
-    useEffect(() => {
-        const randInt = Math.floor(Math.random() * 2314);
-        setTarget(dictionary[randInt].toUpperCase());
-    }, []);
-
-    useEffect(() => {
-        setCurrentPage('contgame');
-    });
 
     return (
         <main className='grow m-auto flex flex-col justify-center w-full'>

@@ -1,10 +1,11 @@
 import { v4 as uuid } from 'uuid';
 
-// display of each letter below the user input
+// display of each letter below the user input (keyboard)
 const Alphabet = () => {
     const abc1 = Array.from('QWERTYUIOP');
     const abc2 = Array.from('ASDFGHJKL');
     const abc3 = Array.from('ZXCVBNM');
+    
     return (
         <div className='' id='letter-container'>
             <div className='flex justify-center'>
