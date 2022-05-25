@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import dictionary from '../../../utils/dictionary';
 import { v4 as uuid } from 'uuid';
-import Alphabet from '../Alphabet';
 
-const UserInput = ({guessArr, setGuessArr, key2, setKey}) => {
+const UserInput = ({guessArr, setGuessArr, myKey, setKey}) => {
     const [input, setInput] = useState('');
-    // const [key, setKey] = useState('');
     const [validGuess, setValidGuess] = useState(true);
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -37,24 +35,24 @@ const UserInput = ({guessArr, setGuessArr, key2, setKey}) => {
     }, [input]);
 
     useEffect(() => {
-        if (key2) {
-            if (key2.key === 'BACKSPACE') {
+        if (myKey) {
+            if (myKey.key === 'BACKSPACE') {
                 if (input.length > 0) {
                     let tmpArr = input.split('');
                     tmpArr.pop();
                     let tmp = tmpArr.join('').trim();
                     setInput(tmp);
                 };
-            } else if (key2.key === 'ENTER') {
+            } else if (myKey.key === 'ENTER') {
                 handleSubmit();
-            } else if (key2.key.length === 1 && input.length < 5) {
-                if (letters.includes(key2.key)) {
-                    let tmp = input + key2.key;
+            } else if (myKey.key.length === 1 && input.length < 5) {
+                if (letters.includes(myKey.key)) {
+                    let tmp = input + myKey.key;
                     setInput(tmp);
                 };
             };
         };
-    }, [key2]);
+    }, [myKey]);
 
     return (
         <>

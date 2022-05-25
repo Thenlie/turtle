@@ -30,12 +30,13 @@ const DailyGame = ({ user, setCurrentPage }) => {
         setCurrentPage('daygame');
     });
 
-    const test = (evt) => {
+    const letterClickHandler = (evt) => {
         let curr = evt.target.id
-        console.log(curr);
-        if (letters.includes(curr) || curr == 'BACKSPACE') {
-            setKey({key: curr, id: uuid});
-        }
+        if (curr.length > 0) {
+            if (letters.includes(curr) || curr == 'BACKSPACE') {
+                setKey({key: curr, id: uuid});
+            };
+        };
     };
     
     if (daily.length > 0) {
@@ -54,8 +55,8 @@ const DailyGame = ({ user, setCurrentPage }) => {
         <main className='grow m-auto flex flex-col justify-center w-full'>
             <Display guessArr={guessArr} target={dayTarget} type={'daily'} />
             <section className='px-1 py-4 sm:px-4 mx-0 sm:mx-auto my-4 w-full sm:w-3/4 md:w-1/2 text-center bg-slate-100 rounded-md text-sm sm:text-base'>
-                <UserInput guessArr={guessArr} setGuessArr={setGuessArr} key2={key} setKey={setKey} />
-                <div onClick={test}>
+                <UserInput guessArr={guessArr} setGuessArr={setGuessArr} myKey={key} setKey={setKey} />
+                <div onClick={letterClickHandler}>
                     <Alphabet />
                 </div>
             </section>
